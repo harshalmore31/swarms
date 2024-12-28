@@ -89,6 +89,7 @@ def load_prompts_from_json() -> Dict[str, str]:
 
 AGENT_PROMPTS = load_prompts_from_json()
 
+api_keys = {}
 
 def initialize_agents(
     dynamic_temp: float,
@@ -1596,6 +1597,8 @@ def create_app():
                     except Exception as e:
                         return f"Error saving agent prompt {str(e)}"
 
+                # In the run_task_wrapper function, modify the API key handling
+
                 async def run_task_wrapper(
                     task,
                     max_loops,
@@ -1634,43 +1637,16 @@ def create_app():
                             f"Flow string: {flow}"
                         )  # Debug: Print flow string
 
-                        # Save API key to .env
-                        env_path = find_dotenv()
-                        if provider == "openai":
-                            set_key(env_path, "OPENAI_API_KEY", api_key)
-                        elif provider == "anthropic":
-                            set_key(
-                                env_path, "ANTHROPIC_API_KEY", api_key
-                            )
-                        elif provider == "cohere":
-                            set_key(env_path, "COHERE_API_KEY", api_key)
-                        elif provider == "gemini":
-                            set_key(env_path, "GEMINI_API_KEY", api_key)
-                        elif provider == "mistral":
-                            set_key(env_path, "MISTRAL_API_KEY", api_key)
-                        elif provider == "groq":
-                            set_key(env_path, "GROQ_API_KEY", api_key)
-                        elif provider == "perplexity":
-                            set_key(
-                                env_path, "PERPLEXITY_API_KEY", api_key
-                            )
-                        else:
-                            yield (
-                                f"Error: {provider} this provider is not"
-                                " present",
-                                f"Error: {provider} not supported",
-                                "",
-                                gr.update(visible=True),
-                                gr.update(visible=False)
-                            )
-                            return
+                        # save api keys in memory
+                        api_keys[provider] = api_key
+
 
                         agents = initialize_agents(
                             dynamic_temp,
                             agent_prompt_selector,
                             model_name,
                             provider,
-                            api_key,
+                            api_keys.get(provider),  # Access API key from the dictionary
                             temperature,
                             max_tokens,
                         )
@@ -1694,7 +1670,7 @@ def create_app():
                             flow=flow,
                             model_name=model_name,
                             provider=provider,
-                            api_key=api_key,
+                            api_key=api_keys.get(provider), # Pass the api key from memory
                             temperature=temperature,
                             max_tokens=max_tokens,
                             agents=agents_dict,  # Changed here
