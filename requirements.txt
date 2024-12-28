@@ -31,3 +31,5 @@ termcolor
 gradio
 huggingface_hub
 swarms
+litellm
+python-dotenv
