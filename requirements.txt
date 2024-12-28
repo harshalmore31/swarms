@@ -30,3 +30,4 @@ doc-master
 termcolor
 gradio
 huggingface_hub
+swarms
