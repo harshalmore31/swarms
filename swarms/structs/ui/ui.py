@@ -161,11 +161,6 @@ def initialize_agents(
             print(f"Agent created: {agent.agent_name}")
             agents.append(agent)
 
-            # Optionally, remove the API key from os.environ (for security)
-            if provider == "openai":
-                del os.environ["OPENAI_API_KEY"]
-            # Similarly, remove for other providers if desired
-
         logger.info(f"Agents initialized successfully: {[agent.agent_name for agent in agents]}")
         return agents
     except Exception as e:
