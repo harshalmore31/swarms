@@ -1288,7 +1288,7 @@ class UI:
             - SpreadSheetSwarm: Specialized for spreadsheet operations
             - Auto: Automatically determines optimal workflow
 
-            **Note**
+            **Note:**
             Spreasheet swarm saves data in csv, will work in local setup !
             """
             )
