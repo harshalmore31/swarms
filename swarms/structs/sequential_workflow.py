@@ -1,12 +1,17 @@
+# sequential_workflow.py
+import concurrent
 from typing import List, Optional
+
 from swarms.structs.agent import Agent
-from swarms.structs.rearrange import AgentRearrange
 from swarms.structs.output_types import OutputType
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from swarms.utils.loguru_logger import initialize_logger
+from swarms.utils.output_formatter import output_schema
+from swarms.schemas.agent_step_schemas import ManySteps
+from swarms.utils.file_processing import create_file_in_folder
+import os
+import json
 
 logger = initialize_logger(log_folder="sequential_workflow")
-
 
 class SequentialWorkflow:
     """
@@ -33,6 +38,8 @@ class SequentialWorkflow:
         output_type: OutputType = "all",
         return_json: bool = False,
         shared_memory_system: callable = None,
+        save_to_file: bool = True,
+        agent_save_path: str = "sequential_workflow_agent_out",
         *args,
         **kwargs,
     ):
@@ -43,22 +50,15 @@ class SequentialWorkflow:
         self.output_type = output_type
         self.return_json = return_json
         self.shared_memory_system = shared_memory_system
+        self.save_to_file = save_to_file
+        self.agent_save_path = agent_save_path
 
         self.reliability_check()
         self.flow = self.sequential_flow()
 
-        self.agent_rearrange = AgentRearrange(
-            name=name,
-            description=description,
-            agents=agents,
-            flow=self.flow,
-            max_loops=max_loops,
-            output_type=output_type,
-            return_json=return_json,
-            shared_memory_system=shared_memory_system,
-            *args,
-            **kwargs,
-        )
+        # Create the output path directory if it doesn't exist
+        if not os.path.exists(self.agent_save_path):
+            os.makedirs(self.agent_save_path)
 
     def sequential_flow(self):
         # Only create flow if agents exist
@@ -101,50 +101,73 @@ class SequentialWorkflow:
 
         logger.info("Checks completed your swarm is ready.")
 
+    @output_schema
     def run(
         self,
         task: str,
         img: Optional[str] = None,
-        device: str = "cpu",
-        all_cores: bool = False,
-        all_gpus: bool = False,
-        device_id: int = 0,
-        no_use_clusterops: bool = True,
         *args,
         **kwargs,
-    ) -> str:
+    ) -> List[ManySteps]:
         """
         Executes a task through the agents in the dynamically constructed flow.
 
         Args:
             task (str): The task for the agents to execute.
-            device (str): The device to use for the agents to execute.
-            all_cores (bool): Whether to use all cores.
-            all_gpus (bool): Whether to use all gpus.
-            device_id (int): The device id to use for the agents to execute.
-            no_use_clusterops (bool): Whether to use clusterops.
-
+            img (str): The image for the agents to execute.
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
 
         Returns:
-            str: The final result after processing through all agents.
+            List[ManySteps]: The list of steps executed by the agents.
 
         Raises:
             ValueError: If task is None or empty
             Exception: If any error occurs during task execution
         """
-
         try:
-            return self.agent_rearrange.run(
-                task=task,
-                img=img,
-                device=device,
-                all_cores=all_cores,
-                device_id=device_id,
-                all_gpus=all_gpus,
-                no_use_clusterops=no_use_clusterops,
-                *args,
-                **kwargs,
-            )
+            if not task:
+                raise ValueError("Task cannot be None or empty")
+
+            logger.info(f"Running task '{task}' through workflow")
+
+            agent_outputs = []
+            for agent in self.agents:
+                try:
+                    logger.info(
+                        f"Running agent {agent.agent_name} in sequential"
+                        " workflow"
+                    )
+                    agent.run(task, img=img, *args, **kwargs)
+
+                    # Save the output of the agent to the agent_outputs list
+                    agent_outputs.append(agent.agent_output)
+
+                    # Save the output to a file if save_to_file is True
+                    if self.save_to_file:
+                        try:
+                            create_file_in_folder(
+                                self.agent_save_path,
+                                f"{agent.agent_name}_{agent.agent_output.run_id}.json",
+                                agent.agent_output.model_dump_json(indent=4),
+                            )
+                            logger.info(
+                                f"Saved output of agent {agent.agent_name} to file"
+                            )
+                        except Exception as error:
+                            logger.error(
+                                f"Error saving output of agent {agent.agent_name} to file: {error}"
+                            )
+                            raise error
+
+                except Exception as error:
+                    logger.error(
+                        f"Error running agent {agent.agent_name}: {error}"
+                    )
+                    raise error
+
+            return agent_outputs
+
         except Exception as e:
             logger.error(
                 f"An error occurred while executing the task: {e}"
@@ -176,7 +199,7 @@ class SequentialWorkflow:
             )
 
         try:
-            return [self.agent_rearrange.run(task) for task in tasks]
+            return [self.run(task) for task in tasks]
         except Exception as e:
             logger.error(
                 f"An error occurred while executing the batch of tasks: {e}"
@@ -201,7 +224,7 @@ class SequentialWorkflow:
             raise ValueError("Task must be a non-empty string")
 
         try:
-            return await self.agent_rearrange.run_async(task)
+            return await self.run(task)
         except Exception as e:
             logger.error(
                 f"An error occurred while executing the task asynchronously: {e}"
@@ -230,17 +253,37 @@ class SequentialWorkflow:
             )
 
         try:
-            with ThreadPoolExecutor() as executor:
-                results = [
-                    executor.submit(self.agent_rearrange.run, task)
-                    for task in tasks
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                futures = [
+                    executor.submit(self.run, task) for task in tasks
                 ]
                 return [
-                    result.result()
-                    for result in as_completed(results)
+                    future.result()
+                    for future in concurrent.futures.as_completed(
+                        futures
+                    )
                 ]
         except Exception as e:
             logger.error(
                 f"An error occurred while executing the batch of tasks concurrently: {e}"
             )
             raise
+
+    def save_metadata(self, formatted_output: str):
+        """
+        Saves the metadata to a JSON file based on the auto_save flag.
+
+        Example:
+            >>> workflow.save_metadata()
+            >>> # Metadata will be saved to the specified path if auto_save is True.
+        """
+        # Save metadata to a JSON file
+        if self.save_to_file:
+            logger.info(
+                f"Saving metadata to {self.agent_save_path}"
+            )
+            create_file_in_folder(
+                os.getenv("WORKSPACE_DIR"),
+                f"{self.agent_save_path}/{self.name}_metadata.json",
+                json.dumps(formatted_output, indent=4),
+            )

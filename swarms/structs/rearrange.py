@@ -1,3 +1,4 @@
+#rearrange.py
 import asyncio
 import json
 import uuid
@@ -5,54 +6,23 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from typing import Any, Callable, Dict, List, Optional
 
-from pydantic import BaseModel, Field
-
 from swarms.schemas.agent_step_schemas import ManySteps
 from swarms.structs.agent import Agent
 from swarms.structs.agents_available import showcase_available_agents
 from swarms.structs.base_swarm import BaseSwarm
-from swarms.structs.output_types import OutputType
 from swarms.utils.loguru_logger import initialize_logger
 from swarms.utils.wrapper_clusterop import (
     exec_callable_with_clusterops,
 )
 from swarms.telemetry.capture_sys_data import log_agent_data
+from swarms.utils.output_formatter import output_schema
+from swarms.utils.file_processing import create_file_in_folder
+import os
 
 logger = initialize_logger(log_folder="rearrange")
 
-
 def swarm_id():
     return uuid.uuid4().hex
-
-
-class AgentRearrangeInput(BaseModel):
-    swarm_id: Optional[str] = None
-    name: Optional[str] = None
-    description: Optional[str] = None
-    flow: Optional[str] = None
-    max_loops: Optional[int] = None
-    time: str = Field(
-        default_factory=lambda: datetime.now().strftime(
-            "%Y-%m-%d %H:%M:%S"
-        ),
-        description="The time the agent was created.",
-    )
-    output_type: OutputType = Field(default="final")
-
-
-class AgentRearrangeOutput(BaseModel):
-    output_id: str = Field(
-        default=swarm_id(), description="Output-UUID"
-    )
-    input: Optional[AgentRearrangeInput] = None
-    outputs: Optional[List[ManySteps]] = None
-    time: str = Field(
-        default_factory=lambda: datetime.now().strftime(
-            "%Y-%m-%d %H:%M:%S"
-        ),
-        description="The time the agent was created.",
-    )
-
 
 class AgentRearrange(BaseSwarm):
     """
@@ -107,7 +77,7 @@ class AgentRearrange(BaseSwarm):
             Callable[[str], str]
         ] = None,
         return_json: bool = False,
-        output_type: OutputType = "all",
+        output_type: str = "all",
         docs: List[str] = None,
         doc_folder: str = None,
         device: str = "cpu",
@@ -116,6 +86,7 @@ class AgentRearrange(BaseSwarm):
         all_gpus: bool = True,
         no_use_clusterops: bool = True,
         autosave: bool = True,
+        metadata_output_path: str = "agent_rearrange_metadata.json",
         *args,
         **kwargs,
     ):
@@ -144,17 +115,10 @@ class AgentRearrange(BaseSwarm):
         self.all_gpus = all_gpus
         self.no_use_clusterops = no_use_clusterops
         self.autosave = autosave
-
-        self.output_schema = AgentRearrangeOutput(
-            input=AgentRearrangeInput(
-                swarm_id=id,
-                name=name,
-                description=description,
-                flow=flow,
-                max_loops=max_loops,
-            ),
-            outputs=[],
-        )
+        self.metadata_output_path = metadata_output_path
+        
+        self.output_schema = {}
+        self.output_schema["outputs"] = []
 
     def showcase_agents(self):
         # Get formatted agent info once
@@ -274,7 +238,27 @@ class AgentRearrange(BaseSwarm):
 
         logger.info(f"Flow: {self.flow} is valid.")
         return True
+    
+    def save_metadata(self, formatted_output: dict):
+        """
+        Saves the metadata to a JSON file based on the auto_save flag.
 
+        Example:
+            >>> workflow.save_metadata()
+            >>> # Metadata will be saved to the specified path if auto_save is True.
+        """
+        # Save metadata to a JSON file
+        if self.autosave:
+            logger.info(
+                f"Saving metadata to {self.metadata_output_path}"
+            )
+            create_file_in_folder(
+                os.getenv("WORKSPACE_DIR"),
+                self.metadata_output_path,
+                json.dumps(formatted_output, indent=4),
+            )
+
+    @output_schema
     def _run(
         self,
         task: str = None,
@@ -398,9 +382,12 @@ class AgentRearrange(BaseSwarm):
                                 result = str(result)
                                 results.append(result)
                                 response_dict[agent_name] = result
-                                self.output_schema.outputs.append(
-                                    agent.agent_output
+                                
+                                # Save the agent output
+                                self.output_schema["outputs"].append(
+                                    agent.agent_output.model_dump()
                                 )
+
                                 logger.debug(
                                     f"Agent {agent_name} output: {result}"
                                 )
@@ -449,9 +436,12 @@ class AgentRearrange(BaseSwarm):
                             )
                             current_task = str(current_task)
                             response_dict[agent_name] = current_task
-                            self.output_schema.outputs.append(
-                                agent.agent_output
+                            
+                            # Save the agent output
+                            self.output_schema["outputs"].append(
+                                agent.agent_output.model_dump()
                             )
+
                             logger.debug(
                                 f"Agent {agent_name} output: {current_task}"
                             )
@@ -465,20 +455,7 @@ class AgentRearrange(BaseSwarm):
 
             logger.info("Task execution completed")
 
-            if self.return_json:
-                return self.output_schema.model_dump_json(indent=4)
-
-            # Handle different output types
-            if self.output_type == "all":
-                output = " ".join(all_responses)
-            elif self.output_type == "list":
-                output = all_responses
-            elif self.output_type == "dict":
-                output = response_dict
-            else:  # "final"
-                output = current_task
-
-            return output
+            return self.output_schema
 
         except Exception as e:
             self._catch_error(e)
@@ -774,7 +751,6 @@ class AgentRearrange(BaseSwarm):
             attr_name: self._serialize_attr(attr_name, attr_value)
             for attr_name, attr_value in self.__dict__.items()
         }
-
 
 def rearrange(
     agents: List[Agent] = None,

@@ -1,55 +1,19 @@
+# mixture_of_agents.py
+
 import asyncio
 import time
 from typing import Any, Dict, List, Optional
-
-from pydantic import BaseModel, Field
 
 from swarms.structs.agent import Agent
 from swarms.telemetry.capture_sys_data import log_agent_data
 from swarms.schemas.agent_step_schemas import ManySteps
 from swarms.prompts.ag_prompt import aggregator_system_prompt
 from swarms.utils.loguru_logger import initialize_logger
+from swarms.utils.output_formatter import output_schema
 
 logger = initialize_logger(log_folder="mixture_of_agents")
 
 time_stamp = time.strftime("%Y-%m-%d %H:%M:%S")
-
-
-class MixtureOfAgentsInput(BaseModel):
-    name: str = "MixtureOfAgents"
-    description: str = (
-        "A class to run a mixture of agents and aggregate their responses."
-    )
-    agents: List[Dict[str, Any]]
-    aggregator_agent: Any = Field(
-        ...,
-        description="An aggregator agent to be used in the mixture.",
-    )
-    aggregator_system_prompt: str = Field(
-        default=aggregator_system_prompt.get_prompt(),
-        description=aggregator_system_prompt.description,
-    )
-    layers: int = 3
-    time_created: str = Field(
-        time_stamp,
-        description="The time the mixture of agents was created.",
-    )
-
-
-class MixtureOfAgentsOutput(BaseModel):
-    id: str = Field(
-        ..., description="The ID of the mixture of agents."
-    )
-    task: str = Field(..., description="None")
-    InputConfig: MixtureOfAgentsInput
-    # output: List[ManySteps]
-    normal_agent_outputs: List[ManySteps]
-    aggregator_agent_summary: str
-    time_completed: str = Field(
-        time_stamp,
-        description="The time the mixture of agents was completed.",
-    )
-
 
 class MixtureOfAgents:
     """
@@ -83,23 +47,13 @@ class MixtureOfAgents:
         self.aggregator_system_prompt: str = aggregator_system_prompt
         self.layers: int = layers
 
-        self.input_schema = MixtureOfAgentsInput(
-            name=name,
-            description=description,
-            agents=[agent.to_dict() for agent in self.agents],
-            aggregator_agent=aggregator_agent.to_dict(),
-            aggregator_system_prompt=self.aggregator_system_prompt,
-            layers=self.layers,
-            time_created=time_stamp,
-        )
-
-        self.output_schema = MixtureOfAgentsOutput(
-            id="MixtureOfAgents",
-            InputConfig=self.input_schema.model_dump(),
-            normal_agent_outputs=[],
-            aggregator_agent_summary="",
-            task="",
-        )
+        self.output_schema = {
+            "id": "MixtureOfAgents",
+            "task": "",
+            "normal_agent_outputs": [],  # Initialize as an empty list
+            "aggregator_agent_summary": "",
+            "time_completed": time_stamp,
+        }
 
         self.reliability_check()
 
@@ -171,7 +125,7 @@ class MixtureOfAgents:
             str: The response from the agent.
         """
         # Update the task in the output schema
-        self.output_schema.task = task
+        self.output_schema["task"] = task
 
         # If there are previous responses, update the agent's system prompt
         if prev_responses:
@@ -184,8 +138,8 @@ class MixtureOfAgents:
 
         # Run the agent asynchronously
         response = await asyncio.to_thread(agent.run, task)
-        self.output_schema.normal_agent_outputs.append(
-            agent.agent_output
+        self.output_schema["normal_agent_outputs"].append(
+            agent.agent_output.model_dump()
         )
 
         # Log the agent's response
@@ -217,15 +171,18 @@ class MixtureOfAgents:
                     for agent in self.agents
                 ]
             )
+        
+        self.output_schema["normal_agent_outputs"] = [agent.agent_output.model_dump() for agent in self.agents]
 
         # Perform final aggregation using the aggregator agent
         final_result = await self._run_agent_async(
             self.aggregator_agent, task, prev_responses=results
         )
-        self.output_schema.aggregator_agent_summary = final_result
+        self.output_schema["aggregator_agent_summary"] = final_result
 
         print(f"Final Aggregated Response: {final_result}")
 
+    @output_schema
     def run(self, task: str) -> None:
         """
         Synchronous wrapper to run the async process.
@@ -235,8 +192,8 @@ class MixtureOfAgents:
         """
         asyncio.run(self._run_async(task))
 
-        self.output_schema.task = task
+        self.output_schema["task"] = task
 
-        log_agent_data(self.output_schema.model_dump())
+        log_agent_data(self.output_schema)
 
-        return self.output_schema.model_dump_json(indent=4)
+        return self.output_schema
