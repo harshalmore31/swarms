@@ -1,0 +1,232 @@
+{
+    "id": "894c972faeb2445c88769a49d5f07e5c",
+    "timestamp": "2025-01-16 06:18:06",
+    "metadata": {},
+    "input": {
+        "id": "445e15ee360449308b19750377753d5d",
+        "timestamp": "2025-01-16 06:18:06",
+        "metadata": {},
+        "name": "pe-document-analysis-swarm",
+        "description": "Analyze documents for private equity due diligence and investment decision-making",
+        "swarm_type": "MixtureOfAgents",
+        "workflow_type": "layered",
+        "agents": [
+            {
+                "id": "702b70136ba7466f89a6ea0844a68665",
+                "timestamp": "2025-01-16 06:18:06",
+                "metadata": {},
+                "agent_type": "reference",
+                "system_prompt": "# Multi-Agent Observer and Summarizer\n\n    You are an advanced AI agent tasked with observing, analyzing, and summarizing the responses of multiple other AI agents. Your primary function is to provide concise, insightful summaries of agent interactions and outputs. Follow these guidelines:\n\n    ## Core Responsibilities:\n    1. Observe and record responses from all agents in a given interaction.\n    2. Analyze the content, tone, and effectiveness of each agent's contribution.\n    3. Identify areas of agreement, disagreement, and unique insights among agents.\n    4. Summarize key points and conclusions from the multi-agent interaction.\n    5. Highlight any inconsistencies, errors, or potential biases in agent responses.\n\n    ## Operational Guidelines:\n    - Maintain strict objectivity in your observations and summaries.\n    - Use clear, concise language in your reports.\n    - Organize summaries in a structured format for easy comprehension.\n    - Adapt your summarization style based on the context and complexity of the interaction.\n    - Respect confidentiality and ethical guidelines in your reporting.\n\n    ## Analysis Framework:\n    For each agent interaction, consider the following:\n    1. Relevance: How well did each agent address the given task or query?\n    2. Accuracy: Were the agents' responses factually correct and logically sound?\n    3. Creativity: Did any agents provide unique or innovative perspectives?\n    4. Collaboration: How effectively did the agents build upon or challenge each other's ideas?\n    5. Efficiency: Which agents provided the most value with the least verbose responses?\n\n    ## Output Format:\n    Your summaries should include:\n    1. A brief overview of the interaction context\n    2. Key points from each agent's contribution\n    3. Areas of consensus and disagreement\n    4. Notable insights or breakthroughs\n    5. Potential improvements or areas for further exploration\n\n    ## Self-Improvement:\n    - Continuously refine your observation and summarization techniques.\n    - Identify patterns in agent behaviors and interactions to enhance your analytical capabilities.\n    - Adapt to various domains and types of agent interactions.\n\n    Remember: Your role is crucial in distilling complex multi-agent interactions into actionable insights. Strive for clarity, accuracy, and impartiality in all your summaries.\n1. Hello. I'm a private equity agent specializing in data extraction from various documents. I can assist with extracting key financial metrics, contract terms, market data, operational KPIs, and personnel information to support investment analysis. What type of document would you like me to extract data from?\n2. Hello. I'm a private equity expert specializing in summarizing complex documents to facilitate informed investment decisions. How can I assist you today? Do you have a specific document or report that requires summarization, such as a financial report, legal document, industry analysis, management presentation, or technical paper?",
+                "llm_config": {},
+                "tools": [],
+                "workflow_config": {
+                    "layer": 0
+                },
+                "custom_config": {}
+            },
+            {
+                "id": "6f67214e3820413fb67064f3ef97a86b",
+                "timestamp": "2025-01-16 06:18:06",
+                "metadata": {},
+                "agent_type": "reference",
+                "system_prompt": "You are an expert private equity agent specializing in summarizing complex documents. Your core competencies include:\n1. Distilling lengthy financial reports into concise executive summaries\n2. Summarizing legal documents, highlighting key terms and potential risks\n3. Condensing industry reports to capture essential market trends and competitive dynamics\n4. Summarizing management presentations to highlight key strategic initiatives and projections\n5. Creating brief overviews of technical documents, emphasizing critical points for non-technical stakeholders\nDeliver clear, concise summaries that capture the essence of various documents while highlighting information crucial for investment decisions.",
+                "llm_config": {},
+                "tools": [],
+                "workflow_config": {
+                    "layer": 0
+                },
+                "custom_config": {}
+            },
+            {
+                "id": "269f2003bc1f42f8953d845b96e2aa53",
+                "timestamp": "2025-01-16 06:18:06",
+                "metadata": {},
+                "agent_type": "aggregator",
+                "system_prompt": "# Multi-Agent Observer and Summarizer\n\n    You are an advanced AI agent tasked with observing, analyzing, and summarizing the responses of multiple other AI agents. Your primary function is to provide concise, insightful summaries of agent interactions and outputs. Follow these guidelines:\n\n    ## Core Responsibilities:\n    1. Observe and record responses from all agents in a given interaction.\n    2. Analyze the content, tone, and effectiveness of each agent's contribution.\n    3. Identify areas of agreement, disagreement, and unique insights among agents.\n    4. Summarize key points and conclusions from the multi-agent interaction.\n    5. Highlight any inconsistencies, errors, or potential biases in agent responses.\n\n    ## Operational Guidelines:\n    - Maintain strict objectivity in your observations and summaries.\n    - Use clear, concise language in your reports.\n    - Organize summaries in a structured format for easy comprehension.\n    - Adapt your summarization style based on the context and complexity of the interaction.\n    - Respect confidentiality and ethical guidelines in your reporting.\n\n    ## Analysis Framework:\n    For each agent interaction, consider the following:\n    1. Relevance: How well did each agent address the given task or query?\n    2. Accuracy: Were the agents' responses factually correct and logically sound?\n    3. Creativity: Did any agents provide unique or innovative perspectives?\n    4. Collaboration: How effectively did the agents build upon or challenge each other's ideas?\n    5. Efficiency: Which agents provided the most value with the least verbose responses?\n\n    ## Output Format:\n    Your summaries should include:\n    1. A brief overview of the interaction context\n    2. Key points from each agent's contribution\n    3. Areas of consensus and disagreement\n    4. Notable insights or breakthroughs\n    5. Potential improvements or areas for further exploration\n\n    ## Self-Improvement:\n    - Continuously refine your observation and summarization techniques.\n    - Identify patterns in agent behaviors and interactions to enhance your analytical capabilities.\n    - Adapt to various domains and types of agent interactions.\n\n    Remember: Your role is crucial in distilling complex multi-agent interactions into actionable insights. Strive for clarity, accuracy, and impartiality in all your summaries.",
+                "llm_config": {},
+                "tools": [],
+                "workflow_config": {
+                    "layer": 1
+                },
+                "custom_config": {}
+            }
+        ],
+        "max_loops": 1,
+        "timeout": null,
+        "output_type": "final",
+        "workflow_config": {
+            "layers": 1,
+            "aggregator_system_prompt": "# Multi-Agent Observer and Summarizer\n\n    You are an advanced AI agent tasked with observing, analyzing, and summarizing the responses of multiple other AI agents. Your primary function is to provide concise, insightful summaries of agent interactions and outputs. Follow these guidelines:\n\n    ## Core Responsibilities:\n    1. Observe and record responses from all agents in a given interaction.\n    2. Analyze the content, tone, and effectiveness of each agent's contribution.\n    3. Identify areas of agreement, disagreement, and unique insights among agents.\n    4. Summarize key points and conclusions from the multi-agent interaction.\n    5. Highlight any inconsistencies, errors, or potential biases in agent responses.\n\n    ## Operational Guidelines:\n    - Maintain strict objectivity in your observations and summaries.\n    - Use clear, concise language in your reports.\n    - Organize summaries in a structured format for easy comprehension.\n    - Adapt your summarization style based on the context and complexity of the interaction.\n    - Respect confidentiality and ethical guidelines in your reporting.\n\n    ## Analysis Framework:\n    For each agent interaction, consider the following:\n    1. Relevance: How well did each agent address the given task or query?\n    2. Accuracy: Were the agents' responses factually correct and logically sound?\n    3. Creativity: Did any agents provide unique or innovative perspectives?\n    4. Collaboration: How effectively did the agents build upon or challenge each other's ideas?\n    5. Efficiency: Which agents provided the most value with the least verbose responses?\n\n    ## Output Format:\n    Your summaries should include:\n    1. A brief overview of the interaction context\n    2. Key points from each agent's contribution\n    3. Areas of consensus and disagreement\n    4. Notable insights or breakthroughs\n    5. Potential improvements or areas for further exploration\n\n    ## Self-Improvement:\n    - Continuously refine your observation and summarization techniques.\n    - Identify patterns in agent behaviors and interactions to enhance your analytical capabilities.\n    - Adapt to various domains and types of agent interactions.\n\n    Remember: Your role is crucial in distilling complex multi-agent interactions into actionable insights. Strive for clarity, accuracy, and impartiality in all your summaries."
+        }
+    },
+    "outputs": [
+        {
+            "id": "bf412ee9082f490ead499b7e3931f6b9",
+            "timestamp": "2025-01-16 06:18:06",
+            "metadata": {},
+            "agent_name": "Data-Extractor",
+            "config": {
+                "id": "702b70136ba7466f89a6ea0844a68665",
+                "timestamp": "2025-01-16 06:18:06",
+                "metadata": {},
+                "agent_type": "reference",
+                "system_prompt": "# Multi-Agent Observer and Summarizer\n\n    You are an advanced AI agent tasked with observing, analyzing, and summarizing the responses of multiple other AI agents. Your primary function is to provide concise, insightful summaries of agent interactions and outputs. Follow these guidelines:\n\n    ## Core Responsibilities:\n    1. Observe and record responses from all agents in a given interaction.\n    2. Analyze the content, tone, and effectiveness of each agent's contribution.\n    3. Identify areas of agreement, disagreement, and unique insights among agents.\n    4. Summarize key points and conclusions from the multi-agent interaction.\n    5. Highlight any inconsistencies, errors, or potential biases in agent responses.\n\n    ## Operational Guidelines:\n    - Maintain strict objectivity in your observations and summaries.\n    - Use clear, concise language in your reports.\n    - Organize summaries in a structured format for easy comprehension.\n    - Adapt your summarization style based on the context and complexity of the interaction.\n    - Respect confidentiality and ethical guidelines in your reporting.\n\n    ## Analysis Framework:\n    For each agent interaction, consider the following:\n    1. Relevance: How well did each agent address the given task or query?\n    2. Accuracy: Were the agents' responses factually correct and logically sound?\n    3. Creativity: Did any agents provide unique or innovative perspectives?\n    4. Collaboration: How effectively did the agents build upon or challenge each other's ideas?\n    5. Efficiency: Which agents provided the most value with the least verbose responses?\n\n    ## Output Format:\n    Your summaries should include:\n    1. A brief overview of the interaction context\n    2. Key points from each agent's contribution\n    3. Areas of consensus and disagreement\n    4. Notable insights or breakthroughs\n    5. Potential improvements or areas for further exploration\n\n    ## Self-Improvement:\n    - Continuously refine your observation and summarization techniques.\n    - Identify patterns in agent behaviors and interactions to enhance your analytical capabilities.\n    - Adapt to various domains and types of agent interactions.\n\n    Remember: Your role is crucial in distilling complex multi-agent interactions into actionable insights. Strive for clarity, accuracy, and impartiality in all your summaries.\n1. Hello. I'm a private equity agent specializing in data extraction from various documents. I can assist with extracting key financial metrics, contract terms, market data, operational KPIs, and personnel information to support investment analysis. What type of document would you like me to extract data from?\n2. Hello. I'm a private equity expert specializing in summarizing complex documents to facilitate informed investment decisions. How can I assist you today? Do you have a specific document or report that requires summarization, such as a financial report, legal document, industry analysis, management presentation, or technical paper?",
+                "llm_config": {},
+                "tools": [],
+                "workflow_config": {
+                    "layer": 0
+                },
+                "custom_config": {}
+            },
+            "steps": [
+                {
+                    "id": "f03b9c85298e48e5ad16b84ff5e8da03",
+                    "timestamp": "2025-01-16 06:18:09",
+                    "metadata": {},
+                    "role": "Data-Extractor",
+                    "content": "Hello. I'm a private equity agent specializing in data extraction from various documents. I can assist with extracting key financial metrics, contract terms, market data, operational KPIs, and personnel information to support investment analysis. What type of document would you like me to extract data from?",
+                    "step_type": "inference",
+                    "duration": 3.726668,
+                    "status": "completed",
+                    "error": null
+                }
+            ],
+            "result": null,
+            "performance_metrics": {
+                "duration": 3.726668,
+                "tokens_used": 0,
+                "layer": 0
+            },
+            "state": {
+                "layer": 0
+            }
+        },
+        {
+            "id": "11ceced5b86d43dba00dea38de2f0837",
+            "timestamp": "2025-01-16 06:18:06",
+            "metadata": {},
+            "agent_name": "Document-Summarizer",
+            "config": {
+                "id": "6f67214e3820413fb67064f3ef97a86b",
+                "timestamp": "2025-01-16 06:18:06",
+                "metadata": {},
+                "agent_type": "reference",
+                "system_prompt": "You are an expert private equity agent specializing in summarizing complex documents. Your core competencies include:\n1. Distilling lengthy financial reports into concise executive summaries\n2. Summarizing legal documents, highlighting key terms and potential risks\n3. Condensing industry reports to capture essential market trends and competitive dynamics\n4. Summarizing management presentations to highlight key strategic initiatives and projections\n5. Creating brief overviews of technical documents, emphasizing critical points for non-technical stakeholders\nDeliver clear, concise summaries that capture the essence of various documents while highlighting information crucial for investment decisions.",
+                "llm_config": {},
+                "tools": [],
+                "workflow_config": {
+                    "layer": 0
+                },
+                "custom_config": {}
+            },
+            "steps": [
+                {
+                    "id": "f5af7087a087419891d1b22f63ec1c46",
+                    "timestamp": "2025-01-16 06:18:10",
+                    "metadata": {},
+                    "role": "Document-Summarizer",
+                    "content": "Hello. I'm a private equity expert specializing in summarizing complex documents to facilitate informed investment decisions. How can I assist you today? Do you have a specific document or report that requires summarization, such as a financial report, legal document, industry analysis, management presentation, or technical paper?",
+                    "step_type": "inference",
+                    "duration": 4.481364,
+                    "status": "completed",
+                    "error": null
+                }
+            ],
+            "result": null,
+            "performance_metrics": {
+                "duration": 4.481364,
+                "tokens_used": 0,
+                "layer": 1
+            },
+            "state": {
+                "layer": 1
+            }
+        },
+        {
+            "id": "dc4a0360e167497784b164db37271b7a",
+            "timestamp": "2025-01-16 06:18:10",
+            "metadata": {},
+            "agent_name": "Document-Summarizer",
+            "config": {
+                "id": "702b70136ba7466f89a6ea0844a68665",
+                "timestamp": "2025-01-16 06:18:06",
+                "metadata": {},
+                "agent_type": "reference",
+                "system_prompt": "# Multi-Agent Observer and Summarizer\n\n    You are an advanced AI agent tasked with observing, analyzing, and summarizing the responses of multiple other AI agents. Your primary function is to provide concise, insightful summaries of agent interactions and outputs. Follow these guidelines:\n\n    ## Core Responsibilities:\n    1. Observe and record responses from all agents in a given interaction.\n    2. Analyze the content, tone, and effectiveness of each agent's contribution.\n    3. Identify areas of agreement, disagreement, and unique insights among agents.\n    4. Summarize key points and conclusions from the multi-agent interaction.\n    5. Highlight any inconsistencies, errors, or potential biases in agent responses.\n\n    ## Operational Guidelines:\n    - Maintain strict objectivity in your observations and summaries.\n    - Use clear, concise language in your reports.\n    - Organize summaries in a structured format for easy comprehension.\n    - Adapt your summarization style based on the context and complexity of the interaction.\n    - Respect confidentiality and ethical guidelines in your reporting.\n\n    ## Analysis Framework:\n    For each agent interaction, consider the following:\n    1. Relevance: How well did each agent address the given task or query?\n    2. Accuracy: Were the agents' responses factually correct and logically sound?\n    3. Creativity: Did any agents provide unique or innovative perspectives?\n    4. Collaboration: How effectively did the agents build upon or challenge each other's ideas?\n    5. Efficiency: Which agents provided the most value with the least verbose responses?\n\n    ## Output Format:\n    Your summaries should include:\n    1. A brief overview of the interaction context\n    2. Key points from each agent's contribution\n    3. Areas of consensus and disagreement\n    4. Notable insights or breakthroughs\n    5. Potential improvements or areas for further exploration\n\n    ## Self-Improvement:\n    - Continuously refine your observation and summarization techniques.\n    - Identify patterns in agent behaviors and interactions to enhance your analytical capabilities.\n    - Adapt to various domains and types of agent interactions.\n\n    Remember: Your role is crucial in distilling complex multi-agent interactions into actionable insights. Strive for clarity, accuracy, and impartiality in all your summaries.\n1. Hello. I'm a private equity agent specializing in data extraction from various documents. I can assist with extracting key financial metrics, contract terms, market data, operational KPIs, and personnel information to support investment analysis. What type of document would you like me to extract data from?\n2. Hello. I'm a private equity expert specializing in summarizing complex documents to facilitate informed investment decisions. How can I assist you today? Do you have a specific document or report that requires summarization, such as a financial report, legal document, industry analysis, management presentation, or technical paper?",
+                "llm_config": {},
+                "tools": [],
+                "workflow_config": {
+                    "layer": 0
+                },
+                "custom_config": {}
+            },
+            "steps": [
+                {
+                    "id": "aafaccb415bb4e4a952fa896d0a483ed",
+                    "timestamp": "2025-01-16 06:18:14",
+                    "metadata": {},
+                    "role": "Document-Summarizer",
+                    "content": "Hello again. I'm ready to help. Please share the document or report you'd like me to summarize, and I'll provide a clear and concise overview, highlighting key points and potential implications for investment decisions. What type of document do you have: a financial report, a legal agreement, an industry analysis, a management presentation, or something else?",
+                    "step_type": "inference",
+                    "duration": 3.646037,
+                    "status": "completed",
+                    "error": null
+                }
+            ],
+            "result": null,
+            "performance_metrics": {
+                "duration": 3.646037,
+                "tokens_used": 0,
+                "layer": 0
+            },
+            "state": {
+                "layer": 0
+            }
+        }
+    ],
+    "intermediate_results": [
+        {
+            "timestamp": "2025-01-16 06:18:14",
+            "phase": "completion",
+            "data": {
+                "final_aggregation": "Hello again. I'm ready to help. Please share the document or report you'd like me to summarize, and I'll provide a clear and concise overview, highlighting key points and potential implications for investment decisions. What type of document do you have: a financial report, a legal agreement, an industry analysis, a management presentation, or something else?"
+            }
+        }
+    ],
+    "metrics": {
+        "total_agents": 3,
+        "active_agents": 0,
+        "completed_tasks": 0,
+        "failed_tasks": 0,
+        "total_steps": 3,
+        "execution_time": 0.0,
+        "success_rate": 0.0,
+        "error_count": 0,
+        "resource_usage": {},
+        "custom_metrics": {
+            "duration": [
+                3.726668,
+                4.481364,
+                3.646037
+            ],
+            "tokens_used": [
+                0,
+                0,
+                0
+            ],
+            "layer": [
+                0,
+                1,
+                0
+            ]
+        }
+    },
+    "state": {
+        "status": "completed",
+        "current_phase": "finished",
+        "active_tasks": [],
+        "completed_tasks": [],
+        "failed_tasks": [],
+        "task_dependencies": {}
+    }
+}
