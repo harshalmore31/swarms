@@ -1,0 +1,62 @@
+{
+    "swarm_id": "ea982c9f-cf20-49fd-b5b6-6d0631155c3c",
+    "swarm_type": "ConcurrentWorkflow",
+    "task": "Hii",
+    "agent_outputs": [
+        {
+            "id": "5f307dc2-8ca9-4e51-8da9-098cbb0411ca",
+            "agent_name": "Data-Extractor",
+            "task": "Hii",
+            "steps": [
+                {
+                    "id": "7437e025-597c-4cab-af55-999ae78de8e7",
+                    "name": "Data-Extractor",
+                    "task": "Hii",
+                    "input": null,
+                    "output": "Hello. I'm a private equity agent specializing in data extraction from various documents. I can assist with extracting key financial metrics, contract terms, market data, operational KPIs, and personnel information to support investment analysis. What type of document would you like me to extract data from?",
+                    "error": null,
+                    "start_time": "2025-01-20 10:03:57",
+                    "end_time": "2025-01-20 10:04:01",
+                    "runtime": 4.756675958633423,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": null
+                }
+            ],
+            "start_time": "2025-01-20 10:04:01",
+            "end_time": "2025-01-20 10:04:01",
+            "total_tokens": null,
+            "cost": null
+        },
+        {
+            "id": "b232e4b9-eb3c-4de2-b77c-5ecae8fad0cf",
+            "agent_name": "Document-Summarizer",
+            "task": "Hii",
+            "steps": [
+                {
+                    "id": "cca510cf-a59f-4ca2-a90d-8156696fa075",
+                    "name": "Document-Summarizer",
+                    "task": "Hii",
+                    "input": null,
+                    "output": "Hello. I'm a private equity expert specializing in summarizing complex documents to facilitate informed investment decisions. How can I assist you today? Do you have a specific document or report that requires summarization, such as a financial report, legal document, industry analysis, management presentation, or technical paper?",
+                    "error": null,
+                    "start_time": "2025-01-20 10:03:57",
+                    "end_time": "2025-01-20 10:04:01",
+                    "runtime": 4.285116195678711,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": null
+                }
+            ],
+            "start_time": "2025-01-20 10:04:01",
+            "end_time": "2025-01-20 10:04:01",
+            "total_tokens": null,
+            "cost": null
+        }
+    ],
+    "timestamp": "2025-01-20 10:04:01",
+    "swarm_specific_output": {
+        "max_workers": 16,
+        "total_agents": 2
+    }
+}

@@ -17,6 +17,10 @@ from swarms.utils.wrapper_clusterop import (
     exec_callable_with_clusterops,
 )
 from swarms.utils.loguru_logger import initialize_logger
+from swarms.schemas.base_swarm_schemas import (
+    AgentInputConfig,
+    BaseSwarmSchema,
+)
 
 logger = initialize_logger(log_folder="swarm_router")
 
@@ -29,11 +33,9 @@ SwarmType = Literal[
     "auto",
 ]
 
-
 class Document(BaseModel):
     file_path: str
     data: str
-
 
 class SwarmLog(BaseModel):
     """
@@ -48,7 +50,6 @@ class SwarmLog(BaseModel):
     task: str = ""
     metadata: Dict[str, Any] = Field(default_factory=dict)
     documents: List[Document] = []
-
 
 class SwarmRouter:
     """
@@ -460,7 +461,10 @@ class SwarmRouter:
         return self.run(task=task, *args, **kwargs)
 
     def batch_run(
-        self, tasks: List[str], *args, **kwargs
+        self,
+        tasks: List[str],
+        *args,
+        **kwargs
     ) -> List[Any]:
         """
         Execute a batch of tasks on the selected or matched swarm type.
@@ -631,7 +635,6 @@ class SwarmRouter:
                     results.append(None)
 
         return results
-
 
 def swarm_router(
     name: str = "swarm-router",

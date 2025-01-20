@@ -1,6 +1,7 @@
 import asyncio
 import csv
 import datetime
+import json
 import os
 import uuid
 from typing import Dict, List, Union
@@ -13,6 +14,11 @@ from swarms.structs.base_swarm import BaseSwarm
 from swarms.telemetry.capture_sys_data import log_agent_data
 from swarms.utils.file_processing import create_file_in_folder
 from swarms.utils.loguru_logger import initialize_logger
+from swarms.schemas.output_schemas import (
+    SwarmOutputFormatter,
+    AgentTaskOutput,
+    Step,
+)
 
 logger = initialize_logger(log_folder="spreadsheet_swarm")
 
@@ -108,19 +114,7 @@ class SpreadSheetSwarm(BaseSwarm):
             f"spreadsheet_swarm_run_id_{formatted_time}.csv"
         )
         # --------------- NEW CHANGE END ---------------
-
-        self.metadata = SwarmRunMetadata(
-            run_id=f"spreadsheet_swarm_run_{formatted_time}",
-            name=name,
-            description=description,
-            agents=[agent.name for agent in agents],
-            start_time=time,
-            end_time="",
-            tasks_completed=0,
-            outputs=[],
-            number_of_agents=len(agents),
-        )
-
+        self.output_formatter = SwarmOutputFormatter()
         self.reliability_check()
 
     def reliability_check(self):
@@ -204,7 +198,7 @@ class SpreadSheetSwarm(BaseSwarm):
 
             # Update metadata with new agents
             self.metadata.agents = [
-                agent.name for agent in self.agents
+                agent.agent_name for agent in self.agents
             ]
             self.metadata.number_of_agents = len(self.agents)
             logger.info(
@@ -216,68 +210,116 @@ class SpreadSheetSwarm(BaseSwarm):
     def load_from_csv(self):
         asyncio.run(self._load_from_csv())
 
-    async def run_from_config(self):
+    async def _run_agent(self, agent: Agent, task: str, *args, **kwargs) -> AgentTaskOutput:
         """
-        Run all agents with their configured tasks concurrently
+        Runs a single agent with tracking and output formatting.
         """
-        logger.info("Running agents from configuration")
-        self.metadata.start_time = time
+        
+        start_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        try:
+            loop = asyncio.get_running_loop()
+            response = await loop.run_in_executor(None, lambda: agent.run(task, *args, **kwargs))
+            
+            end_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-        tasks = []
-        for agent in self.agents:
-            config = self.agent_configs.get(agent.agent_name)
-            if config:
-                for _ in range(self.max_loops):
-                    tasks.append(
-                        asyncio.to_thread(
-                            self._run_agent_task, agent, config.task
-                        )
+            steps = []
+            if agent.agent_output and agent.agent_output.steps:
+                for step_data in agent.agent_output.steps:
+                    step = Step(
+                        id=str(uuid.uuid4()),  # Generate new UUID for each step
+                        name=agent.agent_name,
+                        task=task,
+                        input=step_data.get("role"),
+                        output=step_data.get("content"),
+                        error=None,
+                        start_time=step_data.get("timestamp"),
+                        end_time=None,  # You might need to add end_time to agent steps
+                        runtime=None,  # Calculate runtime if needed
+                        tokens_used=None,  # Extract token usage if available
+                        cost=None,  # Calculate cost if available
+                        metadata={},
                     )
+                    steps.append(step)
+            else:
+                # If agent.agent_output.steps is None or empty, create a single step with the agent's output
+                step = Step(
+                    id=str(uuid.uuid4()),
+                    name=agent.agent_name,
+                    task=task,
+                    input=task,  # Input is the task itself if no steps are available
+                    output=response,  # Output from agent.run()
+                    error=None,
+                    start_time=start_time,
+                    end_time=end_time,
+                    runtime=None,  # Calculate runtime if needed
+                    tokens_used=None,  # Extract token usage if available
+                    cost=None,  # Calculate cost if available
+                    metadata={},
+                )
+                steps = [step]
 
-        # Run all tasks concurrently
-        results = await asyncio.gather(*tasks)
+            return AgentTaskOutput(
+                id=str(uuid.uuid4()),  # Generate new UUID for each agent task output
+                agent_name=agent.agent_name,
+                task=task,
+                steps=steps,
+                start_time=start_time,
+                end_time=end_time,
+            )
+        except Exception as e:
+            logger.error(f"Error running agent {agent.agent_name}: {e}")
+            return AgentTaskOutput(
+                id=str(uuid.uuid4()),
+                agent_name=agent.agent_name,
+                task=task,
+                steps=[Step(id=str(uuid.uuid4()), name=agent.agent_name, task=task, error=str(e), start_time=start_time, end_time=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))],
+                start_time=start_time,
+                end_time=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            )
 
-        # Process the results
-        for result in results:
-            self._track_output(*result)
-
-        self.metadata.end_time = time
-
-        # Save metadata
-        logger.info("Saving metadata to CSV and JSON...")
-        await self._save_metadata()
-
-        if self.autosave_on:
-            self.data_to_json_file()
-
-        log_agent_data(self.metadata.model_dump())
-        return self.metadata.model_dump_json(indent=4)
+    async def _run_concurrently(self, task: str, *args, **kwargs):
+        """Runs agents concurrently."""
+        tasks = [
+            self._run_agent(agent, task, *args, **kwargs)
+            for _ in range(self.max_loops)
+            for agent in self.agents
+        ]
+        outputs = await asyncio.gather(*tasks)
+        return outputs
 
     async def _run(self, task: str = None, *args, **kwargs):
         """
-        Run the swarm either with a specific task or using configured tasks.
+        Run the swarm with the specified task.
 
         Args:
-            task (str, optional): The task to be executed by all agents. If None, uses tasks from config.
+            task (str): The task to be executed by the swarm.
             *args: Additional positional arguments.
             **kwargs: Additional keyword arguments.
 
         Returns:
             str: The JSON representation of the swarm metadata.
+
         """
+        
         if task is None and self.agent_configs:
-            return await self.run_from_config()
+            outputs = await self.run_from_config()
         else:
-            self.metadata.start_time = time
-            await self._run_tasks(task, *args, **kwargs)
-            self.metadata.end_time = time
-            await self._save_metadata()
-
-            if self.autosave_on:
-                self.data_to_json_file()
-
-            print(log_agent_data(self.metadata.model_dump()))
-            return self.metadata.model_dump_json(indent=4)
+            outputs = await self._run_concurrently(task, *args, **kwargs)
+            
+        
+        
+        swarm_output = self.output_formatter.format_output(
+            swarm_id=str(uuid.uuid4()),
+            swarm_type=self.name,
+            task=task,
+            agent_outputs=outputs,
+            swarm_specific_output={},
+        )
+        
+        if self.autosave_on:
+            await self._save_to_csv(swarm_output)
+            
+        return swarm_output
 
     def run(self, task: str = None, *args, **kwargs):
         """
@@ -292,148 +334,88 @@ class SpreadSheetSwarm(BaseSwarm):
             str: The JSON representation of the swarm metadata.
 
         """
-        try:
-            return asyncio.run(self._run(task, *args, **kwargs))
-        except Exception as e:
-            logger.error(f"Error running swarm: {e}")
-            raise e
-
-    async def _run_tasks(self, task: str, *args, **kwargs):
+        return asyncio.run(self._run(task, *args, **kwargs))
+    
+    async def run_from_config(self):
         """
-        Run the swarm tasks concurrently.
-
-        Args:
-            task (str): The task to be executed by the swarm.
-            *args: Additional positional arguments.
-            **kwargs: Additional keyword arguments.
+        Run all agents with their configured tasks concurrently
         """
+        logger.info("Running agents from configuration")
+
         tasks = []
-        for _ in range(self.max_loops):
-            for agent in self.agents:
-                # Use asyncio.to_thread to run the blocking task in a thread pool
-                tasks.append(
-                    asyncio.to_thread(
-                        self._run_agent_task,
-                        agent,
-                        task,
-                        *args,
-                        **kwargs,
+        for agent in self.agents:
+            config = self.agent_configs.get(agent.agent_name)
+            if config:
+                for _ in range(self.max_loops):
+                    tasks.append(
+                        self._run_agent(agent, config.task)
                     )
-                )
 
-        # Run all tasks concurrently
-        results = await asyncio.gather(*tasks)
+        # Run all tasks concurrently using asyncio.gather
+        agent_outputs = await asyncio.gather(*tasks)
 
-        # Process the results
-        for result in results:
-            self._track_output(*result)
-
-    def _run_agent_task(self, agent, task, *args, **kwargs):
-        """
-        Run a single agent's task in a separate thread.
-
-        Args:
-            agent: The agent to run the task for.
-            task (str): The task to be executed by the agent.
-            *args: Additional positional arguments.
-            **kwargs: Additional keyword arguments.
-
-        Returns:
-            Tuple[str, str, str]: A tuple containing the agent name, task, and result.
-        """
-        try:
-            result = agent.run(task=task, *args, **kwargs)
-            # Assuming agent.run() is a blocking call
-            return agent.agent_name, task, result
-        except Exception as e:
-            logger.error(
-                f"Error running task for {agent.agent_name}: {e}"
-            )
-            return agent.agent_name, task, str(e)
-
-    def _track_output(self, agent_name: str, task: str, result: str):
-        """
-        Track the output of a completed task.
-
-        Args:
-            agent_name (str): The name of the agent that completed the task.
-            task (str): The task that was completed.
-            result (str): The result of the completed task.
-        """
-        self.metadata.tasks_completed += 1
-        self.metadata.outputs.append(
-            AgentOutput(
-                agent_name=agent_name,
-                task=task,
-                result=result,
-                timestamp=time,
-            )
+        swarm_output = self.output_formatter.format_output(
+            swarm_id=str(uuid.uuid4()),
+            swarm_type=self.name,
+            task="Multiple tasks from config",
+            agent_outputs=agent_outputs,
+            swarm_specific_output={},
         )
 
-    def export_to_json(self):
-        """
-        Export the swarm metadata to JSON.
-
-        Returns:
-            str: The JSON representation of the swarm metadata.
-        """
-        return self.metadata.model_dump_json(indent=4)
-
-    def data_to_json_file(self):
-        """
-        Save the swarm metadata to a JSON file.
-        """
-        out = self.export_to_json()
-
-        create_file_in_folder(
-            folder_path=f"{self.workspace_dir}/Spreedsheet-Swarm-{self.name}/{self.name}",
-            file_name=f"spreedsheet-swarm-{uuid_hex}-metadata.json",
-            content=out,
-        )
-
-    async def _save_metadata(self):
-        """
-        Save the swarm metadata to CSV and JSON.
-        """
         if self.autosave_on:
-            await self._save_to_csv()
+            await self._save_to_csv(swarm_output)
 
-    async def _save_to_csv(self):
+        return swarm_output
+
+    async def _save_to_csv(self, formatted_output: str):
         """
         Save the swarm metadata to a CSV file.
         """
-        logger.info(
-            f"Saving swarm metadata to: {self.save_file_path}"
-        )
-        run_id = uuid.uuid4()
+        if not self.autosave_on:
+            return
 
-        # Check if file exists before opening it
-        file_exists = os.path.exists(self.save_file_path)
+        try:
+            # Parse the JSON output
+            data = json.loads(formatted_output)
 
-        async with aiofiles.open(
-            self.save_file_path, mode="a"
-        ) as file:
-            writer = csv.writer(file)
+            # Extract the agent outputs
+            agent_outputs = data.get("agent_outputs", [])
 
-            # Write header if file doesn't exist
-            if not file_exists:
-                await writer.writerow(
-                    [
-                        "Run ID",
-                        "Agent Name",
-                        "Task",
-                        "Result",
-                        "Timestamp",
-                    ]
-                )
+            # Prepare the CSV data
+            csv_data = []
+            headers = ["swarm_id", "swarm_type", "agent_id", "agent_name", "task", "step_id", "step_input", "step_output", "step_error", "step_start_time", "step_end_time", "step_runtime", "step_tokens_used", "step_cost", "step_metadata", "agent_start_time", "agent_end_time", "agent_total_tokens", "agent_cost"]
 
-            for output in self.metadata.outputs:
-                await writer.writerow(
-                    [
-                        str(run_id),
-                        output.agent_name,
-                        output.task,
-                        output.result,
-                        output.timestamp,
-                    ]
-                )
+            for output in agent_outputs:
+                for step in output.get("steps", []):
+                    csv_data.append([
+                        data.get("swarm_id"),
+                        data.get("swarm_type"),
+                        output.get("id"),
+                        output.get("agent_name"),
+                        output.get("task"),
+                        step.get("id"),
+                        step.get("input"),
+                        step.get("output"),
+                        step.get("error"),
+                        step.get("start_time"),
+                        step.get("end_time"),
+                        step.get("runtime"),
+                        step.get("tokens_used"),
+                        step.get("cost"),
+                        json.dumps(step.get("metadata")),
+                        output.get("start_time"),
+                        output.get("end_time"),
+                        output.get("total_tokens"),
+                        output.get("cost")
+                    ])
+
+            # Write the data to CSV
+            async with aiofiles.open(self.save_file_path, mode="w", newline='', encoding='utf-8') as file:
+                writer = csv.writer(file)
+                await writer.writerow(headers)  # Fix: Await the coroutine
+                await writer.writerows(csv_data)  # Fix: Await the coroutine
+
+            logger.info(f"Swarm metadata saved to {self.save_file_path}")
+
+        except Exception as e:
+            logger.error(f"Error saving swarm metadata to CSV: {e}")

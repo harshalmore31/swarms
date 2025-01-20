@@ -17,42 +17,16 @@ from swarms.utils.wrapper_clusterop import (
     exec_callable_with_clusterops,
 )
 from swarms.telemetry.capture_sys_data import log_agent_data
+from swarms.schemas.output_schemas import (
+    SwarmOutputFormatter,
+    AgentTaskOutput,
+    Step,
+)
 
 logger = initialize_logger(log_folder="rearrange")
 
-
 def swarm_id():
     return uuid.uuid4().hex
-
-
-class AgentRearrangeInput(BaseModel):
-    swarm_id: Optional[str] = None
-    name: Optional[str] = None
-    description: Optional[str] = None
-    flow: Optional[str] = None
-    max_loops: Optional[int] = None
-    time: str = Field(
-        default_factory=lambda: datetime.now().strftime(
-            "%Y-%m-%d %H:%M:%S"
-        ),
-        description="The time the agent was created.",
-    )
-    output_type: OutputType = Field(default="final")
-
-
-class AgentRearrangeOutput(BaseModel):
-    output_id: str = Field(
-        default=swarm_id(), description="Output-UUID"
-    )
-    input: Optional[AgentRearrangeInput] = None
-    outputs: Optional[List[ManySteps]] = None
-    time: str = Field(
-        default_factory=lambda: datetime.now().strftime(
-            "%Y-%m-%d %H:%M:%S"
-        ),
-        description="The time the agent was created.",
-    )
-
 
 class AgentRearrange(BaseSwarm):
     """
@@ -145,16 +119,7 @@ class AgentRearrange(BaseSwarm):
         self.no_use_clusterops = no_use_clusterops
         self.autosave = autosave
 
-        self.output_schema = AgentRearrangeOutput(
-            input=AgentRearrangeInput(
-                swarm_id=id,
-                name=name,
-                description=description,
-                flow=flow,
-                max_loops=max_loops,
-            ),
-            outputs=[],
-        )
+        self.output_formatter = SwarmOutputFormatter()
 
     def showcase_agents(self):
         # Get formatted agent info once
@@ -275,7 +240,7 @@ class AgentRearrange(BaseSwarm):
         logger.info(f"Flow: {self.flow} is valid.")
         return True
 
-    def _run(
+    async def _run_async(
         self,
         task: str = None,
         img: str = None,
@@ -283,29 +248,6 @@ class AgentRearrange(BaseSwarm):
         *args,
         **kwargs,
     ):
-        """
-        Runs the swarm to rearrange the tasks.
-
-        Args:
-            task (str, optional): The initial task to be processed. Defaults to None.
-            img (str, optional): Image input for agents that support it. Defaults to None.
-            custom_tasks (Dict[str, str], optional): Custom tasks for specific agents. Defaults to None.
-            output_type (str, optional): Format of the output. Can be:
-                - "all": String containing all agent responses concatenated
-                - "final": Only the final agent's response
-                - "list": List of all agent responses
-                - "dict": Dict mapping agent names to their responses
-                Defaults to "final".
-            *args: Additional positional arguments
-            **kwargs: Additional keyword arguments
-
-        Returns:
-            Union[str, List[str], Dict[str, str]]: The processed output in the specified format
-
-        Raises:
-            ValueError: If flow validation fails
-            Exception: For any other errors during execution
-        """
         try:
             if not self.validate_flow():
                 logger.error("Flow validation failed")
@@ -313,182 +255,181 @@ class AgentRearrange(BaseSwarm):
 
             tasks = self.flow.split("->")
             current_task = task
-            all_responses = []
             response_dict = {}
             previous_agent = None
 
-            logger.info(
-                f"Starting task execution with {len(tasks)} steps"
-            )
+            logger.info(f"Starting task execution with {len(tasks)} steps")
 
-            # Handle custom tasks
             if custom_tasks is not None:
                 logger.info("Processing custom tasks")
-                c_agent_name, c_task = next(
-                    iter(custom_tasks.items())
-                )
+                c_agent_name, c_task = next(iter(custom_tasks.items()))
                 position = tasks.index(c_agent_name)
-
                 if position > 0:
                     tasks[position - 1] += "->" + c_task
                 else:
                     tasks.insert(position, c_task)
 
-            loop_count = 0
-            while loop_count < self.max_loops:
-                logger.info(
-                    f"Starting loop {loop_count + 1}/{self.max_loops}"
-                )
+            agent_task_outputs = []
 
-                for task_idx, task in enumerate(tasks):
-                    is_last = task == tasks[-1]
-                    agent_names = [
-                        name.strip() for name in task.split(",")
-                    ]
+            for task_idx, task in enumerate(tasks):
+                is_last = task == tasks[-1]
+                agent_names = [name.strip() for name in task.split(",")]
 
-                    # Prepare prompt with previous agent info
-                    prompt_prefix = ""
-                    if previous_agent and task_idx > 0:
-                        prompt_prefix = f"Previous agent {previous_agent} output: {current_task}\n"
-                    elif task_idx == 0:
-                        prompt_prefix = "Initial task: "
+                prompt_prefix = ""
+                if previous_agent and task_idx > 0:
+                    prompt_prefix = f"Previous agent {previous_agent} output: {current_task}\n"
+                elif task_idx == 0:
+                    prompt_prefix = "Initial task: "
 
-                    if len(agent_names) > 1:
-                        # Parallel processing
-                        logger.info(
-                            f"Running agents in parallel: {agent_names}"
-                        )
-                        results = []
-
-                        for agent_name in agent_names:
-                            if agent_name == "H":
-                                if (
-                                    self.human_in_the_loop
-                                    and self.custom_human_in_the_loop
-                                ):
-                                    current_task = (
-                                        self.custom_human_in_the_loop(
-                                            prompt_prefix
-                                            + str(current_task)
-                                        )
-                                    )
-                                else:
-                                    current_task = input(
-                                        prompt_prefix
-                                        + "Enter your response: "
-                                    )
-                                results.append(current_task)
-                                response_dict[agent_name] = (
-                                    current_task
-                                )
-                            else:
-                                agent = self.agents[agent_name]
-                                task_with_context = (
-                                    prompt_prefix + str(current_task)
-                                    if current_task
-                                    else prompt_prefix
-                                )
-                                result = agent.run(
-                                    task=task_with_context,
-                                    img=img,
-                                    is_last=is_last,
-                                    *args,
-                                    **kwargs,
-                                )
-                                result = str(result)
-                                results.append(result)
-                                response_dict[agent_name] = result
-                                self.output_schema.outputs.append(
-                                    agent.agent_output
-                                )
-                                logger.debug(
-                                    f"Agent {agent_name} output: {result}"
-                                )
-
-                        current_task = "; ".join(results)
-                        all_responses.extend(results)
-                        previous_agent = ",".join(agent_names)
-
-                    else:
-                        # Sequential processing
-                        logger.info(
-                            f"Running agent sequentially: {agent_names[0]}"
-                        )
-                        agent_name = agent_names[0]
-
-                        if agent_name == "H":
-                            if (
-                                self.human_in_the_loop
-                                and self.custom_human_in_the_loop
-                            ):
-                                current_task = (
-                                    self.custom_human_in_the_loop(
-                                        prompt_prefix
-                                        + str(current_task)
-                                    )
-                                )
-                            else:
-                                current_task = input(
-                                    prompt_prefix
-                                    + "Enter the next task: "
-                                )
-                            response_dict[agent_name] = current_task
-                        else:
-                            agent = self.agents[agent_name]
-                            task_with_context = (
-                                prompt_prefix + str(current_task)
-                                if current_task
-                                else prompt_prefix
-                            )
-                            current_task = agent.run(
-                                task=task_with_context,
-                                img=img,
-                                is_last=is_last,
+                if len(agent_names) > 1:
+                    logger.info(f"Running agents in parallel: {agent_names}")
+                    
+                    # Use asyncio.gather to run agents concurrently
+                    agent_steps = await asyncio.gather(
+                        *[
+                            self.run_agent_async(
+                                agent_name,
+                                prompt_prefix + str(current_task) if current_task else prompt_prefix,
+                                img,
+                                is_last,
                                 *args,
                                 **kwargs,
                             )
-                            current_task = str(current_task)
+                            for agent_name in agent_names
+                            if agent_name != "H"
+                        ]
+                    )
+
+                    for agent_name, steps in zip(agent_names, agent_steps):
+                        if agent_name == "H":
+                            if self.human_in_the_loop and self.custom_human_in_the_loop:
+                                current_task = self.custom_human_in_the_loop(prompt_prefix + str(current_task))
+                            else:
+                                current_task = input(prompt_prefix + "Enter your response: ")
                             response_dict[agent_name] = current_task
-                            self.output_schema.outputs.append(
-                                agent.agent_output
+                        else:
+                            agent_task_output = AgentTaskOutput(
+                                agent_name=agent_name,
+                                task=task,
+                                steps=steps,
+                                start_time=steps[0].start_time if steps else None,
+                                end_time=steps[-1].end_time if steps else None,
+                                # Add other necessary fields if available
                             )
-                            logger.debug(
-                                f"Agent {agent_name} output: {current_task}"
-                            )
+                            agent_task_outputs.append(agent_task_output)
 
-                        all_responses.append(
-                            f"Agent Name: {agent.agent_name} \n Output: {current_task} "
+                    current_task = "; ".join([step.output for steps in agent_steps for step in steps])
+                    previous_agent = ",".join(agent_names)
+
+                else:
+                    logger.info(f"Running agent sequentially: {agent_names[0]}")
+                    agent_name = agent_names[0]
+
+                    if agent_name == "H":
+                        if self.human_in_the_loop and self.custom_human_in_the_loop:
+                            current_task = self.custom_human_in_the_loop(prompt_prefix + str(current_task))
+                        else:
+                            current_task = input(prompt_prefix + "Enter the next task: ")
+                        response_dict[agent_name] = current_task
+                    else:
+                        steps = await self.run_agent_async(
+                            agent_name,
+                            prompt_prefix + str(current_task) if current_task else prompt_prefix,
+                            img,
+                            is_last,
+                            *args,
+                            **kwargs,
                         )
-                        previous_agent = agent_name
+                        agent_task_output = AgentTaskOutput(
+                            agent_name=agent_name,
+                            task=task,
+                            steps=steps,
+                            start_time=steps[0].start_time if steps else None,
+                            end_time=steps[-1].end_time if steps else None,
+                            # Add other necessary fields if available
+                        )
+                        agent_task_outputs.append(agent_task_output)
+                        current_task = steps[-1].output if steps else ""
 
-                loop_count += 1
+                    previous_agent = agent_name
 
             logger.info("Task execution completed")
 
-            if self.return_json:
-                return self.output_schema.model_dump_json(indent=4)
-
-            # Handle different output types
-            if self.output_type == "all":
-                output = " ".join(all_responses)
-            elif self.output_type == "list":
-                output = all_responses
-            elif self.output_type == "dict":
-                output = response_dict
-            else:  # "final"
-                output = current_task
+            # Format and return the output
+            output = self.output_formatter.format_output(
+                swarm_id=self.id,
+                swarm_type=self.name,
+                task=task,
+                agent_outputs=agent_task_outputs,
+                swarm_specific_output={},
+            )
 
             return output
 
         except Exception as e:
             self._catch_error(e)
 
+    async def run_agent_async(
+        self,
+        agent_name: str,
+        task: str,
+        img: Optional[str],
+        is_last: bool,
+        *args,
+        **kwargs,
+    ) -> List[Step]:
+        """
+        Asynchronously runs a single agent and returns the steps.
+
+        Args:
+            agent_name: Name of the agent.
+            task: Task for the agent.
+            img: Image input for the agent.
+            is_last: Flag to indicate if this is the last agent in the flow.
+            *args, **kwargs: Additional arguments for agent execution.
+
+        Returns:
+            List[Step]: List of steps executed by the agent.
+        """
+        agent = self.agents[agent_name]
+        loop = asyncio.get_running_loop()
+        try:
+            # Use the agent's aget_output as step
+            response = await loop.run_in_executor(
+                None, lambda: agent.run(task, img, is_last, *args, **kwargs)
+            )
+
+            steps = []
+            
+            if agent.agent_output:
+                for step_data in agent.agent_output.steps:
+                    step = Step(
+                        name=agent.agent_name,
+                        task=task,
+                        input=step_data.get("role"),
+                        output=step_data.get("content"),
+                        start_time=step_data.get("timestamp"),
+                        end_time=None,  # You might need to add end_time to agent steps
+                        runtime=None,  # Calculate runtime if needed
+                        tokens_used=None,  # Extract token usage if available
+                        cost=None,  # Calculate cost if available
+                        error=None,  # Capture errors if they occur
+                        metadata={},
+                    )
+                    steps.append(step)
+
+            return steps
+        except Exception as e:
+            logger.error(f"Error running agent {agent.agent_name}: {e}")
+            return [Step(name=agent.agent_name, task=task, error=str(e))]
+
     def _catch_error(self, e: Exception):
         if self.autosave is True:
             log_agent_data(self.to_dict())
 
         logger.error(
-            f"An error occurred with your swarm {self.name}: Error: {e} Traceback: {e.__traceback__}"
+            f"An error occurred with your swarm {self.name}: Error:"
+            f" {e} Traceback: {e.__traceback__}"
         )
 
         return e
@@ -527,25 +468,37 @@ class AgentRearrange(BaseSwarm):
                 no_use_clusterops or self.no_use_clusterops
             )
 
-            if no_use_clusterops is True:
-                return self._run(
-                    task=task,
-                    img=img,
-                    *args,
-                    **kwargs,
-                )
-            else:
-                return exec_callable_with_clusterops(
-                    device=device,
-                    device_id=device_id,
-                    all_cores=all_cores,
-                    all_gpus=all_gpus,
-                    func=self._run,
-                    task=task,
-                    img=img,
-                    *args,
-                    **kwargs,
-                )
+            loop = 0
+            final_output = None
+
+            while loop < self.max_loops:
+                
+                if no_use_clusterops:
+                    result = asyncio.run(self._run_async(task=task, img=img, *args, **kwargs))
+                else:
+                    result = exec_callable_with_clusterops(
+                        device=device,
+                        device_id=device_id,
+                        all_cores=all_cores,
+                        all_gpus=all_gpus,
+                        func=self._run_async,
+                        task=task,
+                        img=img,
+                        *args,
+                        **kwargs,
+                    )
+                
+                # Accumulate results if necessary, or simply store the last result
+                if final_output is None:
+                    final_output = result
+                else:
+                    # Example: accumulate results if they are lists
+                    if isinstance(result, list):
+                        final_output.extend(result)
+                
+                loop += 1
+                
+            return final_output
         except Exception as e:
             self._catch_error(e)
 
@@ -774,7 +727,6 @@ class AgentRearrange(BaseSwarm):
             attr_name: self._serialize_attr(attr_name, attr_value)
             for attr_name, attr_value in self.__dict__.items()
         }
-
 
 def rearrange(
     agents: List[Agent] = None,

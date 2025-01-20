@@ -1,12 +1,17 @@
-from typing import List, Optional
+from typing import List, Optional, Dict
 from swarms.structs.agent import Agent
 from swarms.structs.rearrange import AgentRearrange
 from swarms.structs.output_types import OutputType
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from swarms.utils.loguru_logger import initialize_logger
+from swarms.schemas.output_schemas import (
+    SwarmOutputFormatter,
+    AgentTaskOutput,
+    Step,
+)
+import time
 
 logger = initialize_logger(log_folder="sequential_workflow")
-
 
 class SequentialWorkflow:
     """
@@ -27,7 +32,10 @@ class SequentialWorkflow:
     def __init__(
         self,
         name: str = "SequentialWorkflow",
-        description: str = "Sequential Workflow, where agents are executed in a sequence.",
+        description: str = (
+            "Sequential Workflow, where agents are executed in a"
+            " sequence."
+        ),
         agents: List[Agent] = [],
         max_loops: int = 1,
         output_type: OutputType = "all",
@@ -124,7 +132,6 @@ class SequentialWorkflow:
             device_id (int): The device id to use for the agents to execute.
             no_use_clusterops (bool): Whether to use clusterops.
 
-
         Returns:
             str: The final result after processing through all agents.
 
@@ -132,9 +139,8 @@ class SequentialWorkflow:
             ValueError: If task is None or empty
             Exception: If any error occurs during task execution
         """
-
         try:
-            return self.agent_rearrange.run(
+            out = self.agent_rearrange.run(
                 task=task,
                 img=img,
                 device=device,
@@ -145,6 +151,57 @@ class SequentialWorkflow:
                 *args,
                 **kwargs,
             )
+
+            if self.return_json:
+                # print(self.agent_rearrange.output_schema.model_dump_json(indent=4))
+                return self.agent_rearrange.output_schema.model_dump_json(
+                    indent=4
+                )
+            
+            agent_outputs = []
+            for output in self.agent_rearrange.output_schema.outputs:
+                agent_task_output = AgentTaskOutput(
+                    id=output.agent_id,
+                    agent_name=output.agent_name,
+                    task=task,
+                    steps=[
+                        Step(
+                            id=step.get("id"),
+                            name=output.agent_name,
+                            task=output.task,
+                            input=step.get("role"),
+                            output=step.get("content"),
+                            error=None,  # Add error handling if needed
+                            start_time=step.get("timestamp"),
+                            end_time=None,  # You might need to capture this within Agent
+                            runtime=None,  # You might need to calculate this
+                            tokens_used=output.total_tokens,
+                            cost=None,  # Add cost calculation if available
+                            metadata={},
+                        )
+                        for step in output.steps
+                    ],
+                    start_time=output.steps[0].get("timestamp"),
+                    end_time=output.steps[-1].get("timestamp"),
+                    total_tokens=output.total_tokens,
+                    cost=None,  # Add cost calculation if available
+                )
+                agent_outputs.append(agent_task_output)
+
+            
+            
+            # Generate swarm output
+            swarm_output = SwarmOutputFormatter.format_output(
+                swarm_id=self.agent_rearrange.id,
+                swarm_type=self.name,
+                task=task,
+                agent_outputs=agent_outputs,  # Pass the list of AgentTaskOutput
+                swarm_specific_output={
+                    "flow": self.agent_rearrange.flow
+                },  # Add any swarm-specific data here
+            )
+
+            return swarm_output
         except Exception as e:
             logger.error(
                 f"An error occurred while executing the task: {e}"
@@ -179,7 +236,8 @@ class SequentialWorkflow:
             return [self.agent_rearrange.run(task) for task in tasks]
         except Exception as e:
             logger.error(
-                f"An error occurred while executing the batch of tasks: {e}"
+                f"An error occurred while executing the batch of"
+                f" tasks: {e}"
             )
             raise
 
@@ -204,7 +262,8 @@ class SequentialWorkflow:
             return await self.agent_rearrange.run_async(task)
         except Exception as e:
             logger.error(
-                f"An error occurred while executing the task asynchronously: {e}"
+                f"An error occurred while executing the task"
+                f" asynchronously: {e}"
             )
             raise
 
@@ -241,6 +300,7 @@ class SequentialWorkflow:
                 ]
         except Exception as e:
             logger.error(
-                f"An error occurred while executing the batch of tasks concurrently: {e}"
+                f"An error occurred while executing the batch of"
+                f" tasks concurrently: {e}"
             )
             raise

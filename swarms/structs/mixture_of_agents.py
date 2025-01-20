@@ -9,11 +9,15 @@ from swarms.telemetry.capture_sys_data import log_agent_data
 from swarms.schemas.agent_step_schemas import ManySteps
 from swarms.prompts.ag_prompt import aggregator_system_prompt
 from swarms.utils.loguru_logger import initialize_logger
+from swarms.schemas.output_schemas import (
+    SwarmOutputFormatter,
+    AgentTaskOutput,
+    Step,
+)
 
 logger = initialize_logger(log_folder="mixture_of_agents")
 
 time_stamp = time.strftime("%Y-%m-%d %H:%M:%S")
-
 
 class MixtureOfAgentsInput(BaseModel):
     name: str = "MixtureOfAgents"
@@ -34,22 +38,6 @@ class MixtureOfAgentsInput(BaseModel):
         time_stamp,
         description="The time the mixture of agents was created.",
     )
-
-
-class MixtureOfAgentsOutput(BaseModel):
-    id: str = Field(
-        ..., description="The ID of the mixture of agents."
-    )
-    task: str = Field(..., description="None")
-    InputConfig: MixtureOfAgentsInput
-    # output: List[ManySteps]
-    normal_agent_outputs: List[ManySteps]
-    aggregator_agent_summary: str
-    time_completed: str = Field(
-        time_stamp,
-        description="The time the mixture of agents was completed.",
-    )
-
 
 class MixtureOfAgents:
     """
@@ -93,14 +81,7 @@ class MixtureOfAgents:
             time_created=time_stamp,
         )
 
-        self.output_schema = MixtureOfAgentsOutput(
-            id="MixtureOfAgents",
-            InputConfig=self.input_schema.model_dump(),
-            normal_agent_outputs=[],
-            aggregator_agent_summary="",
-            task="",
-        )
-
+        self.output_formatter = SwarmOutputFormatter()
         self.reliability_check()
 
     def reliability_check(self) -> None:
@@ -158,7 +139,7 @@ class MixtureOfAgents:
         agent: Agent,
         task: str,
         prev_responses: Optional[List[str]] = None,
-    ) -> str:
+    ) -> List[Step]:
         """
         Asynchronous method to run a single agent.
 
@@ -170,8 +151,6 @@ class MixtureOfAgents:
         Returns:
             str: The response from the agent.
         """
-        # Update the task in the output schema
-        self.output_schema.task = task
 
         # If there are previous responses, update the agent's system prompt
         if prev_responses:
@@ -184,15 +163,23 @@ class MixtureOfAgents:
 
         # Run the agent asynchronously
         response = await asyncio.to_thread(agent.run, task)
-        self.output_schema.normal_agent_outputs.append(
-            agent.agent_output
-        )
+        steps = [
+            Step(
+                name=agent.agent_name,
+                task=task,
+                input=task,
+                output=response,
+                start_time=time.strftime("%Y-%m-%d %H:%M:%S"),
+                end_time=time.strftime("%Y-%m-%d %H:%M:%S"),
+            )
+        ]
 
         # Log the agent's response
-        print(f"Agent {agent.agent_name} response: {response}")
-        return response
+        logger.info(f"Agent {agent.agent_name} response: {response}")
 
-    async def _run_async(self, task: str) -> None:
+        return steps
+
+    async def _run_async(self, task: str) -> List[AgentTaskOutput]:
         """
         Asynchronous method to run the Mixture of Agents process.
 
@@ -200,43 +187,76 @@ class MixtureOfAgents:
             task (str): The task for the mixture of agents.
         """
         # Gather initial responses from reference agents
-        results: List[str] = await asyncio.gather(
+        results: List[List[Step]] = await asyncio.gather(
             *[
                 self._run_agent_async(agent, task)
                 for agent in self.agents
             ]
         )
 
+        agent_task_outputs = []
+        for i, agent in enumerate(self.agents):
+            agent_task_output = AgentTaskOutput(
+                agent_name=agent.agent_name,
+                task=task,
+                steps=results[i],
+            )
+            agent_task_outputs.append(agent_task_output)
+
         # Process additional layers, if applicable
-        for _ in range(1, self.layers - 1):
+        prev_responses = [step.output for steps in results for step in steps]
+        for _ in range(1, self.layers):
             results = await asyncio.gather(
                 *[
                     self._run_agent_async(
-                        agent, task, prev_responses=results
+                        agent, task, prev_responses=prev_responses
                     )
                     for agent in self.agents
                 ]
             )
+            for i, agent in enumerate(self.agents):
+                agent_task_output = AgentTaskOutput(
+                    agent_name=agent.agent_name,
+                    task=task,
+                    steps=results[i],
+                )
+                agent_task_outputs.append(agent_task_output)
+            prev_responses = [step.output for steps in results for step in steps]
 
         # Perform final aggregation using the aggregator agent
         final_result = await self._run_agent_async(
-            self.aggregator_agent, task, prev_responses=results
+            self.aggregator_agent, task, prev_responses=prev_responses
         )
-        self.output_schema.aggregator_agent_summary = final_result
+        aggregator_task_output = AgentTaskOutput(
+            agent_name=self.aggregator_agent.agent_name,
+            task=task,
+            steps=final_result,
+        )
+        agent_task_outputs.append(aggregator_task_output)
 
-        print(f"Final Aggregated Response: {final_result}")
+        print(f"Final Aggregated Response: {final_result[0].output}")
+        return agent_task_outputs
 
-    def run(self, task: str) -> None:
+    def run(self, task: str, *args, **kwargs) -> str:
         """
         Synchronous wrapper to run the async process.
 
         Args:
             task (str): The task for the mixture of agents.
         """
-        asyncio.run(self._run_async(task))
+        agent_task_outputs = asyncio.run(self._run_async(task))
 
-        self.output_schema.task = task
+        # Generate swarm output
+        swarm_output = self.output_formatter.format_output(
+            swarm_id=self.input_schema.name,
+            swarm_type=self.input_schema.name,
+            task=task,
+            agent_outputs=agent_task_outputs,  # Pass the list of AgentTaskOutput
+            swarm_specific_output={
+                "layers": self.layers,
+            },  # Add any swarm-specific data here
+        )
 
-        log_agent_data(self.output_schema.model_dump())
+        log_agent_data(swarm_output)
 
-        return self.output_schema.model_dump_json(indent=4)
+        return swarm_output

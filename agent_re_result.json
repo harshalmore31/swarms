@@ -1,0 +1,115 @@
+{
+    "swarm_id": "6717761ec58b4e648a4e2b4baf234222",
+    "swarm_type": "pe-document-analysis-swarm",
+    "task": " Document-Summarizer",
+    "agent_outputs": [
+        {
+            "id": "b9636317-0e4a-4029-966c-b1ba863ea22e",
+            "agent_name": "Data-Extractor",
+            "task": "Data-Extractor ",
+            "steps": [
+                {
+                    "id": "78559860-4f87-400d-bf54-b699315534f8",
+                    "name": "Data-Extractor",
+                    "task": "Initial task: Hii",
+                    "input": "System: ",
+                    "output": "You are a highly specialized private equity agent focused on data extraction from various documents. Your expertise includes:\n1. Extracting key financial metrics (revenue, EBITDA, growth rates, etc.) from financial statements and reports\n2. Identifying and extracting important contract terms from legal documents\n3. Pulling out relevant market data from industry reports and analyses\n4. Extracting operational KPIs from management presentations and internal reports\n5. Identifying and extracting key personnel information from organizational charts and bios\nProvide accurate, structured data extracted from various document types to support investment analysis.",
+                    "error": null,
+                    "start_time": "2025-01-20 11:38:16",
+                    "end_time": null,
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": {}
+                },
+                {
+                    "id": "96332703-3921-4ce3-95bb-4b6c3a344882",
+                    "name": "Data-Extractor",
+                    "task": "Initial task: Hii",
+                    "input": "pe_firm",
+                    "output": "Initial task: Hii",
+                    "error": null,
+                    "start_time": "2025-01-20 11:38:18",
+                    "end_time": null,
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": {}
+                },
+                {
+                    "id": "bba774c2-9e8b-4cc3-8a04-61e1db9fc30e",
+                    "name": "Data-Extractor",
+                    "task": "Initial task: Hii",
+                    "input": "Data-Extractor",
+                    "output": "Hello. I'm ready to assist with data extraction tasks to support investment analysis. Please provide the documents you'd like me to work with, such as financial statements, legal contracts, industry reports, management presentations, or organizational charts. I'll extract the relevant data, including:\n\n* Key financial metrics (revenue, EBITDA, growth rates, etc.)\n* Important contract terms\n* Market data from industry reports and analyses\n* Operational KPIs from management presentations and internal reports\n* Key personnel information from organizational charts and bios\n\nPlease share the documents, and I'll get started on extracting the data.",
+                    "error": null,
+                    "start_time": "2025-01-20 11:38:20",
+                    "end_time": null,
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": {}
+                }
+            ],
+            "start_time": "2025-01-20 11:38:16",
+            "end_time": null,
+            "total_tokens": null,
+            "cost": null
+        },
+        {
+            "id": "f295b5f1-3029-4874-a340-06bd94c1d27f",
+            "agent_name": "Document-Summarizer",
+            "task": " Document-Summarizer",
+            "steps": [
+                {
+                    "id": "09a17844-8dfe-4550-a611-593a51e02936",
+                    "name": "Document-Summarizer",
+                    "task": "Previous agent Data-Extractor output: Hello. I'm ready to assist with data extraction tasks to support investment analysis. Please provide the documents you'd like me to work with, such as financial statements, legal contracts, industry reports, management presentations, or organizational charts. I'll extract the relevant data, including:\n\n* Key financial metrics (revenue, EBITDA, growth rates, etc.)\n* Important contract terms\n* Market data from industry reports and analyses\n* Operational KPIs from management presentations and internal reports\n* Key personnel information from organizational charts and bios\n\nPlease share the documents, and I'll get started on extracting the data.\nHello. I'm ready to assist with data extraction tasks to support investment analysis. Please provide the documents you'd like me to work with, such as financial statements, legal contracts, industry reports, management presentations, or organizational charts. I'll extract the relevant data, including:\n\n* Key financial metrics (revenue, EBITDA, growth rates, etc.)\n* Important contract terms\n* Market data from industry reports and analyses\n* Operational KPIs from management presentations and internal reports\n* Key personnel information from organizational charts and bios\n\nPlease share the documents, and I'll get started on extracting the data.",
+                    "input": "System: ",
+                    "output": "You are an expert private equity agent specializing in summarizing complex documents. Your core competencies include:\n1. Distilling lengthy financial reports into concise executive summaries\n2. Summarizing legal documents, highlighting key terms and potential risks\n3. Condensing industry reports to capture essential market trends and competitive dynamics\n4. Summarizing management presentations to highlight key strategic initiatives and projections\n5. Creating brief overviews of technical documents, emphasizing critical points for non-technical stakeholders\nDeliver clear, concise summaries that capture the essence of various documents while highlighting information crucial for investment decisions.",
+                    "error": null,
+                    "start_time": "2025-01-20 11:38:17",
+                    "end_time": null,
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": {}
+                },
+                {
+                    "id": "69227f0a-fa82-4d36-93c5-32a80ecbdf0d",
+                    "name": "Document-Summarizer",
+                    "task": "Previous agent Data-Extractor output: Hello. I'm ready to assist with data extraction tasks to support investment analysis. Please provide the documents you'd like me to work with, such as financial statements, legal contracts, industry reports, management presentations, or organizational charts. I'll extract the relevant data, including:\n\n* Key financial metrics (revenue, EBITDA, growth rates, etc.)\n* Important contract terms\n* Market data from industry reports and analyses\n* Operational KPIs from management presentations and internal reports\n* Key personnel information from organizational charts and bios\n\nPlease share the documents, and I'll get started on extracting the data.\nHello. I'm ready to assist with data extraction tasks to support investment analysis. Please provide the documents you'd like me to work with, such as financial statements, legal contracts, industry reports, management presentations, or organizational charts. I'll extract the relevant data, including:\n\n* Key financial metrics (revenue, EBITDA, growth rates, etc.)\n* Important contract terms\n* Market data from industry reports and analyses\n* Operational KPIs from management presentations and internal reports\n* Key personnel information from organizational charts and bios\n\nPlease share the documents, and I'll get started on extracting the data.",
+                    "input": "pe_firm",
+                    "output": "Previous agent Data-Extractor output: Hello. I'm ready to assist with data extraction tasks to support investment analysis. Please provide the documents you'd like me to work with, such as financial statements, legal contracts, industry reports, management presentations, or organizational charts. I'll extract the relevant data, including:\n\n* Key financial metrics (revenue, EBITDA, growth rates, etc.)\n* Important contract terms\n* Market data from industry reports and analyses\n* Operational KPIs from management presentations and internal reports\n* Key personnel information from organizational charts and bios\n\nPlease share the documents, and I'll get started on extracting the data.\nHello. I'm ready to assist with data extraction tasks to support investment analysis. Please provide the documents you'd like me to work with, such as financial statements, legal contracts, industry reports, management presentations, or organizational charts. I'll extract the relevant data, including:\n\n* Key financial metrics (revenue, EBITDA, growth rates, etc.)\n* Important contract terms\n* Market data from industry reports and analyses\n* Operational KPIs from management presentations and internal reports\n* Key personnel information from organizational charts and bios\n\nPlease share the documents, and I'll get started on extracting the data.",
+                    "error": null,
+                    "start_time": "2025-01-20 11:38:22",
+                    "end_time": null,
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": {}
+                },
+                {
+                    "id": "47bf45ca-14d0-4ce4-b944-253d54876015",
+                    "name": "Document-Summarizer",
+                    "task": "Previous agent Data-Extractor output: Hello. I'm ready to assist with data extraction tasks to support investment analysis. Please provide the documents you'd like me to work with, such as financial statements, legal contracts, industry reports, management presentations, or organizational charts. I'll extract the relevant data, including:\n\n* Key financial metrics (revenue, EBITDA, growth rates, etc.)\n* Important contract terms\n* Market data from industry reports and analyses\n* Operational KPIs from management presentations and internal reports\n* Key personnel information from organizational charts and bios\n\nPlease share the documents, and I'll get started on extracting the data.\nHello. I'm ready to assist with data extraction tasks to support investment analysis. Please provide the documents you'd like me to work with, such as financial statements, legal contracts, industry reports, management presentations, or organizational charts. I'll extract the relevant data, including:\n\n* Key financial metrics (revenue, EBITDA, growth rates, etc.)\n* Important contract terms\n* Market data from industry reports and analyses\n* Operational KPIs from management presentations and internal reports\n* Key personnel information from organizational charts and bios\n\nPlease share the documents, and I'll get started on extracting the data.",
+                    "input": "Document-Summarizer",
+                    "output": "Hello, I'm taking over from the previous agent, Data-Extractor. I'm a private equity expert specializing in summarizing complex documents to support investment analysis. I can assist with distilling lengthy financial reports, legal documents, industry reports, management presentations, and technical documents into concise summaries.\n\nTo get started, please provide the documents you'd like me to work with, such as:\n\n1. Financial statements (e.g., income statements, balance sheets, cash flow statements)\n2. Legal contracts (e.g., partnership agreements, merger agreements, loan documents)\n3. Industry reports (e.g., market research, competitor analyses, trend reports)\n4. Management presentations (e.g., investor presentations, board meeting materials, strategic plans)\n5. Technical documents (e.g., product descriptions, technical specifications, patent filings)\n\nI'll create clear and concise summaries that capture the essence of these documents, highlighting key information crucial for investment decisions, including:\n\n* Key financial metrics (revenue, EBITDA, growth rates, etc.)\n* Important contract terms and potential risks\n* Market trends and competitive dynamics\n* Strategic initiatives and projections\n* Critical technical points for non-technical stakeholders\n\nPlease share the documents, and I'll begin creating summaries to support your investment analysis.",
+                    "error": null,
+                    "start_time": "2025-01-20 11:38:24",
+                    "end_time": null,
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": {}
+                }
+            ],
+            "start_time": "2025-01-20 11:38:17",
+            "end_time": null,
+            "total_tokens": null,
+            "cost": null
+        }
+    ],
+    "timestamp": "2025-01-20 11:38:26",
+    "swarm_specific_output": {}
+}

@@ -3,6 +3,19 @@ from typing import Any, Callable, Dict, Optional, Sequence
 from swarms.structs.base_swarm import BaseSwarm
 from swarms.utils.loguru_logger import logger
 
+from swarms.structs.concurrent_workflow import ConcurrentWorkflow
+from swarms.structs.sequential_workflow import SequentialWorkflow
+from swarms.structs.agent import Agent
+from swarms.schemas.output_schemas import (
+    AgentTaskOutput,
+    SwarmOutputFormatter
+)
+# from swarms.prompts.prompts import (
+#     TASK_ROUTER,
+#     DEFAULT_SUMMARIZER,
+#     FINANCIAL_ANALYSIS_AGENT,
+#     DATA_ANALYSIS_AGENT
+# )
 
 class AutoSwarmRouter(BaseSwarm):
     """AutoSwarmRouter class represents a router for the AutoSwarm class.
@@ -117,7 +130,6 @@ class AutoSwarmRouter(BaseSwarm):
                 )
                 raise error
 
-
 class AutoSwarm(BaseSwarm):
     """AutoSwarm class represents a swarm of agents that can be created automatically.
 
@@ -145,7 +157,7 @@ class AutoSwarm(BaseSwarm):
         *args,
         **kwargs,
     ):
-        super().__init__()
+        super().__init__(*args, **kwargs)
         self.name = name
         self.description = description
         self.verbose = verbose
@@ -183,7 +195,7 @@ class AutoSwarm(BaseSwarm):
         """Run the swarm simulation."""
         try:
             loop = 0
-
+            
             while loop < self.max_loops:
                 if self.custom_preprocess:
                     # If custom preprocess function is provided then run it
@@ -205,8 +217,7 @@ class AutoSwarm(BaseSwarm):
                 if self.custom_postprocess:
                     # If custom postprocess function is provided then run it
                     out = self.custom_postprocess(out)
-
-                # LOOP
+                
                 loop += 1
 
                 return out

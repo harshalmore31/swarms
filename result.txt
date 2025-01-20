@@ -1,0 +1,86 @@
+{
+    "swarm_id": "pe-document-analysis-swarm",
+    "swarm_type": "pe-document-analysis-swarm",
+    "task": "Hii",
+    "agent_outputs": [
+        {
+            "id": "69f196e9-8cee-4f7a-8fda-3a148ad81ea1",
+            "agent_name": "Data-Extractor",
+            "task": "Hii",
+            "steps": [
+                {
+                    "id": "aa982818-8935-4c62-8731-9e9092754a93",
+                    "name": "Data-Extractor",
+                    "task": "Hii",
+                    "input": "Hii",
+                    "output": "Hello. I'm a private equity agent specializing in data extraction from various documents. I can assist with extracting key financial metrics, contract terms, market data, operational KPIs, and personnel information to support investment analysis. What type of document would you like me to extract data from?",
+                    "error": null,
+                    "start_time": "2025-01-20 12:01:52",
+                    "end_time": "2025-01-20 12:01:52",
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": null
+                }
+            ],
+            "start_time": "2025-01-20 12:01:52",
+            "end_time": null,
+            "total_tokens": null,
+            "cost": null
+        },
+        {
+            "id": "ccc961da-474e-49c1-93dd-9fc64b92d7a4",
+            "agent_name": "Document-Summarizer",
+            "task": "Hii",
+            "steps": [
+                {
+                    "id": "903888cb-2fb3-49e4-9b30-29765097cb8e",
+                    "name": "Document-Summarizer",
+                    "task": "Hii",
+                    "input": "Hii",
+                    "output": "Hello. I'm a private equity expert specializing in summarizing complex documents. I can help you distill lengthy reports, legal documents, industry analyses, management presentations, and technical documents into concise, actionable summaries. What type of document would you like me to summarize, and what are your key areas of interest?",
+                    "error": null,
+                    "start_time": "2025-01-20 12:01:52",
+                    "end_time": "2025-01-20 12:01:52",
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": null
+                }
+            ],
+            "start_time": "2025-01-20 12:01:52",
+            "end_time": null,
+            "total_tokens": null,
+            "cost": null
+        },
+        {
+            "id": "9849b80a-b8b5-44e2-9384-e8bd840462a8",
+            "agent_name": "Document-Summarizer",
+            "task": "Hii",
+            "steps": [
+                {
+                    "id": "59b24336-0f10-4ffe-92cf-6a162fa12e6f",
+                    "name": "Document-Summarizer",
+                    "task": "Hii",
+                    "input": "Hii",
+                    "output": "Hello again. I'm ready to assist you with summarizing a complex document. Please provide the document or specify the type of document you'd like me to summarize, such as a financial report, legal agreement, industry analysis, management presentation, or technical document. What specific aspects of the document would you like me to focus on, such as key terms, market trends, strategic initiatives, or potential risks?",
+                    "error": null,
+                    "start_time": "2025-01-20 12:01:56",
+                    "end_time": "2025-01-20 12:01:56",
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": null
+                }
+            ],
+            "start_time": "2025-01-20 12:01:56",
+            "end_time": null,
+            "total_tokens": null,
+            "cost": null
+        }
+    ],
+    "timestamp": "2025-01-20 12:01:56",
+    "swarm_specific_output": {
+        "layers": 1
+    }
+}

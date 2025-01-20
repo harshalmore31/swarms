@@ -1,0 +1,86 @@
+{
+    "swarm_id": "pe-document-analysis-swarm",
+    "swarm_type": "pe-document-analysis-swarm",
+    "task": "Hii",
+    "agent_outputs": [
+        {
+            "id": "484fe165-b025-4cb8-bb84-ea47f35366a4",
+            "agent_name": "Data-Extractor",
+            "task": "Hii",
+            "steps": [
+                {
+                    "id": "53bf1444-7fe1-45eb-aa59-23eba7371afb",
+                    "name": "Data-Extractor",
+                    "task": "Hii",
+                    "input": "Hii",
+                    "output": "Hello. I'm a private equity agent specializing in data extraction from various documents. I can help you extract key information to support investment analysis. What type of document do you need me to extract data from? \n\nWe can work with:\n1. Financial statements and reports to extract key financial metrics\n2. Legal documents to identify important contract terms\n3. Industry reports and analyses to pull out relevant market data\n4. Management presentations and internal reports to extract operational KPIs\n5. Organizational charts and bios to identify key personnel information\n\nPlease let me know how I can assist you.",
+                    "error": null,
+                    "start_time": "2025-01-20 11:42:12",
+                    "end_time": "2025-01-20 11:42:12",
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": null
+                }
+            ],
+            "start_time": "2025-01-20 11:42:13",
+            "end_time": null,
+            "total_tokens": null,
+            "cost": null
+        },
+        {
+            "id": "4b7b1587-2ecc-44df-9929-db17a57808f7",
+            "agent_name": "Document-Summarizer",
+            "task": "Hii",
+            "steps": [
+                {
+                    "id": "844cafc6-f7a1-40a6-be0d-2704504621be",
+                    "name": "Document-Summarizer",
+                    "task": "Hii",
+                    "input": "Hii",
+                    "output": "Hello. I'm a private equity expert specializing in summarizing complex documents. I can help you distill lengthy reports, legal documents, industry analyses, and technical papers into concise, actionable summaries. What type of document would you like me to summarize, and what are your key areas of interest?",
+                    "error": null,
+                    "start_time": "2025-01-20 11:42:13",
+                    "end_time": "2025-01-20 11:42:13",
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": null
+                }
+            ],
+            "start_time": "2025-01-20 11:42:13",
+            "end_time": null,
+            "total_tokens": null,
+            "cost": null
+        },
+        {
+            "id": "58317a77-b4d5-4f91-8a0f-96ca8c08c34e",
+            "agent_name": "Document-Summarizer",
+            "task": "Hii",
+            "steps": [
+                {
+                    "id": "b5769926-6035-48c3-8bcd-e890af0e6a06",
+                    "name": "Document-Summarizer",
+                    "task": "Hii",
+                    "input": "Hii",
+                    "output": "Hello again. I'm ready to assist you with summarizing a complex document. Please provide the document or describe its nature, such as a financial report, legal agreement, industry analysis, or management presentation, and I'll create a concise summary highlighting the key points relevant to your investment decisions. What can I help you with today?",
+                    "error": null,
+                    "start_time": "2025-01-20 11:42:17",
+                    "end_time": "2025-01-20 11:42:17",
+                    "runtime": null,
+                    "tokens_used": null,
+                    "cost": null,
+                    "metadata": null
+                }
+            ],
+            "start_time": "2025-01-20 11:42:17",
+            "end_time": null,
+            "total_tokens": null,
+            "cost": null
+        }
+    ],
+    "timestamp": "2025-01-20 11:42:17",
+    "swarm_specific_output": {
+        "layers": 1
+    }
+}
