@@ -210,13 +210,17 @@ nav:
       - OpenRouter: "swarms/examples/openrouter.md"
       - XAI: "swarms/examples/xai.md"
     - Swarms Tools: 
-      - Agent with HTX + CoinGecko: "swarms/examples/swarms_tools_htx.md"
-      - Agent with HTX + CoinGecko Function Calling: "swarms/examples/swarms_tools_htx_gecko.md"
       - Agent with Yahoo Finance: "swarms/examples/yahoo_finance.md"
       - Twitter Agents: "swarms_tools/twitter.md"
+      - Blockchain Agents:
+        - Agent with HTX + CoinGecko: "swarms/examples/swarms_tools_htx.md"
+        - Agent with HTX + CoinGecko Function Calling: "swarms/examples/swarms_tools_htx_gecko.md"
+        - Lumo: "swarms/examples/lumo.md"
     - Meme Agents:
       - Bob The Builder: "swarms/examples/bob_the_builder.md"
       - Meme Agent Builder: "swarms/examples/meme_agents.md"
+    - Multi-Agent Collaboration:
+      - Swarms DAO: "swarms/examples/swarms_dao.md"
   - Swarm Models:
     - Overview: "swarms/models/index.md"
     # - Models Available: "swarms/models/index.md"
@@ -240,6 +244,7 @@ nav:
   - Swarms Cloud API:
     # - Overview: "swarms_cloud/main.md"
     - Overview: "swarms_cloud/vision.md"
+    - Deploying Swarms on Google Cloud Run: "swarms_cloud/cloud_run.md"
     # - Swarms Cloud CLI: "swarms_cloud/cli.md"
     - Swarm APIs:
       - MCS API: "swarms_cloud/mcs_api.md"
