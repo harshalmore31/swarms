@@ -23,7 +23,6 @@ import toml
 import yaml
 from loguru import logger
 from pydantic import BaseModel
-from swarm_models.tiktoken_wrapper import TikTokenizer
 
 from swarms.agents.ape_agent import auto_generate_prompt
 from swarms.artifacts.main_artifact import Artifact
@@ -54,6 +53,8 @@ from swarms.utils.wrapper_clusterop import (
     exec_callable_with_clusterops,
 )
 from swarms.telemetry.capture_sys_data import log_agent_data
+from swarms.agents.agent_print import agent_print
+from swarms.utils.litellm_tokenizer import count_tokens
 
 
 # Utils
@@ -438,7 +439,7 @@ class Agent:
         self.time_created = time_created
         self.data_memory = data_memory
         self.load_yaml_path = load_yaml_path
-        self.tokenizer = TikTokenizer()
+        self.tokenizer = tokenizer
         self.auto_generate_prompt = auto_generate_prompt
         self.rag_every_loop = rag_every_loop
         self.plan_enabled = plan_enabled
@@ -562,9 +563,7 @@ class Agent:
             max_loops=self.max_loops,
             steps=self.short_memory.to_dict(),
             full_history=self.short_memory.get_str(),
-            total_tokens=self.tokenizer.count_tokens(
-                self.short_memory.get_str()
-            ),
+            total_tokens=count_tokens(self.short_memory.get_str()),
             stopping_token=self.stopping_token,
             interactive=self.interactive,
             dynamic_temperature_enabled=self.dynamic_temperature_enabled,
@@ -889,7 +888,33 @@ class Agent:
 
                         # Check and execute tools
                         if self.tools is not None:
-                            self.parse_and_execute_tools(response)
+                            out = self.parse_and_execute_tools(
+                                response
+                            )
+
+                            self.short_memory.add(
+                                role="Tool Executor", content=out
+                            )
+
+                            agent_print(
+                                f"{self.agent_name} - Tool Executor",
+                                out,
+                                loop_count,
+                                self.streaming_on,
+                            )
+
+                            out = self.llm.run(out)
+
+                            agent_print(
+                                f"{self.agent_name} - Agent Analysis",
+                                out,
+                                loop_count,
+                                self.streaming_on,
+                            )
+
+                            self.short_memory.add(
+                                role=self.agent_name, content=out
+                            )
 
                         # Add the response to the memory
                         self.short_memory.add(
@@ -1016,10 +1041,8 @@ class Agent:
             self.agent_output.full_history = (
                 self.short_memory.get_str()
             )
-            self.agent_output.total_tokens = (
-                self.tokenizer.count_tokens(
-                    self.short_memory.get_str()
-                )
+            self.agent_output.total_tokens = count_tokens(
+                self.short_memory.get_str()
             )
 
             # Handle artifacts
@@ -1209,31 +1232,35 @@ class Agent:
         return output.getvalue()
 
     def parse_and_execute_tools(self, response: str, *args, **kwargs):
-        try:
-            logger.info("Executing tool...")
+        max_retries = 3  # Maximum number of retries
+        retries = 0
+        while retries < max_retries:
+            try:
+                logger.info("Executing tool...")
 
-            # try to Execute the tool and return a string
-            out = parse_and_execute_json(
-                functions=self.tools,
-                json_string=response,
-                parse_md=True,
-                *args,
-                **kwargs,
-            )
-
-            out = str(out)
-
-            logger.info(f"Tool Output: {out}")
-
-            # Add the output to the memory
-            self.short_memory.add(
-                role="Tool Executor",
-                content=out,
-            )
-
-        except Exception as error:
-            logger.error(f"Error executing tool: {error}")
-            raise error
+                # try to Execute the tool and return a string
+                out = parse_and_execute_json(
+                    functions=self.tools,
+                    json_string=response,
+                    parse_md=True,
+                    *args,
+                    **kwargs,
+                )
+                logger.info(f"Tool Output: {out}")
+                # Add the output to the memory
+                # self.short_memory.add(
+                #     role="Tool Executor",
+                #     content=out,
+                # )
+                return out
+            except Exception as error:
+                retries += 1
+                logger.error(
+                    f"Attempt {retries}: Error executing tool: {error}"
+                )
+                if retries == max_retries:
+                    raise error
+                time.sleep(1)  # Wait for a bit before retrying
 
     def add_memory(self, message: str):
         """Add a memory to the agent
@@ -1945,7 +1972,7 @@ class Agent:
                 )
 
                 # # Count the tokens
-                # memory_token_count = self.tokenizer.count_tokens(
+                # memory_token_count = count_tokens(
                 #     memory_retrieval
                 # )
                 # if memory_token_count > self.memory_chunk_size:
@@ -2034,7 +2061,7 @@ class Agent:
     def check_available_tokens(self):
         # Log the amount of tokens left in the memory and in the task
         if self.tokenizer is not None:
-            tokens_used = self.tokenizer.count_tokens(
+            tokens_used = count_tokens(
                 self.short_memory.return_history_as_string()
             )
             logger.info(
@@ -2045,7 +2072,7 @@ class Agent:
 
     def tokens_checks(self):
         # Check the tokens available
-        tokens_used = self.tokenizer.count_tokens(
+        tokens_used = count_tokens(
             self.short_memory.return_history_as_string()
         )
         out = self.check_available_tokens()
@@ -2055,45 +2082,6 @@ class Agent:
         )
 
         return out
-
-    def parse_function_call_and_execute(self, response: str):
-        """
-        Parses a function call from the given response and executes it.
-
-        Args:
-            response (str): The response containing the function call.
-
-        Returns:
-            None
-
-        Raises:
-            Exception: If there is an error parsing and executing the function call.
-        """
-        try:
-            if self.tools is not None:
-                tool_call_output = parse_and_execute_json(
-                    self.tools, response, parse_md=True
-                )
-
-                if tool_call_output is not str:
-                    tool_call_output = str(tool_call_output)
-
-                logger.info(f"Tool Call Output: {tool_call_output}")
-                self.short_memory.add(
-                    role=self.agent_name,
-                    content=tool_call_output,
-                )
-
-                return tool_call_output
-        except Exception as error:
-            logger.error(
-                f"Error parsing and executing function call: {error}"
-            )
-
-            # Raise a custom exception with the error message
-            raise Exception(
-                "Error parsing and executing function call"
-            ) from error
 
     def activate_agentops(self):
         if self.agent_ops_on is True:
@@ -2148,13 +2136,10 @@ class Agent:
 
         # Calculate token usage
         # full_memory = self.short_memory.return_history_as_string()
-        # prompt_tokens = self.tokenizer.count_tokens(full_memory)
-        # completion_tokens = self.tokenizer.count_tokens(response)
+        # prompt_tokens = count_tokens(full_memory)
+        # completion_tokens = count_tokens(response)
         # total_tokens = prompt_tokens + completion_tokens
-        total_tokens = (
-            self.tokenizer.count_tokens(task)
-            + self.tokenizer.count_tokens(response),
-        )
+        total_tokens = (count_tokens(task) + count_tokens(response),)
 
         # # Get memory responses
         # memory_responses = {
