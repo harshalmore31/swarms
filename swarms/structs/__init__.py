@@ -72,6 +72,7 @@ from swarms.structs.swarming_architectures import (
     staircase_swarm,
     star_swarm,
 )
+from swarms.structs.talkhier import TalkHier
 
 
 __all__ = [
@@ -139,4 +140,5 @@ __all__ = [
     "MultiAgentRouter",
     "MemeAgentGenerator",
     "ModelRouter",
+    "TalkHier",
 ]

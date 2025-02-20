@@ -665,18 +665,18 @@ Output all responses in strict JSON format:
                 )
 
 
-if __name__ == "__main__":
-    try:
-        talkhier = TalkHier(
-            max_iterations=1,
-            quality_threshold=0.8,
-            model_name="gpt-4o",
-            return_string=False,
-        )
+# if __name__ == "__main__":
+#     try:
+#         talkhier = TalkHier(
+#             max_iterations=1,
+#             quality_threshold=0.8,
+#             model_name="gpt-4o",
+#             return_string=False,
+#         )
 
-        # Ask for user input
-        task = input("Enter the content generation task description: ")
-        result = talkhier.run(task)
+#         # Ask for user input
+#         task = input("Enter the content generation task description: ")
+#         result = talkhier.run(task)
 
-    except Exception as e:
-        logger.error(f"Error in main execution: {str(e)}")
+#     except Exception as e:
+#         logger.error(f"Error in main execution: {str(e)}")
