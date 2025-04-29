@@ -1,19 +1,18 @@
-
 torch>=2.1.1,<3.0
-transformers>=4.39.0,<4.49.0
+transformers>=4.39.0,<4.51.0
 asyncio>=3.4.3,<4.0
 toml
 pypdf==5.1.0
 ratelimit==2.2.1
 loguru
-pydantic==2.8.2
+pydantic==2.10.6
 tenacity
 rich
 psutil
 python-dotenv
 PyYAML
 docstring_parser==0.16
-black>=23.1,<25.0
+black>=23.1,<26.0
 ruff>=0.0.249,<0.4.5
 types-toml>=0.10.8.1
 types-pytz>=2023.3,<2026.0
@@ -23,3 +22,4 @@ pytest>=8.1.1
 networkx
 aiofiles
 httpx
+# vllm>=0.2.0

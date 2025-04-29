@@ -1,6 +1,6 @@
 import datetime
 import json
-from typing import Any, Optional, Union
+from typing import Any, List, Optional, Union
 
 import yaml
 from swarms.structs.base_structure import BaseStructure
@@ -118,8 +118,6 @@ class Conversation(BaseStructure):
             role (str): The role of the speaker (e.g., 'User', 'System').
             content (Union[str, dict, list]): The content of the message to be added.
         """
-        now = datetime.datetime.now()
-        timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
 
         # Base message with role
         message = {
@@ -129,14 +127,29 @@ class Conversation(BaseStructure):
         # Handle different content types
         if isinstance(content, dict) or isinstance(content, list):
             message["content"] = content
+        elif self.time_enabled:
+            message["content"] = (
+                f"Time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} \n {content}"
+            )
         else:
-            message["content"] = f"Time: {timestamp} \n {content}"
+            message["content"] = content
 
         # Add the message to history immediately without waiting for token count
         self.conversation_history.append(message)
 
+        if self.token_count is True:
+            self._count_tokens(content, message)
+
+    def add_multiple_messages(
+        self, roles: List[str], contents: List[Union[str, dict, list]]
+    ):
+        for role, content in zip(roles, contents):
+            self.add(role, content)
+
+    def _count_tokens(self, content: str, message: dict):
         # If token counting is enabled, do it in a separate thread
         if self.token_count is True:
+
             # Define a function to count tokens and update the message
             def count_tokens_thread():
                 tokens = count_tokens(any_to_str(content))
@@ -155,9 +168,6 @@ class Conversation(BaseStructure):
                 True  # Make thread terminate when main program exits
             )
             token_thread.start()
-        elif self.autosave:
-            # If token counting is disabled but autosave is enabled, save immediately
-            self.save_as_json(self.save_filepath)
 
     def delete(self, index: str):
         """Delete a message from the conversation history.
@@ -509,6 +519,37 @@ class Conversation(BaseStructure):
             str: The final message formatted as 'role: content'.
         """
         return f"{self.conversation_history[-1]['role']}: {self.conversation_history[-1]['content']}"
+
+    def get_final_message_content(self):
+        """Return the content of the final message from the conversation history.
+
+        Returns:
+            str: The content of the final message.
+        """
+        output = self.conversation_history[-1]["content"]
+        # print(output)
+        return output
+
+    def return_all_except_first(self):
+        """Return all messages except the first one.
+
+        Returns:
+            list: List of messages except the first one.
+        """
+        return self.conversation_history[2:]
+
+    def return_all_except_first_string(self):
+        """Return all messages except the first one as a string.
+
+        Returns:
+            str: All messages except the first one as a string.
+        """
+        return "\n".join(
+            [
+                f"{msg['content']}"
+                for msg in self.conversation_history[2:]
+            ]
+        )
 
 
 # # Example usage

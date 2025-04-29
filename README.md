@@ -427,8 +427,6 @@ We provide vast array of features to save agent states using json, yaml, toml, u
 | `tokens_checks()` | Performs token checks for the agent. |
 | `print_dashboard()` | Prints the dashboard of the agent. |
 | `get_docs_from_doc_folders()` | Fetches all the documents from the doc folders. |
-| `activate_agentops()` | Activates agent operations. |
-| `check_end_session_agentops()` | Checks the end of the session for agent operations. |
 
 
 
@@ -480,8 +478,6 @@ agent.print_dashboard()
 agent.get_docs_from_doc_folders()
 
 # Activate agent ops
-agent.activate_agentops()
-agent.check_end_session_agentops()
 
 # Dump the model to a JSON file
 agent.model_dump_json()
@@ -784,40 +780,8 @@ print(json.dumps(response, indent=4))
 
 
 ### `SequentialWorkflow`
-Sequential Workflow enables you to sequentially execute tasks with `Agent` and then pass the output into the next agent and onwards until you have specified your max loops.
 
-```mermaid
-graph LR
-    A[Agent 1] --> B[Agent 2]
-    B --> C[Agent 3]
-    C --> D[Agent 4]
-    D --> E[Max Loops]
-    E --> F[End]
-```
-
-
-
-### Methods
-
-| Method | Description | Parameters | Return Value |
-|--------|-------------|------------|--------------|
-| `__init__` | Initialize the SequentialWorkflow | `agents`: List of Agent objects<br>`max_loops`: Maximum number of iterations<br>`verbose`: Boolean for verbose output | None |
-| `run` | Execute the workflow | `input_data`: Initial input for the first agent | Final output after all agents have processed |
-
-### Inputs
-
-| Input | Type | Description |
-|-------|------|-------------|
-| `agents` | List[Agent] | List of Agent objects to be executed sequentially |
-| `max_loops` | int | Maximum number of times the entire sequence will be repeated |
-| `verbose` | bool | If True, print detailed information during execution |
-
-### Output
-
-The `run` method returns the final output after all agents have processed the input sequentially.
-
-In this example, each `Agent` represents a task that is executed sequentially. The output of each agent is passed to the next agent in the sequence until the maximum number of loops is reached. This workflow is particularly useful for tasks that require a series of steps to be executed in a specific order, such as data processing pipelines or complex calculations that rely on the output of previous steps.
-
+The SequentialWorkflow in the Swarms framework enables sequential task execution across multiple Agent objects. Each agent's output serves as input for the next agent in the sequence, continuing until reaching the specified maximum number of loops (max_loops). This workflow is particularly well-suited for tasks requiring a specific order of operations, such as data processing pipelines. To learn more, visit: [Learn More](https://docs.swarms.world/en/latest/swarms/structs/sequential_workflow/)
 
 ```python
 import os
@@ -1007,32 +971,10 @@ print(
 
 ------
 
+
 ## `AgentRearrange`
 
-The `AgentRearrange` orchestration technique, inspired by Einops and einsum, allows you to define and map out the relationships between various agents. It provides a powerful tool for orchestrating complex workflows, enabling you to specify linear and sequential relationships such as `a -> a1 -> a2 -> a3`, or concurrent relationships where the first agent sends a message to 3 agents simultaneously: `a -> a1, a2, a3`. This level of customization allows for the creation of highly efficient and dynamic workflows, where agents can work in parallel or in sequence as needed. The `AgentRearrange` technique is a valuable addition to the swarms library, providing a new level of flexibility and control over the orchestration of agents. For more detailed information and examples, please refer to the [official documentation](https://docs.swarms.world/en/latest/swarms/structs/agent_rearrange/).
-
-[Check out my video on agent rearrange!](https://youtu.be/Rq8wWQ073mg)
-
-
-
-### Methods
-
-| Method | Description | Parameters | Return Value |
-|--------|-------------|------------|--------------|
-| `__init__` | Initialize the AgentRearrange | `agents`: List of Agent objects<br>`flow`: String describing the agent flow | None |
-| `run` | Execute the workflow | `input_data`: Initial input for the first agent | Final output after all agents have processed |
-
-### Inputs
-
-| Input | Type | Description |
-|-------|------|-------------|
-| `agents` | List[Agent] | List of Agent objects to be orchestrated |
-| `flow` | str | String describing the flow of agents (e.g., "A -> B, C") |
-
-### Output
-
-The `run` method returns the final output after all agents have processed the input according to the specified flow.
-
+The `AgentRearrange` orchestration technique, inspired by Einops and einsum, enables you to define and map relationships between multiple agents. This powerful tool facilitates the orchestration of complex workflows by allowing you to specify both linear and concurrent relationships. For example, you can create sequential workflows like `a -> a1 -> a2 -> a3` or parallel workflows where a single agent distributes tasks to multiple agents simultaneously: `a -> a1, a2, a3`. This flexibility enables the creation of highly efficient and dynamic workflows, with agents operating either in parallel or sequence as required. As a valuable addition to the swarms library, `AgentRearrange` provides enhanced flexibility and precise control over agent orchestration. For comprehensive information and examples, visit the [official documentation](https://docs.swarms.world/en/latest/swarms/structs/agent_rearrange/). [Watch my video tutorial on agent rearrange!](https://youtu.be/Rq8wWQ073mg)
 
 
 
@@ -1219,33 +1161,20 @@ if __name__ == "__main__":
 
 ```
 
+
+------------
+
+
 ## `HierarhicalSwarm`
 Coming soon...
 
 
+-----------------
+
 ## `GraphSwarm`
 
 
-The `GraphSwarm` is a workflow management system designed to orchestrate complex tasks by leveraging the power of graph theory. It enables the creation of a directed acyclic graph (DAG) to model dependencies between tasks and agents. This allows for efficient task assignment, execution, and monitoring.
-
-Here's a breakdown of how the `GraphSwarm` works:
-
-1. **Node Creation**: The `GraphSwarm` workflow is composed of nodes, which can be either agents or tasks. Agents are responsible for executing tasks, and tasks represent specific operations that need to be performed. In the example, two agents (`agent1` and `agent2`) and one task (`task1`) are created.
-2. **Edge Definition**: Edges are used to define the relationships between nodes. In this case, edges are created to connect `agent1` and `agent2` to `task1`, indicating that both agents are capable of executing `task1`.
-3. **Entry and End Points**: The `GraphSwarm` workflow requires the definition of entry points (where the workflow starts) and end points (where the workflow concludes). In this example, `agent1` and `agent2` are set as entry points, and `task1` is set as the end point.
-4. **Visualization**: The `GraphSwarm` provides a visualization feature to graphically represent the workflow. This allows for easy understanding and debugging of the workflow structure.
-5. **Execution**: The `GraphSwarm` workflow is executed by traversing the graph from the entry points to the end points. In this case, both `agent1` and `agent2` execute `task1` concurrently, and the results are collected.
-6. **Results**: The final results of the workflow execution are aggregated and returned. In this example, the result of executing `task1` is "Task completed".
-
-The `GraphSwarm` offers several benefits, including:
-
-* **Concurrency**: Enables the execution of tasks concurrently, improving overall workflow efficiency.
-* **Flexibility**: Allows for dynamic task assignment based on agent availability and task requirements.
-* **Scalability**: Supports the addition of new agents and tasks as needed, making it suitable for large-scale workflows.
-* **Visualization**: Provides a graphical representation of the workflow, facilitating understanding and debugging.
-
-By leveraging the `GraphSwarm`, complex workflows can be efficiently managed, and tasks can be executed in a coordinated and scalable manner.
-
+GraphSwarm is a workflow management system using a directed acyclic graph (DAG) to orchestrate complex tasks. Nodes (agents or tasks) and edges define dependencies, with agents executing tasks concurrently. It features entry/end points, visualization for debugging, and scalability for dynamic task assignment. Benefits include concurrency, flexibility, scalability, and clear workflow visualization. [Learn more:](https://docs.swarms.world/en/latest/swarms/structs/graph_swarm/)
 
 
 ### Methods
@@ -1275,24 +1204,28 @@ The `run` method returns a dictionary containing the execution results of all no
 
 
 ```python
-import os
-
-from dotenv import load_dotenv
-
-
 from swarms import Agent, Edge, GraphWorkflow, Node, NodeType
 
-from swarm_models import OpenAIChat
-
-load_dotenv()
-
-api_key = os.environ.get("OPENAI_API_KEY")
-
-llm = OpenAIChat(
-    temperature=0.5, openai_api_key=api_key, max_tokens=4000
+# Initialize agents with model_name parameter
+agent1 = Agent(
+    agent_name="Agent1",
+    model_name="openai/gpt-4o-mini",  # Using provider prefix
+    temperature=0.5,
+    max_tokens=4000,
+    max_loops=1,
+    autosave=True,
+    dashboard=True,
 )
-agent1 = Agent(llm=llm, max_loops=1, autosave=True, dashboard=True)
-agent2 = Agent(llm=llm, max_loops=1, autosave=True, dashboard=True)
+
+agent2 = Agent(
+    agent_name="Agent2",
+    model_name="openai/gpt-4o-mini",  # Using provider prefix
+    temperature=0.5,
+    max_tokens=4000,
+    max_loops=1,
+    autosave=True,
+    dashboard=True,
+)
 
 def sample_task():
     print("Running sample task")
@@ -1301,9 +1234,8 @@ def sample_task():
 wf_graph = GraphWorkflow()
 wf_graph.add_node(Node(id="agent1", type=NodeType.AGENT, agent=agent1))
 wf_graph.add_node(Node(id="agent2", type=NodeType.AGENT, agent=agent2))
-wf_graph.add_node(
-    Node(id="task1", type=NodeType.TASK, callable=sample_task)
-)
+wf_graph.add_node(Node(id="task1", type=NodeType.TASK, callable=sample_task))
+
 wf_graph.add_edge(Edge(source="agent1", target="task1"))
 wf_graph.add_edge(Edge(source="agent2", target="task1"))
 
@@ -1312,36 +1244,16 @@ wf_graph.set_end_points(["task1"])
 
 print(wf_graph.visualize())
 
-# Run the workflow
 results = wf_graph.run()
 print("Execution results:", results)
-
 ```
 
+-----
+
+
 ## `MixtureOfAgents`
-This is an implementation based on the paper: "Mixture-of-Agents Enhances Large Language Model Capabilities" by together.ai, available at [https://arxiv.org/abs/2406.04692](https://arxiv.org/abs/2406.04692). It achieves state-of-the-art (SOTA) results on AlpacaEval 2.0, MT-Bench, and FLASK, surpassing GPT-4 Omni. This architecture is particularly suitable for tasks that require parallelization followed by sequential processing in another loop.
 
-
-
-### Methods
-
-| Method | Description | Parameters | Return Value |
-|--------|-------------|------------|--------------|
-| `__init__` | Initialize the MixtureOfAgents | `name`: Name of the swarm<br>`agents`: List of Agent objects<br>`layers`: Number of processing layers<br>`final_agent`: Agent for final processing | None |
-| `run` | Execute the swarm | `task`: Input task for the swarm | Final output after all agents have processed |
-
-### Inputs
-
-| Input | Type | Description |
-|-------|------|-------------|
-| `name` | str | Name of the swarm |
-| `agents` | List[Agent] | List of Agent objects to be used in the swarm |
-| `layers` | int | Number of processing layers in the swarm |
-| `final_agent` | Agent | Agent responsible for final processing |
-
-### Output
-
-The `run` method returns the final output after all agents have processed the input according to the specified layers and final agent.
+The MixtureOfAgents architecture, inspired by together.ai’s paper (arXiv:2406.04692), achieves SOTA performance on AlpacaEval 2.0, MT-Bench, and FLASK, surpassing GPT-4 Omni. It processes tasks via parallel agent collaboration and sequential layering, with documentation [HERE](https://docs.swarms.world/en/latest/swarms/structs/moa/)
 
 
 ```python
@@ -1484,42 +1396,12 @@ print(out)
 
 ```
 
+-------
 
 ## SpreadSheetSwarm
-The `SpreadSheetSwarm` is designed for concurrent management and oversight of thousands of agents, facilitating a one-to-many approach for efficient task processing and output analysis.
+SpreadSheetSwarm manages thousands of agents concurrently for efficient task processing. It supports one-to-many task distribution, scalability, and autosaving results. Initialized with a name, description, agents, and settings, the run method executes tasks and returns a dictionary of agent outputs.
 
-### Key Features
-
-* **Concurrency**: Enables the simultaneous execution of multiple agents, significantly reducing processing time and increasing overall system efficiency.
-* **One-to-Many**: Allows a single task to be dynamically distributed among multiple agents, ensuring that each agent is utilized to its full potential.
-* **Scalability**: Supports the integration of thousands of agents, making it an ideal solution for large-scale task processing and data analysis.
-
-
-### Methods
-
-| Method | Description | Parameters | Return Value |
-|--------|-------------|------------|--------------|
-| `__init__` | Initialize the SpreadSheetSwarm | `name`: Name of the swarm<br>`description`: Description of the swarm<br>`agents`: List of Agent objects<br>`autosave_on`: Boolean to enable autosave<br>`save_file_path`: Path to save the spreadsheet<br>`run_all_agents`: Boolean to run all agents or not<br>`max_loops`: Maximum number of loops | None |
-| `run` | Execute the swarm | `task`: Input task for the swarm | Dictionary of agent outputs |
-
-### Inputs
-
-| Input | Type | Description |
-|-------|------|-------------|
-| `name` | str | Name of the swarm |
-| `description` | str | Description of the swarm's purpose |
-| `agents` | List[Agent] | List of Agent objects to be used in the swarm |
-| `autosave_on` | bool | Enable autosaving of results |
-| `save_file_path` | str | Path to save the spreadsheet results |
-| `run_all_agents` | bool | Whether to run all agents or select based on relevance |
-| `max_loops` | int | Maximum number of processing loops |
-
-### Output
-
-The `run` method returns a dictionary containing the outputs of each agent that processed the task.
-
-
-[Learn more at the docs here:](https://docs.swarms.world/en/latest/swarms/structs/spreadsheet_swarm/)
+[Learn more:](https://docs.swarms.world/en/latest/swarms/structs/spreadsheet_swarm/)
 
 ```python
 import os
@@ -1676,28 +1558,13 @@ swarm.run(
 ```
 
 
+----------
+
 ## `ForestSwarm`
-The `ForestSwarm` architecture is designed for efficient task assignment by dynamically selecting the most suitable agent from a collection of trees. This is achieved through asynchronous task processing, where agents are chosen based on their relevance to the task at hand. The relevance is determined by calculating the similarity between the system prompts associated with each agent and the keywords present in the task itself. For a more in-depth understanding of how `ForestSwarm` works, please refer to the [official documentation](https://docs.swarms.world/en/latest/swarms/structs/forest_swarm/).
+
+The `ForestSwarm` architecture is an intelligent system designed to optimize task assignment by dynamically selecting the most appropriate agent from a collection of specialized trees. Through asynchronous task processing, the system intelligently matches tasks with agents based on their relevance. This matching is accomplished by computing the semantic similarity between each agent's system prompts and the keywords present in the task. For comprehensive details about the `ForestSwarm` implementation and capabilities, please consult the [official documentation](https://docs.swarms.world/en/latest/swarms/structs/forest_swarm/).
 
 
-
-### Methods
-
-| Method | Description | Parameters | Return Value |
-|--------|-------------|------------|--------------|
-| `__init__` | Initialize the ForestSwarm | `trees`: List of Tree objects | None |
-| `run` | Execute the ForestSwarm | `task`: Input task for the swarm | Output from the most relevant agent |
-
-### Inputs
-
-| Input | Type | Description |
-|-------|------|-------------|
-| `trees` | List[Tree] | List of Tree objects, each containing TreeAgent objects |
-| `task` | str | The task to be processed by the ForestSwarm |
-
-### Output
-
-The `run` method returns the output from the most relevant agent selected based on the input task.
 
 
 ```python
@@ -1815,25 +1682,11 @@ print(output)
 
 
 
+------------
 
 ## `SwarmRouter`
-The `SwarmRouter` class is a flexible routing system designed to manage different types of swarms for task execution. It provides a unified interface to interact with various swarm types, including `AgentRearrange`, `MixtureOfAgents`, `SpreadSheetSwarm`, `SequentialWorkflow`, and `ConcurrentWorkflow`. We will be continuously adding more and more swarm architectures here as we progress with new architectures.
 
-#### Attributes:
-- `name` (str): Name of the SwarmRouter instance.
-- `description` (str): Description of the SwarmRouter instance.
-- `max_loops` (int): Maximum number of loops to perform.
-- `agents` (List[Agent]): List of Agent objects to be used in the swarm.
-- `swarm_type` (SwarmType): Type of swarm to be used.
-- `swarm` (Union[AgentRearrange, MixtureOfAgents, SpreadSheetSwarm, SequentialWorkflow, ConcurrentWorkflow]): Instantiated swarm object.
-- `logs` (List[SwarmLog]): List of log entries captured during operations.
-
-#### Methods:
-- `__init__(self, name: str, description: str, max_loops: int, agents: List[Agent], swarm_type: SwarmType, *args, **kwargs)`: Initialize the SwarmRouter.
-- `_create_swarm(self, *args, **kwargs)`: Create and return the specified swarm type.
-- `_log(self, level: str, message: str, task: str, metadata: Dict[str, Any])`: Create a log entry and add it to the logs list.
-- `run(self, task: str, *args, **kwargs)`: Run the specified task on the selected swarm.
-- `get_logs(self)`: Retrieve all logged entries.
+The `SwarmRouter` class is a flexible routing system designed to manage different types of swarms for task execution. It provides a unified interface to interact with various swarm types, including `AgentRearrange`, `MixtureOfAgents`, `SpreadSheetSwarm`, `SequentialWorkflow`, and `ConcurrentWorkflow`. We will be continuously adding more and more swarm architectures here as we progress with new architectures. [Learn More](https://docs.swarms.world/en/latest/swarms/structs/swarm_router/)
 
 
 ```python
@@ -2220,21 +2073,20 @@ Documentation is located here at: [docs.swarms.world](https://docs.swarms.world)
 -----
 
 ## Folder Structure
-The swarms package has been meticlously crafted for extreme use-ability and understanding, the swarms package is split up into various modules such as `swarms.agents` that holds pre-built agents, `swarms.structs` that holds a vast array of structures like `Agent` and multi agent structures. The 3 most important are `structs`, `models`, and `agents`.
+The swarms package has been meticulously crafted for extreme usability and understanding,the swarms package is split up into various modules such as `swarms.agents` that holds pre-built agents, `swarms.structs` that holds a vast array of structures like `Agent` and multi agent structures. The package is split into various modules, with the most important being `structs`, `tools`, and `agents`.
 
 ```sh
 ├── __init__.py
-├── agents
-├── artifacts
-├── memory
-├── schemas
-├── models -> swarm_models
-├── prompts
-├── structs
-├── telemetry
-├── tools
-├── utils
-└── workers
+├── agents/
+├── artifacts/
+├── client/
+├── cli/
+├── prompts/
+├── schemas/
+├── structs/
+├── telemetry/
+├── tools/
+└── utils/
 ```
 
 ----
@@ -2250,6 +2102,7 @@ Swarms is an open-source project, and contributions are VERY welcome. If you wan
 
 
 ## Accelerate Backlog
+
 Accelerate Bugs, Features, and Demos to implement by supporting us here:
 
 <a href="https://polar.sh/kyegomez"><img src="https://polar.sh/embed/fund-our-backlog.svg?org=kyegomez" /></a>
