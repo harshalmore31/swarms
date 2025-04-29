@@ -1,0 +1,1749 @@
+{
+  "agent_name": "Bitcoin Analyst",
+  "asset_class": "Bitcoin",
+  "budget_allocation": 60000,
+  "portfolio_value": 39276.91489080588,
+  "positions": {
+    "Bitcoin": 30
+  },
+  "performance_history": [
+    {
+      "timestamp": "2025-03-01T11:07:38.150187",
+      "old_value": 50000.0,
+      "new_value": 47944.95544335262,
+      "change": -2055.044556647379,
+      "change_percent": -4.110089113294759,
+      "reason": "Daily trading (-4.11%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.171370",
+      "old_value": 47944.95544335262,
+      "new_value": 46066.15335885389,
+      "change": -1878.8020844987332,
+      "change_percent": -3.9186647836570714,
+      "reason": "Daily trading (-3.92%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.198086",
+      "old_value": 46066.15335885389,
+      "new_value": 43682.923511886234,
+      "change": -2383.2298469676534,
+      "change_percent": -5.173494362340975,
+      "reason": "Daily trading (-5.17%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.239978",
+      "old_value": 43682.923511886234,
+      "new_value": 42443.38155647755,
+      "change": -1239.5419554086839,
+      "change_percent": -2.837589281476093,
+      "reason": "Daily trading (-2.84%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.315062",
+      "old_value": 42443.38155647755,
+      "new_value": 45903.09547196665,
+      "change": 3459.7139154890974,
+      "change_percent": 8.151362564939383,
+      "reason": "Daily trading (8.15%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.371261",
+      "old_value": 45903.09547196665,
+      "new_value": 42937.69959654905,
+      "change": -2965.3958754175983,
+      "change_percent": -6.460121795552082,
+      "reason": "Daily trading (-6.46%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.437786",
+      "old_value": 42937.69959654905,
+      "new_value": 40376.400329789765,
+      "change": -2561.2992667592844,
+      "change_percent": -5.9651525135853785,
+      "reason": "Daily trading (-5.97%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.514338",
+      "old_value": 40376.400329789765,
+      "new_value": 44059.95779270895,
+      "change": 3683.5574629191833,
+      "change_percent": 9.123045721838283,
+      "reason": "Daily trading (9.12%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.599854",
+      "old_value": 44059.95779270895,
+      "new_value": 40041.57187842951,
+      "change": -4018.385914279439,
+      "change_percent": -9.120267280293225,
+      "reason": "Daily trading (-9.12%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.706218",
+      "old_value": 40041.57187842951,
+      "new_value": 39276.91489080588,
+      "change": -764.6569876236317,
+      "change_percent": -1.9096577675452204,
+      "reason": "Daily trading (-1.91%)"
+    }
+  ],
+  "memory": {
+    "mmi": [
+      {
+        "timestamp": "2025-03-01T11:07:38.131702",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 49657.710088787964,
+          "timestamp": "2025-03-01T11:07:38.125050",
+          "volume": 1995328.8119686416,
+          "open_price": 50000.0,
+          "high_price": 50000.0,
+          "low_price": 49657.710088787964,
+          "close_price": 49657.710088787964,
+          "news": [
+            {
+              "headline": "New ETF Approval for Bitcoin",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.1798092448324435,
+          "volatility": 0.3528764081906186
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.140203",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 47658.949777548754,
+          "timestamp": "2025-03-01T11:07:38.140203",
+          "volume": 1600322.0226011635,
+          "open_price": 49657.710088787964,
+          "high_price": 49657.710088787964,
+          "low_price": 47658.949777548754,
+          "close_price": 47658.949777548754,
+          "news": [
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.1666784656000621,
+          "volatility": 0.4046664144875344
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.146178",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 45700.12447123111,
+          "timestamp": "2025-03-01T11:07:38.145626",
+          "volume": 2017294.571862795,
+          "open_price": 47658.949777548754,
+          "high_price": 47658.949777548754,
+          "low_price": 45700.12447123111,
+          "close_price": 45700.12447123111,
+          "news": [
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            },
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.0841538113685876,
+          "volatility": 0.4854931951971401
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.154688",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 47299.096728387325,
+          "timestamp": "2025-03-01T11:07:38.153689",
+          "volume": 1676869.2896518167,
+          "open_price": 45700.12447123111,
+          "high_price": 47299.096728387325,
+          "low_price": 45700.12447123111,
+          "close_price": 47299.096728387325,
+          "news": [
+            {
+              "headline": "Major Bank Adopts Bitcoin for Treasury",
+              "sentiment": 0.9
+            },
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.14248200885924936,
+          "volatility": 0.4792844265747733
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.161898",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 49701.79436276752,
+          "timestamp": "2025-03-01T11:07:38.161898",
+          "volume": 1612749.4328386518,
+          "open_price": 47299.096728387325,
+          "high_price": 49701.79436276752,
+          "low_price": 47299.096728387325,
+          "close_price": 49701.79436276752,
+          "news": [
+            {
+              "headline": "Major Bank Adopts Bitcoin for Treasury",
+              "sentiment": 0.9
+            },
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.19414390398954703,
+          "volatility": 0.578798862940402
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.166739",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 47754.14765022809,
+          "timestamp": "2025-03-01T11:07:38.165739",
+          "volume": 1897049.2449119906,
+          "open_price": 49701.79436276752,
+          "high_price": 49701.79436276752,
+          "low_price": 47754.14765022809,
+          "close_price": 47754.14765022809,
+          "news": [
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "New ETF Approval for Bitcoin",
+              "sentiment": 0.8
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.1803923850015795,
+          "volatility": 0.6488717447844459
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.177500",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 47051.373835531456,
+          "timestamp": "2025-03-01T11:07:38.175828",
+          "volume": 1923542.5079600096,
+          "open_price": 47754.14765022809,
+          "high_price": 47754.14765022809,
+          "low_price": 47051.373835531456,
+          "close_price": 47051.373835531456,
+          "news": [
+            {
+              "headline": "New ETF Approval for Bitcoin",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Major Bank Adopts Bitcoin for Treasury",
+              "sentiment": 0.9
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.17333432501769086,
+          "volatility": 0.5059618539952149
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.184563",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 46195.556800892424,
+          "timestamp": "2025-03-01T11:07:38.184563",
+          "volume": 2057735.8288160404,
+          "open_price": 47051.373835531456,
+          "high_price": 47051.373835531456,
+          "low_price": 46195.556800892424,
+          "close_price": 46195.556800892424,
+          "news": [
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.20526318571605034,
+          "volatility": 0.6505097027585767
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.193174",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 43805.63227414623,
+          "timestamp": "2025-03-01T11:07:38.193174",
+          "volume": 2250506.65955581,
+          "open_price": 46195.556800892424,
+          "high_price": 46195.556800892424,
+          "low_price": 43805.63227414623,
+          "close_price": 43805.63227414623,
+          "news": [
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            },
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.11458165109592522,
+          "volatility": 0.798136761745783
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.203862",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 46721.25807928155,
+          "timestamp": "2025-03-01T11:07:38.203513",
+          "volume": 1885060.8339942165,
+          "open_price": 43805.63227414623,
+          "high_price": 46721.25807928155,
+          "low_price": 43805.63227414623,
+          "close_price": 46721.25807928155,
+          "news": [
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            },
+            {
+              "headline": "Major Bank Adopts Bitcoin for Treasury",
+              "sentiment": 0.9
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.16274707689912868,
+          "volatility": 0.7496334554663877
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.215381",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 49985.12242325983,
+          "timestamp": "2025-03-01T11:07:38.214976",
+          "volume": 1645143.518540151,
+          "open_price": 46721.25807928155,
+          "high_price": 49985.12242325983,
+          "low_price": 46721.25807928155,
+          "close_price": 49985.12242325983,
+          "news": [
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.21408997283711112,
+          "volatility": 0.9076239803746536
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.228208",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 48566.74994704471,
+          "timestamp": "2025-03-01T11:07:38.227695",
+          "volume": 1926505.383441429,
+          "open_price": 49985.12242325983,
+          "high_price": 49985.12242325983,
+          "low_price": 48566.74994704471,
+          "close_price": 48566.74994704471,
+          "news": [
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.1422803362333496,
+          "volatility": 0.9268235681672266
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.257126",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 47000.949665376094,
+          "timestamp": "2025-03-01T11:07:38.255295",
+          "volume": 2011208.0069733507,
+          "open_price": 48566.74994704471,
+          "high_price": 48566.74994704471,
+          "low_price": 47000.949665376094,
+          "close_price": 47000.949665376094,
+          "news": [
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.18852188147459806,
+          "volatility": 0.9485707007871859
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.285495",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 43748.44565190937,
+          "timestamp": "2025-03-01T11:07:38.285495",
+          "volume": 1893548.6809304152,
+          "open_price": 47000.949665376094,
+          "high_price": 47000.949665376094,
+          "low_price": 43748.44565190937,
+          "close_price": 43748.44565190937,
+          "news": [
+            {
+              "headline": "New ETF Approval for Bitcoin",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.26878494288703403,
+          "volatility": 0.9161697836752606
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.301069",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 46658.31338874332,
+          "timestamp": "2025-03-01T11:07:38.301069",
+          "volume": 2159966.139633402,
+          "open_price": 43748.44565190937,
+          "high_price": 46658.31338874332,
+          "low_price": 43748.44565190937,
+          "close_price": 46658.31338874332,
+          "news": [
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "Major Bank Adopts Bitcoin for Treasury",
+              "sentiment": 0.9
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.2592261514468511,
+          "volatility": 0.8341116105575337
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.322351",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 46250.834583921176,
+          "timestamp": "2025-03-01T11:07:38.322351",
+          "volume": 2102324.518026424,
+          "open_price": 46658.31338874332,
+          "high_price": 46658.31338874332,
+          "low_price": 46250.834583921176,
+          "close_price": 46250.834583921176,
+          "news": [
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.30862680539904647,
+          "volatility": 1.0339313002755028
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.343924",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 46764.85502484801,
+          "timestamp": "2025-03-01T11:07:38.343924",
+          "volume": 1664955.9799506334,
+          "open_price": 46250.834583921176,
+          "high_price": 46764.85502484801,
+          "low_price": 46250.834583921176,
+          "close_price": 46764.85502484801,
+          "news": [
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "New ETF Approval for Bitcoin",
+              "sentiment": 0.8
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.25244400027005187,
+          "volatility": 0.874477624062283
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.358028",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 43743.788432729474,
+          "timestamp": "2025-03-01T11:07:38.358028",
+          "volume": 1871289.1917563896,
+          "open_price": 46764.85502484801,
+          "high_price": 46764.85502484801,
+          "low_price": 43743.788432729474,
+          "close_price": 43743.788432729474,
+          "news": [
+            {
+              "headline": "New ETF Approval for Bitcoin",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.33750990342875486,
+          "volatility": 1.180559127552781
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.381231",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 40046.18282367252,
+          "timestamp": "2025-03-01T11:07:38.381231",
+          "volume": 1679807.9987861416,
+          "open_price": 43743.788432729474,
+          "high_price": 43743.788432729474,
+          "low_price": 40046.18282367252,
+          "close_price": 40046.18282367252,
+          "news": [
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            },
+            {
+              "headline": "Major Bank Adopts Bitcoin for Treasury",
+              "sentiment": 0.9
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.2795767073468959,
+          "volatility": 1.0496736419699004
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.404891",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 39862.031613073144,
+          "timestamp": "2025-03-01T11:07:38.404891",
+          "volume": 1621265.1645666345,
+          "open_price": 40046.18282367252,
+          "high_price": 40046.18282367252,
+          "low_price": 39862.031613073144,
+          "close_price": 39862.031613073144,
+          "news": [
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "Major Bank Adopts Bitcoin for Treasury",
+              "sentiment": 0.9
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.2980257651456254,
+          "volatility": 0.826678318534508
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.421407",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 37484.200632339715,
+          "timestamp": "2025-03-01T11:07:38.421407",
+          "volume": 2291187.9962933715,
+          "open_price": 39862.031613073144,
+          "high_price": 39862.031613073144,
+          "low_price": 37484.200632339715,
+          "close_price": 37484.200632339715,
+          "news": [
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "New ETF Approval for Bitcoin",
+              "sentiment": 0.8
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.30572677194038794,
+          "volatility": 0.8416366138251077
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.446994",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 33840.41705936365,
+          "timestamp": "2025-03-01T11:07:38.446994",
+          "volume": 1891105.5344979186,
+          "open_price": 37484.200632339715,
+          "high_price": 37484.200632339715,
+          "low_price": 33840.41705936365,
+          "close_price": 33840.41705936365,
+          "news": [
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "Major Bank Adopts Bitcoin for Treasury",
+              "sentiment": 0.9
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.29824059407074904,
+          "volatility": 0.9735839693167283
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.474749",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 31875.70819863893,
+          "timestamp": "2025-03-01T11:07:38.474749",
+          "volume": 2332986.1796873095,
+          "open_price": 33840.41705936365,
+          "high_price": 33840.41705936365,
+          "low_price": 31875.70819863893,
+          "close_price": 31875.70819863893,
+          "news": [
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.2482019749799572,
+          "volatility": 0.8492303007038386
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.494216",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 34305.60800878093,
+          "timestamp": "2025-03-01T11:07:38.493217",
+          "volume": 1695619.5210988685,
+          "open_price": 31875.70819863893,
+          "high_price": 34305.60800878093,
+          "low_price": 31875.70819863893,
+          "close_price": 34305.60800878093,
+          "news": [
+            {
+              "headline": "Regulatory Concerns Grow for Crypto",
+              "sentiment": -0.7
+            },
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.27557666520809354,
+          "volatility": 0.9903361619122888
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.527824",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 34952.7551005508,
+          "timestamp": "2025-03-01T11:07:38.527291",
+          "volume": 2134366.215965874,
+          "open_price": 34305.60800878093,
+          "high_price": 34952.7551005508,
+          "low_price": 34305.60800878093,
+          "close_price": 34952.7551005508,
+          "news": [
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.30955133890755476,
+          "volatility": 0.7038190371855311
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.560218",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 34596.307030884214,
+          "timestamp": "2025-03-01T11:07:38.560218",
+          "volume": 1619606.9152350042,
+          "open_price": 34952.7551005508,
+          "high_price": 34952.7551005508,
+          "low_price": 34596.307030884214,
+          "close_price": 34596.307030884214,
+          "news": [
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "Major Bank Adopts Bitcoin for Treasury",
+              "sentiment": 0.9
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.3031666602486018,
+          "volatility": 0.9566023287232076
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.580241",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 31441.031360556695,
+          "timestamp": "2025-03-01T11:07:38.579242",
+          "volume": 2206413.470169533,
+          "open_price": 34596.307030884214,
+          "high_price": 34596.307030884214,
+          "low_price": 31441.031360556695,
+          "close_price": 31441.031360556695,
+          "news": [
+            {
+              "headline": "New ETF Approval for Bitcoin",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.32419321487040054,
+          "volatility": 1.0447269722469903
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.611543",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 30762.631876284344,
+          "timestamp": "2025-03-01T11:07:38.611543",
+          "volume": 2178282.6686232826,
+          "open_price": 31441.031360556695,
+          "high_price": 31441.031360556695,
+          "low_price": 30762.631876284344,
+          "close_price": 30762.631876284344,
+          "news": [
+            {
+              "headline": "New ETF Approval for Bitcoin",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Major Bank Adopts Bitcoin for Treasury",
+              "sentiment": 0.9
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.28088683835406086,
+          "volatility": 1.0714121156313214
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.651082",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 28163.941665627157,
+          "timestamp": "2025-03-01T11:07:38.650080",
+          "volume": 1952256.1371108815,
+          "open_price": 30762.631876284344,
+          "high_price": 30762.631876284344,
+          "low_price": 28163.941665627157,
+          "close_price": 28163.941665627157,
+          "news": [
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "Central Bank Issues Warning on Crypto",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.34432087891066493,
+          "volatility": 0.8651635517778142
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.681977",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 27626.106765962606,
+          "timestamp": "2025-03-01T11:07:38.680996",
+          "volume": 2358037.8029612196,
+          "open_price": 28163.941665627157,
+          "high_price": 28163.941665627157,
+          "low_price": 27626.106765962606,
+          "close_price": 27626.106765962606,
+          "news": [
+            {
+              "headline": "Bitcoin Mining Difficulty Increases",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "New ETF Approval for Bitcoin",
+              "sentiment": 0.8
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 47.45832482554824,
+            "macd": -0.2246593065043809,
+            "ema50": 45141.41516908253,
+            "ema100": 46199.66464060447,
+            "ema200": 44492.42257950913,
+            "adx": 35.991561621392854
+          },
+          "market_sentiment": 0.24872995462161235,
+          "volatility": 1.1918019415119558
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      }
+    ],
+    "mir": [
+      {
+        "timestamp": "2025-03-01T11:07:38.132023",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.141203",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.146178",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.154688",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.162733",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.166739",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.177500",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.184563",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.193174",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.203862",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.216387",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.228208",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.257126",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.285495",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.301069",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.323351",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.343924",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.359045",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.381231",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.404891",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.421407",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.446994",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.475749",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.494216",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.528349",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.560218",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.580241",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.611543",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.651563",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.681977",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      }
+    ],
+    "mge": [
+      {
+        "timestamp": "2025-03-01T11:07:38.137197",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Bullish momentum increasing",
+          "Institutional adoption growing"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 60000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.158035",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Bullish momentum increasing",
+          "Institutional adoption growing"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 60000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.181505",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Bullish momentum increasing",
+          "Institutional adoption growing"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 60000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.209955",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Bullish momentum increasing",
+          "Institutional adoption growing"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 60000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.217387",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.229244",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.260134",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.276758",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Bullish momentum increasing",
+          "Institutional adoption growing"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 60000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.290468",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.301069",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.324352",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.336891",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Bullish momentum increasing",
+          "Institutional adoption growing"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 60000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.344928",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.359441",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.383032",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.397065",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Bullish momentum increasing",
+          "Institutional adoption growing"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 60000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.405891",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.422412",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.448677",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.465465",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Bullish momentum increasing",
+          "Institutional adoption growing"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 60000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.476132",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.495591",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.529405",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.549393",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Bullish momentum increasing",
+          "Institutional adoption growing"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 60000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.561400",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.580980",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.611543",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.634798",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Bullish momentum increasing",
+          "Institutional adoption growing"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 60000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.653478",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.683645",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "agent_name": "Bitcoin Analyst",
+  "asset_class": "Bitcoin",
+  "budget_allocation": 60000,
+  "portfolio_value": 70700.0,
+  "positions": {
+    "Bitcoin": 1
+  },
+  "performance_history": [
+    {
+      "timestamp": "2025-03-01T10:56:08.909411",
+      "old_value": 70000.0,
+      "new_value": 70700.0,
+      "change": 700.0,
+      "change_percent": 1.0,
+      "reason": "Trade: BUY"
+    }
+  ],
+  "memory": {
+    "mmi": [
+      {
+        "timestamp": "2025-03-01T10:56:08.909411",
+        "asset_class": "Bitcoin",
+        "market_data": {
+          "asset_class": "Bitcoin",
+          "price": 62000.0,
+          "timestamp": "2025-03-01T10:56:08.893522",
+          "volume": 0.0,
+          "open_price": 0.0,
+          "high_price": 0.0,
+          "low_price": 0.0,
+          "close_price": 0.0,
+          "news": [
+            {
+              "headline": "Bitcoin price surges after ETF approval"
+            }
+          ],
+          "technical_indicators": {},
+          "market_sentiment": 0.8,
+          "volatility": 0.75
+        },
+        "analysis_summary": "{'trend': 'BULLISH', 'volatility': 'HIGH', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      }
+    ],
+    "mir": [
+      {
+        "timestamp": "2025-03-01T10:56:08.909411",
+        "asset_class": "Bitcoin",
+        "action_taken": "BUY",
+        "reasoning": "No reasoning provided",
+        "importance": 7.1,
+        "outcome": "Profitable",
+        "profit_loss": 700.0
+      }
+    ],
+    "mge": [
+      {
+        "timestamp": "2025-03-01T10:56:08.913108",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Bullish momentum increasing",
+          "Institutional adoption growing"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 60000
+      },
+      {
+        "timestamp": "2025-03-01T10:56:08.913108",
+        "conference_type": "ESC",
+        "key_insights": [],
+        "importance": 6.0,
+        "budget_allocation": null
+      }
+    ]
+  }
+}

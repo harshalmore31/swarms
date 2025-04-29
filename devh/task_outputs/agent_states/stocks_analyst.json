@@ -1,0 +1,66 @@
+{
+  "agent_name": "Stocks Analyst",
+  "asset_class": "Stocks",
+  "budget_allocation": 100000,
+  "portfolio_value": 120000.0,
+  "positions": {},
+  "performance_history": [],
+  "memory": {
+    "mmi": [
+      {
+        "timestamp": "2025-03-01T10:56:08.909411",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4600.0,
+          "timestamp": "2025-03-01T10:56:08.893522",
+          "volume": 0.0,
+          "open_price": 0.0,
+          "high_price": 0.0,
+          "low_price": 0.0,
+          "close_price": 0.0,
+          "news": [
+            {
+              "headline": "Tech sector leads market rally"
+            }
+          ],
+          "technical_indicators": {},
+          "market_sentiment": 0.6,
+          "volatility": 0.5
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      }
+    ],
+    "mir": [
+      {
+        "timestamp": "2025-03-01T10:56:08.909411",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      }
+    ],
+    "mge": [
+      {
+        "timestamp": "2025-03-01T10:56:08.913108",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Stable performance",
+          "Diversified exposure needed"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 100000
+      },
+      {
+        "timestamp": "2025-03-01T10:56:08.913108",
+        "conference_type": "ESC",
+        "key_insights": [],
+        "importance": 6.0,
+        "budget_allocation": null
+      }
+    ]
+  }
+}

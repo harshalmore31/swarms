@@ -1,0 +1,11 @@
+id,name,description,status
+1,Create Presentation,Prepare slides for the upcoming project review meeting,to do
+2,Write Blog Post,Write a blog post about the latest release of our software,to do
+3,Send Emails,Send follow-up emails to all conference attendees,in progress
+4,Review Code,Review the pull request for the new feature branch,to do
+5,Update Documentation,Generate a basic email for applying for swarms gen-AI role as harshal to manager,completed
+6,Data Analysis,Analyze user engagement data from the last month,to do
+7,Schedule Meeting,Schedule a team meeting to discuss sprint goals,completed
+8,Bug Fix,Fix the critical bug reported in the production environment,to do
+9,Generate Report,Generate a performance report for the last quarter,in progress
+10,Research,Research new tools for the project,completed

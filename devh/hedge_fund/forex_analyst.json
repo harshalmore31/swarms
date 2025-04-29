@@ -1,0 +1,1747 @@
+{
+  "agent_name": "Forex Analyst",
+  "asset_class": "Forex",
+  "budget_allocation": 40000,
+  "portfolio_value": 44711.76839509057,
+  "positions": {},
+  "performance_history": [
+    {
+      "timestamp": "2025-03-01T11:07:38.150187",
+      "old_value": 50000.0,
+      "new_value": 52213.54851661211,
+      "change": 2213.548516612107,
+      "change_percent": 4.427097033224214,
+      "reason": "Daily trading (4.43%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.172370",
+      "old_value": 52213.54851661211,
+      "new_value": 49493.01281544165,
+      "change": -2720.5357011704546,
+      "change_percent": -5.210401856339828,
+      "reason": "Daily trading (-5.21%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.198086",
+      "old_value": 49493.01281544165,
+      "new_value": 52339.24167744263,
+      "change": 2846.2288620009786,
+      "change_percent": 5.750769048177574,
+      "reason": "Daily trading (5.75%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.240966",
+      "old_value": 52339.24167744263,
+      "new_value": 49312.23897041325,
+      "change": -3027.00270702938,
+      "change_percent": -5.7834286665524415,
+      "reason": "Daily trading (-5.78%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.315062",
+      "old_value": 49312.23897041325,
+      "new_value": 48430.190916304484,
+      "change": -882.0480541087672,
+      "change_percent": -1.7887000722842568,
+      "reason": "Daily trading (-1.79%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.373733",
+      "old_value": 48430.190916304484,
+      "new_value": 51838.77890051913,
+      "change": 3408.587984214646,
+      "change_percent": 7.0381469073810985,
+      "reason": "Daily trading (7.04%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.437786",
+      "old_value": 51838.77890051913,
+      "new_value": 50560.108677973796,
+      "change": -1278.6702225453337,
+      "change_percent": -2.466628747176235,
+      "reason": "Daily trading (-2.47%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.514338",
+      "old_value": 50560.108677973796,
+      "new_value": 45746.09640939016,
+      "change": -4814.0122685836395,
+      "change_percent": -9.521364558855932,
+      "reason": "Daily trading (-9.52%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.599854",
+      "old_value": 45746.09640939016,
+      "new_value": 45432.98313407582,
+      "change": -313.11327531433926,
+      "change_percent": -0.6844590028233917,
+      "reason": "Daily trading (-0.68%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.706218",
+      "old_value": 45432.98313407582,
+      "new_value": 44711.76839509057,
+      "change": -721.2147389852471,
+      "change_percent": -1.5874254544476936,
+      "reason": "Daily trading (-1.59%)"
+    }
+  ],
+  "memory": {
+    "mmi": [
+      {
+        "timestamp": "2025-03-01T11:07:38.133006",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 1.112172215119523,
+          "timestamp": "2025-03-01T11:07:38.125050",
+          "volume": 8553000.390855854,
+          "open_price": 1.08,
+          "high_price": 1.112172215119523,
+          "low_price": 1.08,
+          "close_price": 1.112172215119523,
+          "news": [
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            },
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": -0.03734088101376962,
+          "volatility": 0.39501998601019267
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.142203",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 1.1173407355112162,
+          "timestamp": "2025-03-01T11:07:38.140203",
+          "volume": 8547690.649522552,
+          "open_price": 1.112172215119523,
+          "high_price": 1.1173407355112162,
+          "low_price": 1.112172215119523,
+          "close_price": 1.1173407355112162,
+          "news": [
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "US Trade Deficit Widens",
+              "sentiment": -0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": -0.057639924738037085,
+          "volatility": 0.41121885326712776
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.147181",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 1.1668064940640388,
+          "timestamp": "2025-03-01T11:07:38.145626",
+          "volume": 10580600.021883707,
+          "open_price": 1.1173407355112162,
+          "high_price": 1.1668064940640388,
+          "low_price": 1.1173407355112162,
+          "close_price": 1.1668064940640388,
+          "news": [
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            },
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.01503722344729877,
+          "volatility": 0.43846215665334076
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.154688",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 1.148923679142324,
+          "timestamp": "2025-03-01T11:07:38.153689",
+          "volume": 8358508.696235319,
+          "open_price": 1.1668064940640388,
+          "high_price": 1.1668064940640388,
+          "low_price": 1.148923679142324,
+          "close_price": 1.148923679142324,
+          "news": [
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            },
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": -0.014847275120537448,
+          "volatility": 0.4727467790610091
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.162733",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 1.1535005338919302,
+          "timestamp": "2025-03-01T11:07:38.161898",
+          "volume": 10347467.715381268,
+          "open_price": 1.148923679142324,
+          "high_price": 1.1535005338919302,
+          "low_price": 1.148923679142324,
+          "close_price": 1.1535005338919302,
+          "news": [
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "US Trade Deficit Widens",
+              "sentiment": -0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": -0.04557821400267244,
+          "volatility": 0.5719325136853837
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.167739",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 1.0933985206611352,
+          "timestamp": "2025-03-01T11:07:38.165739",
+          "volume": 9244582.771071624,
+          "open_price": 1.1535005338919302,
+          "high_price": 1.1535005338919302,
+          "low_price": 1.0933985206611352,
+          "close_price": 1.0933985206611352,
+          "news": [
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": -0.10322416277461549,
+          "volatility": 0.4777960085582911
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.177500",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 1.0454360822511743,
+          "timestamp": "2025-03-01T11:07:38.175828",
+          "volume": 9795276.142981187,
+          "open_price": 1.0933985206611352,
+          "high_price": 1.0933985206611352,
+          "low_price": 1.0454360822511743,
+          "close_price": 1.0454360822511743,
+          "news": [
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "US Trade Deficit Widens",
+              "sentiment": -0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": -0.05517768486636121,
+          "volatility": 0.5911146432712542
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.187427",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 1.0741127194676299,
+          "timestamp": "2025-03-01T11:07:38.184563",
+          "volume": 8286086.148324235,
+          "open_price": 1.0454360822511743,
+          "high_price": 1.0741127194676299,
+          "low_price": 1.0454360822511743,
+          "close_price": 1.0741127194676299,
+          "news": [
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": -0.11799154464699374,
+          "volatility": 0.5936427978237465
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.194179",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 1.1358824612813128,
+          "timestamp": "2025-03-01T11:07:38.193174",
+          "volume": 9607480.628805695,
+          "open_price": 1.0741127194676299,
+          "high_price": 1.1358824612813128,
+          "low_price": 1.0741127194676299,
+          "close_price": 1.1358824612813128,
+          "news": [
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            },
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": -0.19310747606220732,
+          "volatility": 0.5579566873911973
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.204863",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 1.1137433701467467,
+          "timestamp": "2025-03-01T11:07:38.203513",
+          "volume": 10574292.227095274,
+          "open_price": 1.1358824612813128,
+          "high_price": 1.1358824612813128,
+          "low_price": 1.1137433701467467,
+          "close_price": 1.1137433701467467,
+          "news": [
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": -0.202812365140982,
+          "volatility": 0.5918261137740484
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.217387",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 1.02477292173415,
+          "timestamp": "2025-03-01T11:07:38.214976",
+          "volume": 9684123.46730968,
+          "open_price": 1.1137433701467467,
+          "high_price": 1.1137433701467467,
+          "low_price": 1.02477292173415,
+          "close_price": 1.02477292173415,
+          "news": [
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            },
+            {
+              "headline": "Bank of Japan Maintains Policy",
+              "sentiment": 0.1
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": -0.13298974616701223,
+          "volatility": 0.8978602987839247
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.228725",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.9655059108115102,
+          "timestamp": "2025-03-01T11:07:38.227695",
+          "volume": 11446846.58649199,
+          "open_price": 1.02477292173415,
+          "high_price": 1.02477292173415,
+          "low_price": 0.9655059108115102,
+          "close_price": 0.9655059108115102,
+          "news": [
+            {
+              "headline": "Bank of Japan Maintains Policy",
+              "sentiment": 0.1
+            },
+            {
+              "headline": "US Trade Deficit Widens",
+              "sentiment": -0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": -0.07845178300760094,
+          "volatility": 0.9801290011151131
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.259134",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.9284203850562474,
+          "timestamp": "2025-03-01T11:07:38.255295",
+          "volume": 11132805.772915557,
+          "open_price": 0.9655059108115102,
+          "high_price": 0.9655059108115102,
+          "low_price": 0.9284203850562474,
+          "close_price": 0.9284203850562474,
+          "news": [
+            {
+              "headline": "US Trade Deficit Widens",
+              "sentiment": -0.4
+            },
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.0032704596567903477,
+          "volatility": 0.7346779737104449
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.285495",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.8495626617972232,
+          "timestamp": "2025-03-01T11:07:38.285495",
+          "volume": 9714157.522101436,
+          "open_price": 0.9284203850562474,
+          "high_price": 0.9284203850562474,
+          "low_price": 0.8495626617972232,
+          "close_price": 0.8495626617972232,
+          "news": [
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            },
+            {
+              "headline": "Bank of Japan Maintains Policy",
+              "sentiment": 0.1
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.056720296550838795,
+          "volatility": 1.1056482452509442
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.301069",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.8343665338515562,
+          "timestamp": "2025-03-01T11:07:38.301069",
+          "volume": 11916378.960191242,
+          "open_price": 0.8495626617972232,
+          "high_price": 0.8495626617972232,
+          "low_price": 0.8343665338515562,
+          "close_price": 0.8343665338515562,
+          "news": [
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.0905762882416683,
+          "volatility": 0.9120270645647869
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.323351",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.8023135443110289,
+          "timestamp": "2025-03-01T11:07:38.322351",
+          "volume": 9902762.048984561,
+          "open_price": 0.8343665338515562,
+          "high_price": 0.8343665338515562,
+          "low_price": 0.8023135443110289,
+          "close_price": 0.8023135443110289,
+          "news": [
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.03718450479832022,
+          "volatility": 0.8507965670272403
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.344928",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.7788255708935805,
+          "timestamp": "2025-03-01T11:07:38.343924",
+          "volume": 9439227.114444215,
+          "open_price": 0.8023135443110289,
+          "high_price": 0.8023135443110289,
+          "low_price": 0.7788255708935805,
+          "close_price": 0.7788255708935805,
+          "news": [
+            {
+              "headline": "US Trade Deficit Widens",
+              "sentiment": -0.4
+            },
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.12644716468529035,
+          "volatility": 0.9575305412097607
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.359441",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.8336404587253202,
+          "timestamp": "2025-03-01T11:07:38.358028",
+          "volume": 10425559.158852298,
+          "open_price": 0.7788255708935805,
+          "high_price": 0.8336404587253202,
+          "low_price": 0.7788255708935805,
+          "close_price": 0.8336404587253202,
+          "news": [
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "US Trade Deficit Widens",
+              "sentiment": -0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.13354483761467617,
+          "volatility": 1.1032659903953979
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.382007",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.758113862462298,
+          "timestamp": "2025-03-01T11:07:38.381231",
+          "volume": 11614145.19080761,
+          "open_price": 0.8336404587253202,
+          "high_price": 0.8336404587253202,
+          "low_price": 0.758113862462298,
+          "close_price": 0.758113862462298,
+          "news": [
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "US Trade Deficit Widens",
+              "sentiment": -0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.11763351112773608,
+          "volatility": 1.1760133529334813
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.405891",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.7894039925543092,
+          "timestamp": "2025-03-01T11:07:38.404891",
+          "volume": 8865706.875391716,
+          "open_price": 0.758113862462298,
+          "high_price": 0.7894039925543092,
+          "low_price": 0.758113862462298,
+          "close_price": 0.7894039925543092,
+          "news": [
+            {
+              "headline": "Bank of Japan Maintains Policy",
+              "sentiment": 0.1
+            },
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.21763020868822552,
+          "volatility": 0.9671336502447498
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.422412",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.7699323267426076,
+          "timestamp": "2025-03-01T11:07:38.421407",
+          "volume": 10613409.626057984,
+          "open_price": 0.7894039925543092,
+          "high_price": 0.7894039925543092,
+          "low_price": 0.7699323267426076,
+          "close_price": 0.7699323267426076,
+          "news": [
+            {
+              "headline": "US Trade Deficit Widens",
+              "sentiment": -0.4
+            },
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.2509263525602723,
+          "volatility": 0.752519311456445
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.448677",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.730475900649684,
+          "timestamp": "2025-03-01T11:07:38.446994",
+          "volume": 9888942.802090155,
+          "open_price": 0.7699323267426076,
+          "high_price": 0.7699323267426076,
+          "low_price": 0.730475900649684,
+          "close_price": 0.730475900649684,
+          "news": [
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.15613530989563462,
+          "volatility": 1.1089379566696782
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.476132",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.6545067810426015,
+          "timestamp": "2025-03-01T11:07:38.474749",
+          "volume": 8097668.472903724,
+          "open_price": 0.730475900649684,
+          "high_price": 0.730475900649684,
+          "low_price": 0.6545067810426015,
+          "close_price": 0.6545067810426015,
+          "news": [
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.23856079866909222,
+          "volatility": 1.0187799828054511
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.495139",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.5921888043571024,
+          "timestamp": "2025-03-01T11:07:38.493217",
+          "volume": 10908272.712740779,
+          "open_price": 0.6545067810426015,
+          "high_price": 0.6545067810426015,
+          "low_price": 0.5921888043571024,
+          "close_price": 0.5921888043571024,
+          "news": [
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            },
+            {
+              "headline": "Bank of Japan Maintains Policy",
+              "sentiment": 0.1
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.23422150288699808,
+          "volatility": 0.8301383160820448
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.528870",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.562909799936279,
+          "timestamp": "2025-03-01T11:07:38.527291",
+          "volume": 10657547.41377681,
+          "open_price": 0.5921888043571024,
+          "high_price": 0.5921888043571024,
+          "low_price": 0.562909799936279,
+          "close_price": 0.562909799936279,
+          "news": [
+            {
+              "headline": "Bank of Japan Maintains Policy",
+              "sentiment": 0.1
+            },
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.18813454691456297,
+          "volatility": 0.9448478150689996
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.561400",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.5620584978487375,
+          "timestamp": "2025-03-01T11:07:38.560218",
+          "volume": 10862220.740628388,
+          "open_price": 0.562909799936279,
+          "high_price": 0.562909799936279,
+          "low_price": 0.5620584978487375,
+          "close_price": 0.5620584978487375,
+          "news": [
+            {
+              "headline": "US Trade Deficit Widens",
+              "sentiment": -0.4
+            },
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.16018921096687982,
+          "volatility": 0.8687074669706486
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.580980",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.5582114378590779,
+          "timestamp": "2025-03-01T11:07:38.579242",
+          "volume": 9219644.270250728,
+          "open_price": 0.5620584978487375,
+          "high_price": 0.5620584978487375,
+          "low_price": 0.5582114378590779,
+          "close_price": 0.5582114378590779,
+          "news": [
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "Bank of Japan Maintains Policy",
+              "sentiment": 0.1
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.19798155644446275,
+          "volatility": 0.804410797824049
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.611543",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.528747426982129,
+          "timestamp": "2025-03-01T11:07:38.611543",
+          "volume": 10971623.187699253,
+          "open_price": 0.5582114378590779,
+          "high_price": 0.5582114378590779,
+          "low_price": 0.528747426982129,
+          "close_price": 0.528747426982129,
+          "news": [
+            {
+              "headline": "Dollar Strengthens on Safe-Haven Flows",
+              "sentiment": 0.3
+            },
+            {
+              "headline": "Bank of Japan Maintains Policy",
+              "sentiment": 0.1
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.2735970037691893,
+          "volatility": 0.8635134692719809
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.653478",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.5156540709573441,
+          "timestamp": "2025-03-01T11:07:38.650080",
+          "volume": 11003842.543255862,
+          "open_price": 0.528747426982129,
+          "high_price": 0.528747426982129,
+          "low_price": 0.5156540709573441,
+          "close_price": 0.5156540709573441,
+          "news": [
+            {
+              "headline": "Bank of Japan Maintains Policy",
+              "sentiment": 0.1
+            },
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.1962686058906727,
+          "volatility": 1.028369185048886
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.683030",
+        "asset_class": "Forex",
+        "market_data": {
+          "asset_class": "Forex",
+          "price": 0.5074684469780714,
+          "timestamp": "2025-03-01T11:07:38.680996",
+          "volume": 9420274.584673846,
+          "open_price": 0.5156540709573441,
+          "high_price": 0.5156540709573441,
+          "low_price": 0.5074684469780714,
+          "close_price": 0.5074684469780714,
+          "news": [
+            {
+              "headline": "UK GDP Growth Slows",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "ECB Raises Interest Rates",
+              "sentiment": 0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 44.97416967967458,
+            "macd": -0.8909639897007166,
+            "ema50": 0.9558534936580338,
+            "ema100": 1.002204365634313,
+            "ema200": 1.0217253497133079,
+            "adx": 25.381117040610825
+          },
+          "market_sentiment": 0.09798918376358655,
+          "volatility": 1.1896173576469105
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      }
+    ],
+    "mir": [
+      {
+        "timestamp": "2025-03-01T11:07:38.133006",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.142203",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.147181",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.154688",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.162733",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.168792",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.177500",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.187427",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.194179",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.204863",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.217387",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.229244",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.259134",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.285495",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.301069",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.324352",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.344928",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.359441",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.382007",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.405891",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.422412",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.448677",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.476132",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.495591",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.528870",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.561400",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.580980",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.611543",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.653478",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.683645",
+        "asset_class": "Forex",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      }
+    ],
+    "mge": [
+      {
+        "timestamp": "2025-03-01T11:07:38.138204",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Hedging opportunity",
+          "Interest rate divergence trading"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 40000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.159035",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Hedging opportunity",
+          "Interest rate divergence trading"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 40000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.182557",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Hedging opportunity",
+          "Interest rate divergence trading"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 40000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.209955",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Hedging opportunity",
+          "Interest rate divergence trading"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 40000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.217387",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.229244",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.260134",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.276758",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Hedging opportunity",
+          "Interest rate divergence trading"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 40000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.290468",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.301069",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.324352",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.336891",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Hedging opportunity",
+          "Interest rate divergence trading"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 40000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.344928",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.359441",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.383032",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.397065",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Hedging opportunity",
+          "Interest rate divergence trading"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 40000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.405891",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.422412",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.448677",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.465465",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Hedging opportunity",
+          "Interest rate divergence trading"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 40000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.476132",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.495591",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.529405",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.550603",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Hedging opportunity",
+          "Interest rate divergence trading"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 40000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.561400",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.580980",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.611543",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.634798",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Hedging opportunity",
+          "Interest rate divergence trading"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 40000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.653478",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.683645",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      }
+    ]
+  }
+}

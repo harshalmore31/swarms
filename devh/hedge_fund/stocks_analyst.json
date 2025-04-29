@@ -1,0 +1,1747 @@
+{
+  "agent_name": "Stocks Analyst",
+  "asset_class": "Stocks",
+  "budget_allocation": 100000,
+  "portfolio_value": 120975.40801240178,
+  "positions": {},
+  "performance_history": [
+    {
+      "timestamp": "2025-03-01T11:07:38.150187",
+      "old_value": 100000.0,
+      "new_value": 96675.87661362186,
+      "change": -3324.123386378138,
+      "change_percent": -3.324123386378138,
+      "reason": "Daily trading (-3.32%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.172370",
+      "old_value": 96675.87661362186,
+      "new_value": 97744.02016546205,
+      "change": 1068.143551840185,
+      "change_percent": 1.1048708211968579,
+      "reason": "Daily trading (1.10%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.198086",
+      "old_value": 97744.02016546205,
+      "new_value": 99869.67022192858,
+      "change": 2125.650056466533,
+      "change_percent": 2.1747111003498847,
+      "reason": "Daily trading (2.17%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.240405",
+      "old_value": 99869.67022192858,
+      "new_value": 107841.87510570044,
+      "change": 7972.204883771861,
+      "change_percent": 7.982608599844348,
+      "reason": "Daily trading (7.98%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.315062",
+      "old_value": 107841.87510570044,
+      "new_value": 108186.79831042445,
+      "change": 344.9232047240075,
+      "change_percent": 0.31984162403141964,
+      "reason": "Daily trading (0.32%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.371261",
+      "old_value": 108186.79831042445,
+      "new_value": 116994.31178226636,
+      "change": 8807.513471841914,
+      "change_percent": 8.141024237144153,
+      "reason": "Daily trading (8.14%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.437786",
+      "old_value": 116994.31178226636,
+      "new_value": 124824.5191168829,
+      "change": 7830.207334616542,
+      "change_percent": 6.692810287383066,
+      "reason": "Daily trading (6.69%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.514338",
+      "old_value": 124824.5191168829,
+      "new_value": 125392.0818202454,
+      "change": 567.5627033624914,
+      "change_percent": 0.45468847577216653,
+      "reason": "Daily trading (0.45%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.599854",
+      "old_value": 125392.0818202454,
+      "new_value": 118544.17253544649,
+      "change": -6847.909284798909,
+      "change_percent": -5.461197537668816,
+      "reason": "Daily trading (-5.46%)"
+    },
+    {
+      "timestamp": "2025-03-01T11:07:38.706218",
+      "old_value": 118544.17253544649,
+      "new_value": 120975.40801240178,
+      "change": 2431.2354769552912,
+      "change_percent": 2.0509110021653028,
+      "reason": "Daily trading (2.05%)"
+    }
+  ],
+  "memory": {
+    "mmi": [
+      {
+        "timestamp": "2025-03-01T11:07:38.133006",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4361.931149926477,
+          "timestamp": "2025-03-01T11:07:38.125050",
+          "volume": 5029453.717938258,
+          "open_price": 4500.0,
+          "high_price": 4500.0,
+          "low_price": 4361.931149926477,
+          "close_price": 4361.931149926477,
+          "news": [
+            {
+              "headline": "Manufacturing Data Shows Contraction",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "Strong Earnings from Tech Sector",
+              "sentiment": 0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.08363359788265923,
+          "volatility": 0.44123208570672046
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.141203",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4418.286056178638,
+          "timestamp": "2025-03-01T11:07:38.140203",
+          "volume": 5530758.705460594,
+          "open_price": 4361.931149926477,
+          "high_price": 4418.286056178638,
+          "low_price": 4361.931149926477,
+          "close_price": 4418.286056178638,
+          "news": [
+            {
+              "headline": "Manufacturing Data Shows Contraction",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "Fed Signals Rate Cuts",
+              "sentiment": 0.8
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.0932587132224576,
+          "volatility": 0.4396932572971503
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.146178",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4271.41677610812,
+          "timestamp": "2025-03-01T11:07:38.145626",
+          "volume": 4921197.111352067,
+          "open_price": 4418.286056178638,
+          "high_price": 4418.286056178638,
+          "low_price": 4271.41677610812,
+          "close_price": 4271.41677610812,
+          "news": [
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            },
+            {
+              "headline": "Fed Signals Rate Cuts",
+              "sentiment": 0.8
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.1714019491705365,
+          "volatility": 0.38685328083378556
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.154688",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4091.734439216116,
+          "timestamp": "2025-03-01T11:07:38.153689",
+          "volume": 4658668.926173983,
+          "open_price": 4271.41677610812,
+          "high_price": 4271.41677610812,
+          "low_price": 4091.734439216116,
+          "close_price": 4091.734439216116,
+          "news": [
+            {
+              "headline": "Manufacturing Data Shows Contraction",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "Strong Earnings from Tech Sector",
+              "sentiment": 0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.18768843416747194,
+          "volatility": 0.4531410237139318
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 5.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.162733",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4120.498585540764,
+          "timestamp": "2025-03-01T11:07:38.161898",
+          "volume": 5165438.680314615,
+          "open_price": 4091.734439216116,
+          "high_price": 4120.498585540764,
+          "low_price": 4091.734439216116,
+          "close_price": 4120.498585540764,
+          "news": [
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "Manufacturing Data Shows Contraction",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.15895587987273474,
+          "volatility": 0.591143280537435
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.166739",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4166.024772100233,
+          "timestamp": "2025-03-01T11:07:38.165739",
+          "volume": 5588089.162601864,
+          "open_price": 4120.498585540764,
+          "high_price": 4166.024772100233,
+          "low_price": 4120.498585540764,
+          "close_price": 4166.024772100233,
+          "news": [
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "Fed Signals Rate Cuts",
+              "sentiment": 0.8
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.1056805190431696,
+          "volatility": 0.6487850480280939
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.177500",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4362.463587141357,
+          "timestamp": "2025-03-01T11:07:38.175828",
+          "volume": 5786133.24888181,
+          "open_price": 4166.024772100233,
+          "high_price": 4362.463587141357,
+          "low_price": 4166.024772100233,
+          "close_price": 4362.463587141357,
+          "news": [
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.14465957132692747,
+          "volatility": 0.6287177959283319
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.187427",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4276.077308330593,
+          "timestamp": "2025-03-01T11:07:38.184563",
+          "volume": 5972961.6689672135,
+          "open_price": 4362.463587141357,
+          "high_price": 4362.463587141357,
+          "low_price": 4276.077308330593,
+          "close_price": 4276.077308330593,
+          "news": [
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            },
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.08536431006734291,
+          "volatility": 0.7483342103846166
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.193174",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4369.069636214401,
+          "timestamp": "2025-03-01T11:07:38.193174",
+          "volume": 4572414.645330181,
+          "open_price": 4276.077308330593,
+          "high_price": 4369.069636214401,
+          "low_price": 4276.077308330593,
+          "close_price": 4369.069636214401,
+          "news": [
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            },
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.16872532861943323,
+          "volatility": 0.7994523134863128
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.203862",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4297.588136824801,
+          "timestamp": "2025-03-01T11:07:38.203513",
+          "volume": 5750198.222474341,
+          "open_price": 4369.069636214401,
+          "high_price": 4369.069636214401,
+          "low_price": 4297.588136824801,
+          "close_price": 4297.588136824801,
+          "news": [
+            {
+              "headline": "Strong Earnings from Tech Sector",
+              "sentiment": 0.7
+            },
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.14009653285294818,
+          "volatility": 0.6620442795087494
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.216387",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4494.119356832171,
+          "timestamp": "2025-03-01T11:07:38.214976",
+          "volume": 4901089.461587015,
+          "open_price": 4297.588136824801,
+          "high_price": 4494.119356832171,
+          "low_price": 4297.588136824801,
+          "close_price": 4494.119356832171,
+          "news": [
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "Fed Signals Rate Cuts",
+              "sentiment": 0.8
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.21572734845025368,
+          "volatility": 0.9908389470379151
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.228725",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 4852.867315097926,
+          "timestamp": "2025-03-01T11:07:38.227695",
+          "volume": 5323259.424204749,
+          "open_price": 4494.119356832171,
+          "high_price": 4852.867315097926,
+          "low_price": 4494.119356832171,
+          "close_price": 4852.867315097926,
+          "news": [
+            {
+              "headline": "Strong Earnings from Tech Sector",
+              "sentiment": 0.7
+            },
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.22978310120714918,
+          "volatility": 0.8064486805818845
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.258134",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5216.965464717302,
+          "timestamp": "2025-03-01T11:07:38.255295",
+          "volume": 4735257.998075533,
+          "open_price": 4852.867315097926,
+          "high_price": 5216.965464717302,
+          "low_price": 4852.867315097926,
+          "close_price": 5216.965464717302,
+          "news": [
+            {
+              "headline": "Strong Earnings from Tech Sector",
+              "sentiment": 0.7
+            },
+            {
+              "headline": "Manufacturing Data Shows Contraction",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.14273890116634524,
+          "volatility": 0.7321663406529776
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.285495",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5532.405957400162,
+          "timestamp": "2025-03-01T11:07:38.285495",
+          "volume": 5200038.899048625,
+          "open_price": 5216.965464717302,
+          "high_price": 5532.405957400162,
+          "low_price": 5216.965464717302,
+          "close_price": 5532.405957400162,
+          "news": [
+            {
+              "headline": "Fed Signals Rate Cuts",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.2002002444005331,
+          "volatility": 0.835818329513845
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.301069",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5550.100894462322,
+          "timestamp": "2025-03-01T11:07:38.301069",
+          "volume": 4226334.191609842,
+          "open_price": 5532.405957400162,
+          "high_price": 5550.100894462322,
+          "low_price": 5532.405957400162,
+          "close_price": 5550.100894462322,
+          "news": [
+            {
+              "headline": "Fed Signals Rate Cuts",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.11503218403730535,
+          "volatility": 1.1273926455928347
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.323351",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5670.41193959146,
+          "timestamp": "2025-03-01T11:07:38.322351",
+          "volume": 4414004.290165975,
+          "open_price": 5550.100894462322,
+          "high_price": 5670.41193959146,
+          "low_price": 5550.100894462322,
+          "close_price": 5670.41193959146,
+          "news": [
+            {
+              "headline": "Strong Earnings from Tech Sector",
+              "sentiment": 0.7
+            },
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.1748335541852009,
+          "volatility": 0.8107511733488675
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.344928",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5651.675163483177,
+          "timestamp": "2025-03-01T11:07:38.343924",
+          "volume": 4835759.712879204,
+          "open_price": 5670.41193959146,
+          "high_price": 5670.41193959146,
+          "low_price": 5651.675163483177,
+          "close_price": 5651.675163483177,
+          "news": [
+            {
+              "headline": "Manufacturing Data Shows Contraction",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "Fed Signals Rate Cuts",
+              "sentiment": 0.8
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.17618625708573257,
+          "volatility": 1.1483235581277764
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.359045",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 6111.779408346999,
+          "timestamp": "2025-03-01T11:07:38.358028",
+          "volume": 4372016.971062163,
+          "open_price": 5651.675163483177,
+          "high_price": 6111.779408346999,
+          "low_price": 5651.675163483177,
+          "close_price": 6111.779408346999,
+          "news": [
+            {
+              "headline": "Fed Signals Rate Cuts",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Strong Earnings from Tech Sector",
+              "sentiment": 0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.2706887949472072,
+          "volatility": 1.0279919518566027
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.382007",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5868.617343047232,
+          "timestamp": "2025-03-01T11:07:38.381231",
+          "volume": 4600364.472813998,
+          "open_price": 6111.779408346999,
+          "high_price": 6111.779408346999,
+          "low_price": 5868.617343047232,
+          "close_price": 5868.617343047232,
+          "news": [
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            },
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.26407139668340673,
+          "volatility": 0.995206011243362
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.405891",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 6347.153029905248,
+          "timestamp": "2025-03-01T11:07:38.404891",
+          "volume": 4308217.255468615,
+          "open_price": 5868.617343047232,
+          "high_price": 6347.153029905248,
+          "low_price": 5868.617343047232,
+          "close_price": 6347.153029905248,
+          "news": [
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "Strong Earnings from Tech Sector",
+              "sentiment": 0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.36017104939221867,
+          "volatility": 0.9218941176608185
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.422412",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 6771.955940846693,
+          "timestamp": "2025-03-01T11:07:38.421407",
+          "volume": 5976261.370992073,
+          "open_price": 6347.153029905248,
+          "high_price": 6771.955940846693,
+          "low_price": 6347.153029905248,
+          "close_price": 6771.955940846693,
+          "news": [
+            {
+              "headline": "Manufacturing Data Shows Contraction",
+              "sentiment": -0.6
+            },
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.26477234228817287,
+          "volatility": 0.69600653434523
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.447994",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 6062.740976535119,
+          "timestamp": "2025-03-01T11:07:38.446994",
+          "volume": 5930809.834221649,
+          "open_price": 6771.955940846693,
+          "high_price": 6771.955940846693,
+          "low_price": 6062.740976535119,
+          "close_price": 6062.740976535119,
+          "news": [
+            {
+              "headline": "Fed Signals Rate Cuts",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Strong Earnings from Tech Sector",
+              "sentiment": 0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.2875309726605394,
+          "volatility": 0.8708283854557057
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.476132",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5803.492672624369,
+          "timestamp": "2025-03-01T11:07:38.474749",
+          "volume": 5887644.003314403,
+          "open_price": 6062.740976535119,
+          "high_price": 6062.740976535119,
+          "low_price": 5803.492672624369,
+          "close_price": 5803.492672624369,
+          "news": [
+            {
+              "headline": "Fed Signals Rate Cuts",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.29820568096971356,
+          "volatility": 1.015065216742166
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.494216",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5829.880484999075,
+          "timestamp": "2025-03-01T11:07:38.493217",
+          "volume": 4670415.85639341,
+          "open_price": 5803.492672624369,
+          "high_price": 5829.880484999075,
+          "low_price": 5803.492672624369,
+          "close_price": 5829.880484999075,
+          "news": [
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            },
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.30037804441386035,
+          "volatility": 1.0395273262648002
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.528349",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5978.90690538944,
+          "timestamp": "2025-03-01T11:07:38.527291",
+          "volume": 5415029.806059164,
+          "open_price": 5829.880484999075,
+          "high_price": 5978.90690538944,
+          "low_price": 5829.880484999075,
+          "close_price": 5978.90690538944,
+          "news": [
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            },
+            {
+              "headline": "Manufacturing Data Shows Contraction",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.31787542533525265,
+          "volatility": 0.764225481109493
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.560218",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 6399.680566395365,
+          "timestamp": "2025-03-01T11:07:38.560218",
+          "volume": 5506397.036300326,
+          "open_price": 5978.90690538944,
+          "high_price": 6399.680566395365,
+          "low_price": 5978.90690538944,
+          "close_price": 6399.680566395365,
+          "news": [
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.26890108860137496,
+          "volatility": 0.994200207552926
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.580241",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 6050.181368884711,
+          "timestamp": "2025-03-01T11:07:38.579242",
+          "volume": 4737632.374776229,
+          "open_price": 6399.680566395365,
+          "high_price": 6399.680566395365,
+          "low_price": 6050.181368884711,
+          "close_price": 6050.181368884711,
+          "news": [
+            {
+              "headline": "Fed Signals Rate Cuts",
+              "sentiment": 0.8
+            },
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.34787313155912636,
+          "volatility": 0.9284648684047893
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.611543",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5560.955252512879,
+          "timestamp": "2025-03-01T11:07:38.611543",
+          "volume": 4921430.392115118,
+          "open_price": 6050.181368884711,
+          "high_price": 6050.181368884711,
+          "low_price": 5560.955252512879,
+          "close_price": 5560.955252512879,
+          "news": [
+            {
+              "headline": "Strong Earnings from Tech Sector",
+              "sentiment": 0.7
+            },
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.3567239622873064,
+          "volatility": 0.8286353169441681
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.652194",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5709.241051017919,
+          "timestamp": "2025-03-01T11:07:38.650080",
+          "volume": 5618857.643672484,
+          "open_price": 5560.955252512879,
+          "high_price": 5709.241051017919,
+          "low_price": 5560.955252512879,
+          "close_price": 5709.241051017919,
+          "news": [
+            {
+              "headline": "Inflation Data Exceeds Expectations",
+              "sentiment": -0.5
+            },
+            {
+              "headline": "Strong Earnings from Tech Sector",
+              "sentiment": 0.7
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.380786058876746,
+          "volatility": 0.8543872423877856
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.681977",
+        "asset_class": "Stocks",
+        "market_data": {
+          "asset_class": "Stocks",
+          "price": 5826.332503873384,
+          "timestamp": "2025-03-01T11:07:38.680996",
+          "volume": 5863872.251819815,
+          "open_price": 5709.241051017919,
+          "high_price": 5826.332503873384,
+          "low_price": 5709.241051017919,
+          "close_price": 5826.332503873384,
+          "news": [
+            {
+              "headline": "Consumer Sentiment Improves",
+              "sentiment": 0.4
+            },
+            {
+              "headline": "Manufacturing Data Shows Contraction",
+              "sentiment": -0.6
+            }
+          ],
+          "technical_indicators": {
+            "rsi": 96.65114119559243,
+            "macd": -0.6283178449869631,
+            "ema50": 4875.515568312227,
+            "ema100": 4641.430556578116,
+            "ema200": 4439.283632090744,
+            "adx": 13.870207435987336
+          },
+          "market_sentiment": 0.28489578368538987,
+          "volatility": 1.1204646869401365
+        },
+        "analysis_summary": "{'trend': 'NEUTRAL', 'volatility': 'MEDIUM', 'risk_level': 'MEDIUM', 'recommended_action': 'BUY'}",
+        "importance": 8.0
+      }
+    ],
+    "mir": [
+      {
+        "timestamp": "2025-03-01T11:07:38.133006",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.141203",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.147181",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.154688",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.162733",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.167739",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.177500",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.187427",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.193174",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.203862",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.216387",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.228725",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.258134",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.285495",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.301069",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.323351",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.344928",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.359441",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.382007",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.405891",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.422412",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.447994",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.476132",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.494216",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.528870",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.560218",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.580980",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.611543",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.653478",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.683030",
+        "asset_class": "Stocks",
+        "action_taken": "HOLD",
+        "reasoning": "No reasoning provided",
+        "importance": 7.0,
+        "outcome": null,
+        "profit_loss": null
+      }
+    ],
+    "mge": [
+      {
+        "timestamp": "2025-03-01T11:07:38.137197",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Stable performance",
+          "Diversified exposure needed"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 100000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.158035",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Stable performance",
+          "Diversified exposure needed"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 100000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.181505",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Stable performance",
+          "Diversified exposure needed"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 100000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.209955",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Stable performance",
+          "Diversified exposure needed"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 100000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.217387",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.229244",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.260134",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.276758",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Stable performance",
+          "Diversified exposure needed"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 100000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.290468",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.301069",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.324352",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.336891",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Stable performance",
+          "Diversified exposure needed"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 100000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.344928",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.359441",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.383032",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.397065",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Stable performance",
+          "Diversified exposure needed"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 100000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.405891",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.422412",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.448677",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.465465",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Stable performance",
+          "Diversified exposure needed"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 100000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.476132",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.495591",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.529405",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.550264",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Stable performance",
+          "Diversified exposure needed"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 100000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.561400",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.580980",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.611543",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.634798",
+        "conference_type": "BAC",
+        "key_insights": [
+          "Stable performance",
+          "Diversified exposure needed"
+        ],
+        "importance": 6.0,
+        "budget_allocation": 100000
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.653478",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      },
+      {
+        "timestamp": "2025-03-01T11:07:38.683645",
+        "conference_type": "EMC",
+        "key_insights": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "importance": 8.0,
+        "budget_allocation": null
+      }
+    ]
+  }
+}

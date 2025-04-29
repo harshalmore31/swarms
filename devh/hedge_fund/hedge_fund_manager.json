@@ -1,0 +1,986 @@
+{
+  "total_portfolio_value": 204964.0912982982,
+  "market_condition": "EXTREME_VOLATILITY",
+  "conference_history": [
+    {
+      "type": "BAC",
+      "timestamp": "2025-03-01T11:07:38.138204",
+      "market_condition": "NORMAL",
+      "result": {
+        "allocations": {
+          "Bitcoin": {
+            "value": 60000,
+            "percentage": 30
+          },
+          "Stocks": {
+            "value": 100000,
+            "percentage": 50
+          },
+          "Forex": {
+            "value": 40000,
+            "percentage": 20
+          }
+        },
+        "reasoning": {
+          "Bitcoin": [
+            "Bullish momentum increasing",
+            "Institutional adoption growing"
+          ],
+          "Stocks": [
+            "Stable performance",
+            "Diversified exposure needed"
+          ],
+          "Forex": [
+            "Hedging opportunity",
+            "Interest rate divergence trading"
+          ]
+        },
+        "summary": "Increased Bitcoin allocation due to bullish momentum, maintained stocks for stability."
+      }
+    },
+    {
+      "type": "BAC",
+      "timestamp": "2025-03-01T11:07:38.159035",
+      "market_condition": "NORMAL",
+      "result": {
+        "allocations": {
+          "Bitcoin": {
+            "value": 60000,
+            "percentage": 30
+          },
+          "Stocks": {
+            "value": 100000,
+            "percentage": 50
+          },
+          "Forex": {
+            "value": 40000,
+            "percentage": 20
+          }
+        },
+        "reasoning": {
+          "Bitcoin": [
+            "Bullish momentum increasing",
+            "Institutional adoption growing"
+          ],
+          "Stocks": [
+            "Stable performance",
+            "Diversified exposure needed"
+          ],
+          "Forex": [
+            "Hedging opportunity",
+            "Interest rate divergence trading"
+          ]
+        },
+        "summary": "Increased Bitcoin allocation due to bullish momentum, maintained stocks for stability."
+      }
+    },
+    {
+      "type": "BAC",
+      "timestamp": "2025-03-01T11:07:38.182557",
+      "market_condition": "NORMAL",
+      "result": {
+        "allocations": {
+          "Bitcoin": {
+            "value": 60000,
+            "percentage": 30
+          },
+          "Stocks": {
+            "value": 100000,
+            "percentage": 50
+          },
+          "Forex": {
+            "value": 40000,
+            "percentage": 20
+          }
+        },
+        "reasoning": {
+          "Bitcoin": [
+            "Bullish momentum increasing",
+            "Institutional adoption growing"
+          ],
+          "Stocks": [
+            "Stable performance",
+            "Diversified exposure needed"
+          ],
+          "Forex": [
+            "Hedging opportunity",
+            "Interest rate divergence trading"
+          ]
+        },
+        "summary": "Increased Bitcoin allocation due to bullish momentum, maintained stocks for stability."
+      }
+    },
+    {
+      "type": "BAC",
+      "timestamp": "2025-03-01T11:07:38.209955",
+      "market_condition": "VOLATILE",
+      "result": {
+        "allocations": {
+          "Bitcoin": {
+            "value": 60000,
+            "percentage": 30
+          },
+          "Stocks": {
+            "value": 100000,
+            "percentage": 50
+          },
+          "Forex": {
+            "value": 40000,
+            "percentage": 20
+          }
+        },
+        "reasoning": {
+          "Bitcoin": [
+            "Bullish momentum increasing",
+            "Institutional adoption growing"
+          ],
+          "Stocks": [
+            "Stable performance",
+            "Diversified exposure needed"
+          ],
+          "Forex": [
+            "Hedging opportunity",
+            "Interest rate divergence trading"
+          ]
+        },
+        "summary": "Increased Bitcoin allocation due to bullish momentum, maintained stocks for stability."
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.217387",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.229244",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.260134",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "BAC",
+      "timestamp": "2025-03-01T11:07:38.276758",
+      "market_condition": "EXTREME_VOLATILITY",
+      "result": {
+        "allocations": {
+          "Bitcoin": {
+            "value": 60000,
+            "percentage": 30
+          },
+          "Stocks": {
+            "value": 100000,
+            "percentage": 50
+          },
+          "Forex": {
+            "value": 40000,
+            "percentage": 20
+          }
+        },
+        "reasoning": {
+          "Bitcoin": [
+            "Bullish momentum increasing",
+            "Institutional adoption growing"
+          ],
+          "Stocks": [
+            "Stable performance",
+            "Diversified exposure needed"
+          ],
+          "Forex": [
+            "Hedging opportunity",
+            "Interest rate divergence trading"
+          ]
+        },
+        "summary": "Increased Bitcoin allocation due to bullish momentum, maintained stocks for stability."
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.290468",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.301069",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.324352",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "BAC",
+      "timestamp": "2025-03-01T11:07:38.336891",
+      "market_condition": "EXTREME_VOLATILITY",
+      "result": {
+        "allocations": {
+          "Bitcoin": {
+            "value": 60000,
+            "percentage": 30
+          },
+          "Stocks": {
+            "value": 100000,
+            "percentage": 50
+          },
+          "Forex": {
+            "value": 40000,
+            "percentage": 20
+          }
+        },
+        "reasoning": {
+          "Bitcoin": [
+            "Bullish momentum increasing",
+            "Institutional adoption growing"
+          ],
+          "Stocks": [
+            "Stable performance",
+            "Diversified exposure needed"
+          ],
+          "Forex": [
+            "Hedging opportunity",
+            "Interest rate divergence trading"
+          ]
+        },
+        "summary": "Increased Bitcoin allocation due to bullish momentum, maintained stocks for stability."
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.344928",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.359441",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.383032",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "BAC",
+      "timestamp": "2025-03-01T11:07:38.398109",
+      "market_condition": "EXTREME_VOLATILITY",
+      "result": {
+        "allocations": {
+          "Bitcoin": {
+            "value": 60000,
+            "percentage": 30
+          },
+          "Stocks": {
+            "value": 100000,
+            "percentage": 50
+          },
+          "Forex": {
+            "value": 40000,
+            "percentage": 20
+          }
+        },
+        "reasoning": {
+          "Bitcoin": [
+            "Bullish momentum increasing",
+            "Institutional adoption growing"
+          ],
+          "Stocks": [
+            "Stable performance",
+            "Diversified exposure needed"
+          ],
+          "Forex": [
+            "Hedging opportunity",
+            "Interest rate divergence trading"
+          ]
+        },
+        "summary": "Increased Bitcoin allocation due to bullish momentum, maintained stocks for stability."
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.405891",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.422412",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.448677",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "BAC",
+      "timestamp": "2025-03-01T11:07:38.465465",
+      "market_condition": "EXTREME_VOLATILITY",
+      "result": {
+        "allocations": {
+          "Bitcoin": {
+            "value": 60000,
+            "percentage": 30
+          },
+          "Stocks": {
+            "value": 100000,
+            "percentage": 50
+          },
+          "Forex": {
+            "value": 40000,
+            "percentage": 20
+          }
+        },
+        "reasoning": {
+          "Bitcoin": [
+            "Bullish momentum increasing",
+            "Institutional adoption growing"
+          ],
+          "Stocks": [
+            "Stable performance",
+            "Diversified exposure needed"
+          ],
+          "Forex": [
+            "Hedging opportunity",
+            "Interest rate divergence trading"
+          ]
+        },
+        "summary": "Increased Bitcoin allocation due to bullish momentum, maintained stocks for stability."
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.476132",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.495591",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.529405",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "BAC",
+      "timestamp": "2025-03-01T11:07:38.550603",
+      "market_condition": "EXTREME_VOLATILITY",
+      "result": {
+        "allocations": {
+          "Bitcoin": {
+            "value": 60000,
+            "percentage": 30
+          },
+          "Stocks": {
+            "value": 100000,
+            "percentage": 50
+          },
+          "Forex": {
+            "value": 40000,
+            "percentage": 20
+          }
+        },
+        "reasoning": {
+          "Bitcoin": [
+            "Bullish momentum increasing",
+            "Institutional adoption growing"
+          ],
+          "Stocks": [
+            "Stable performance",
+            "Diversified exposure needed"
+          ],
+          "Forex": [
+            "Hedging opportunity",
+            "Interest rate divergence trading"
+          ]
+        },
+        "summary": "Increased Bitcoin allocation due to bullish momentum, maintained stocks for stability."
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.561400",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.580980",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.611543",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "BAC",
+      "timestamp": "2025-03-01T11:07:38.634798",
+      "market_condition": "EXTREME_VOLATILITY",
+      "result": {
+        "allocations": {
+          "Bitcoin": {
+            "value": 60000,
+            "percentage": 30
+          },
+          "Stocks": {
+            "value": 100000,
+            "percentage": 50
+          },
+          "Forex": {
+            "value": 40000,
+            "percentage": 20
+          }
+        },
+        "reasoning": {
+          "Bitcoin": [
+            "Bullish momentum increasing",
+            "Institutional adoption growing"
+          ],
+          "Stocks": [
+            "Stable performance",
+            "Diversified exposure needed"
+          ],
+          "Forex": [
+            "Hedging opportunity",
+            "Interest rate divergence trading"
+          ]
+        },
+        "summary": "Increased Bitcoin allocation due to bullish momentum, maintained stocks for stability."
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.653478",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    },
+    {
+      "type": "EMC",
+      "timestamp": "2025-03-01T11:07:38.683645",
+      "market_condition": "EXTREME_VOLATILITY",
+      "trigger_reason": "Detected EXTREME_VOLATILITY market condition",
+      "result": {
+        "severity": "High",
+        "actions": {
+          "Bitcoin": [
+            "Implement 15% hedge via options",
+            "Set stop losses at -5%"
+          ],
+          "Stocks": [
+            "Rotate to defensive sectors",
+            "Increase cash position to 20%"
+          ],
+          "Forex": [
+            "Close high-risk positions",
+            "Shift to safe-haven currencies"
+          ]
+        },
+        "general_recommendations": [
+          "Increase communication frequency",
+          "Monitor liquidity indicators"
+        ],
+        "monitoring_framework": [
+          "Daily volatility checks",
+          "Increased reporting schedule"
+        ]
+      }
+    }
+  ]
+}

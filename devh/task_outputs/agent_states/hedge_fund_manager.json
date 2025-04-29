@@ -1,0 +1,71 @@
+{
+  "total_portfolio_value": 250700.0,
+  "market_condition": "VOLATILE",
+  "conference_history": [
+    {
+      "type": "BAC",
+      "timestamp": "2025-03-01T10:56:08.913108",
+      "market_condition": "VOLATILE",
+      "result": {
+        "allocations": {
+          "Bitcoin": {
+            "value": 60000,
+            "percentage": 30
+          },
+          "Stocks": {
+            "value": 100000,
+            "percentage": 50
+          },
+          "Forex": {
+            "value": 40000,
+            "percentage": 20
+          }
+        },
+        "reasoning": {
+          "Bitcoin": [
+            "Bullish momentum increasing",
+            "Institutional adoption growing"
+          ],
+          "Stocks": [
+            "Stable performance",
+            "Diversified exposure needed"
+          ],
+          "Forex": [
+            "Hedging opportunity",
+            "Interest rate divergence trading"
+          ]
+        },
+        "summary": "Increased Bitcoin allocation due to bullish momentum, maintained stocks for stability."
+      }
+    },
+    {
+      "type": "ESC",
+      "timestamp": "2025-03-01T10:56:08.913108",
+      "market_condition": "VOLATILE",
+      "result": {
+        "insights": {
+          "Bitcoin": [
+            "Momentum trading effective",
+            "Stop losses critical for volatility"
+          ],
+          "Stocks": [
+            "Sector rotation strategy working well",
+            "Earnings season requires caution"
+          ],
+          "Forex": [
+            "Central bank policy divergence profitable",
+            "Risk management improvements needed"
+          ]
+        },
+        "common_patterns": [
+          "Risk management critical across assets",
+          "Correlation between BTC and tech stocks increasing"
+        ],
+        "recommendations": [
+          "Implement cross-asset hedging",
+          "Improve exit strategy timing"
+        ]
+      }
+    }
+  ]
+}
