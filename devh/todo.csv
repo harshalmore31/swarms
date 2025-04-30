@@ -1,0 +1,9 @@
+id,name,description,status
+1,Create Presentation,Prepare slides for the upcoming project review meeting,to do
+2,Send Emails,Send follow-up emails to all conference attendees,in progress
+3,Review Code,Review the pull request for the new feature branch,to do
+4,Data Analysis,Analyze user engagement data from the last month,to do
+5,Schedule Meeting,Schedule a team meeting to discuss sprint goals,completed
+6,Bug Fix,Fix the critical bug reported in the production environment,to do
+7,Generate Report,Generate a performance report for the last quarter,in progress
+8,Research,Research new tools for the project,completed
