@@ -52,28 +52,16 @@ extra:
       link: https://x.com/swarms_corp
     - icon: fontawesome/brands/github
       link: https://github.com/kyegomez/swarms
-    - icon: fontawesome/brands/twitter
-      link: https://x.com/swarms_corp
     - icon: fontawesome/brands/discord
       link: https://discord.gg/jM3Z6M9uMq
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@kyegomez3242
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/swarms-corp/
 
   analytics:
     provider: google
     property: G-MPE9C65596
-
-  alternate:
-    - name: English
-      link: /
-      lang: en
-    - name: 简体中文
-      link: /zh/
-      lang: zh
-    - name: 日本語
-      link: /ja/
-      lang: ja
-    - name: 한국어
-      link: /ko/
-      lang: ko
 
 theme:
   name: material
@@ -290,35 +278,25 @@ nav:
       - Swarm Ecosystem: "swarms/concept/swarm_ecosystem.md"
       - Swarms Products: "swarms/products.md"
 
-    - Contributors:
-      - Swarms Framework Architecture: "swarms/concept/framework_architecture.md"
-      - Bounty Program: "corporate/bounty_program.md"
-      - Contributing to Documentation: "contributors/docs.md"
-      - Contributing Tools/Custom Plugins for Swarms: "contributors/tools.md"
-      - Contributing: 
-        - Contributing: "swarms/contributing.md"
-        - Tests: "swarms/framework/test.md"
-        - Code Cleanliness: "swarms/framework/code_cleanliness.md"
-        - Philosophy: "swarms/concept/philosophy.md"
-      - Changelog:
-        - Swarms 5.6.8: "swarms/changelog/5_6_8.md"
-        - Swarms 5.8.1: "swarms/changelog/5_8_1.md"
-        - Swarms 5.9.2: "swarms/changelog/changelog_new.md"
+
     
   - Examples:
     - Overview: "examples/index.md"
     - CookBook Index: "examples/cookbook_index.md"
-    - PreBuilt Templates: "examples/templates_index.md"
+    # - PreBuilt Templates: "examples/templates_index.md"
     - Customizing Agents:
       - Basic Agent: "swarms/examples/basic_agent.md"
+      - Agent with Streaming: "examples/agent_stream.md"
       - Agents with Callable Tools: "swarms/examples/agent_with_tools.md"
       # - Agent With MCP Integration: "swarms/examples/agent_with_mcp.md"
       - Agent Output Types: "swarms/examples/agent_output_types.md"
       - Agent with Structured Outputs: "swarms/examples/agent_structured_outputs.md"
       - Agents with Vision: "swarms/examples/vision_processing.md"
       - Agent with Multiple Images: "swarms/examples/multiple_images.md"
+      - Agents with Vision and Tool Usage: "swarms/examples/vision_tools.md"
       - Gradio Chat Interface: "swarms/ui/main.md"
-      - Various Model Providers:
+      - Model Providers:
+        - Overview: "swarms/examples/model_providers.md"
         - OpenAI: "swarms/examples/openai_example.md"
         - Anthropic: "swarms/examples/claude.md"
         - Groq: "swarms/examples/groq.md"
@@ -348,7 +326,8 @@ nav:
       - SwarmRouter Example: "swarms/examples/swarm_router.md"
       - MultiAgentRouter Minimal Example: "swarms/examples/multi_agent_router_minimal.md"
       - ConcurrentWorkflow Example: "swarms/examples/concurrent_workflow.md"
-      - MixtureOfAgents Example: "swarms/examples/mixture_of_agents.md"
+      # - MixtureOfAgents Example: "swarms/examples/mixture_of_agents.md"
+      - Mixture of Agents Example: "swarms/examples/moa_example.md"
       - Unique Swarms: "swarms/examples/unique_swarms.md"
       - Agents as Tools: "swarms/examples/agents_as_tools.md"
       - Aggregate Multi-Agent Responses: "swarms/examples/aggregate.md"
@@ -408,18 +387,38 @@ nav:
 
   - Swarms Marketplace:
     - Overview: "swarms_platform/index.md"
-    - Share and Discover Agents, Prompts, and Tools: "swarms_platform/share_and_discover.md"
-    - Customize Your Sidebar: "swarms_platform/apps_page.md"
-    - Playground: "swarms_platform/playground_page.md"
-    - API Key Management: "swarms_platform/apikeys.md"
-    - Account Management: "swarms_platform/account_management.md"
+    - Marketplace:
+      - Share and Discover Agents, Prompts, and Tools: "swarms_platform/share_and_discover.md"
+      - Monetize Your Prompts, Agents, and Tools: "swarms_platform/monetize.md"
+    - Platform:
+      - Customize Your Sidebar: "swarms_platform/apps_page.md"
+      - Playground: "swarms_platform/playground_page.md"
+      - API Key Management: "swarms_platform/apikeys.md"
+      - Account Management: "swarms_platform/account_management.md"
 
   - Swarms Rust:
     - Overview: "swarms_rs/overview.md"
     - Agents: "swarms_rs/agents.md"
 
-  - Resources:
-    - Overview: "governance/main.md"
+
+  - Contributors:
+    - Overview: "contributors/main.md"
+    - Bounty Program: "corporate/bounty_program.md"
+    - Links & Resources: "governance/main.md"
+    - Learn More:
+      - Understanding Swarms Architecture: "swarms/concept/framework_architecture.md"
+      - Code Style Guide & Best Practices: "swarms/framework/code_cleanliness.md"
+      - Our Development Philosophy & Principles: "swarms/concept/philosophy.md"
+    - Contributing: 
+      - Writing and Adding Tests: "swarms/framework/test.md"
+      - Creating Custom Tools & Plugins: "contributors/tools.md"
+      - Writing Documentation: "contributors/docs.md"
+    - Changelog:
+      - Swarms 5.6.8: "swarms/changelog/5_6_8.md"
+      - Swarms 5.8.1: "swarms/changelog/5_8_1.md"
+      - Swarms 5.9.2: "swarms/changelog/changelog_new.md"
+
+
   #   - Tokenomics: "web3/token.md"
 
     

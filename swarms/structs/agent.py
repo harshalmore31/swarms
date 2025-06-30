@@ -287,6 +287,11 @@ class Agent:
     >>> print(response)
     >>> # Generate a report on the financials.
 
+    >>> # Real-time streaming example
+    >>> agent = Agent(llm=llm, max_loops=1, streaming_on=True)
+    >>> response = agent.run("Tell me a long story.")  # Will stream in real-time
+    >>> print(response)  # Final complete response
+
     """
 
     def __init__(
@@ -403,7 +408,7 @@ class Agent:
         llm_args: dict = None,
         load_state_path: str = None,
         role: agent_roles = "worker",
-        no_print: bool = False,
+        print_on: bool = False,
         tools_list_dictionary: Optional[List[Dict[str, Any]]] = None,
         mcp_url: Optional[Union[str, MCPConnection]] = None,
         mcp_urls: List[str] = None,
@@ -540,7 +545,7 @@ class Agent:
         self.llm_args = llm_args
         self.load_state_path = load_state_path
         self.role = role
-        self.no_print = no_print
+        self.print_on = print_on
         self.tools_list_dictionary = tools_list_dictionary
         self.mcp_url = mcp_url
         self.mcp_urls = mcp_urls
@@ -631,16 +636,20 @@ class Agent:
         )
 
         self.short_memory.add(
-            role=f"{self.agent_name}",
+            role=self.agent_name,
             content=self.tools_list_dictionary,
         )
 
     def short_memory_init(self):
-        if (
-            self.agent_name is not None
-            or self.agent_description is not None
-        ):
-            prompt = f"\n Your Name: {self.agent_name} \n\n Your Description: {self.agent_description} \n\n {self.system_prompt}"
+        prompt = ""
+
+        # Add agent name, description, and instructions to the prompt
+        if self.agent_name is not None:
+            prompt += f"\n Name: {self.agent_name}"
+        elif self.agent_description is not None:
+            prompt += f"\n Description: {self.agent_description}"
+        elif self.system_prompt is not None:
+            prompt += f"\n Instructions: {self.system_prompt}"
         else:
             prompt = self.system_prompt
 
@@ -1056,12 +1065,16 @@ class Agent:
                             response = self.call_llm(
                                 task=task_prompt,
                                 img=img,
+                                current_loop=loop_count,
                                 *args,
                                 **kwargs,
                             )
                         else:
                             response = self.call_llm(
-                                task=task_prompt, *args, **kwargs
+                                task=task_prompt,
+                                current_loop=loop_count,
+                                *args,
+                                **kwargs,
                             )
 
                         # Parse the response from the agent with the output type
@@ -1082,17 +1095,22 @@ class Agent:
 
                         # Check and execute callable tools
                         if exists(self.tools):
-
                             if (
                                 self.output_raw_json_from_tool_call
                                 is True
                             ):
                                 response = response
                             else:
-                                self.execute_tools(
-                                    response=response,
-                                    loop_count=loop_count,
-                                )
+                                # Only execute tools if response is not None
+                                if response is not None:
+                                    self.execute_tools(
+                                        response=response,
+                                        loop_count=loop_count,
+                                    )
+                                else:
+                                    logger.warning(
+                                        f"LLM returned None response in loop {loop_count}, skipping tool execution"
+                                    )
 
                         # Handle MCP tools
                         if (
@@ -1100,10 +1118,16 @@ class Agent:
                             or exists(self.mcp_config)
                             or exists(self.mcp_urls)
                         ):
-                            self.mcp_tool_handling(
-                                response=response,
-                                current_loop=loop_count,
-                            )
+                            # Only handle MCP tools if response is not None
+                            if response is not None:
+                                self.mcp_tool_handling(
+                                    response=response,
+                                    current_loop=loop_count,
+                                )
+                            else:
+                                logger.warning(
+                                    f"LLM returned None response in loop {loop_count}, skipping MCP tool handling"
+                                )
 
                         self.sentiment_and_evaluator(response)
 
@@ -2447,7 +2471,12 @@ class Agent:
         return None
 
     def call_llm(
-        self, task: str, img: Optional[str] = None, *args, **kwargs
+        self,
+        task: str,
+        img: Optional[str] = None,
+        current_loop: int = 0,
+        *args,
+        **kwargs,
     ) -> str:
         """
         Calls the appropriate method on the `llm` object based on the given task.
@@ -2469,14 +2498,90 @@ class Agent:
         """
 
         try:
-            if img is not None:
-                out = self.llm.run(
-                    task=task, img=img, *args, **kwargs
-                )
-            else:
-                out = self.llm.run(task=task, *args, **kwargs)
+            # Set streaming parameter in LLM if streaming is enabled
+            if self.streaming_on and hasattr(self.llm, "stream"):
+                original_stream = self.llm.stream
+                self.llm.stream = True
 
-            return out
+                if img is not None:
+                    streaming_response = self.llm.run(
+                        task=task, img=img, *args, **kwargs
+                    )
+                else:
+                    streaming_response = self.llm.run(
+                        task=task, *args, **kwargs
+                    )
+
+                # If we get a streaming response, handle it with the new streaming panel
+                if hasattr(
+                    streaming_response, "__iter__"
+                ) and not isinstance(streaming_response, str):
+                    # Check print_on parameter for different streaming behaviors
+                    if self.print_on is False:
+                        # Show raw streaming text without formatting panels
+                        chunks = []
+                        print(
+                            f"\n{self.agent_name}: ",
+                            end="",
+                            flush=True,
+                        )
+                        for chunk in streaming_response:
+                            if (
+                                hasattr(chunk, "choices")
+                                and chunk.choices[0].delta.content
+                            ):
+                                content = chunk.choices[
+                                    0
+                                ].delta.content
+                                print(
+                                    content, end="", flush=True
+                                )  # Print raw streaming text
+                                chunks.append(content)
+                        print()  # New line after streaming completes
+                        complete_response = "".join(chunks)
+                    else:
+                        # Collect chunks for conversation saving
+                        collected_chunks = []
+
+                        def on_chunk_received(chunk: str):
+                            """Callback to collect chunks as they arrive"""
+                            collected_chunks.append(chunk)
+                            # Optional: Save each chunk to conversation in real-time
+                            # This creates a more detailed conversation history
+                            if self.verbose:
+                                logger.debug(
+                                    f"Streaming chunk received: {chunk[:50]}..."
+                                )
+
+                        # Use the streaming panel to display and collect the response
+                        complete_response = formatter.print_streaming_panel(
+                            streaming_response,
+                            title=f"🤖 Agent: {self.agent_name} Loops: {current_loop}",
+                            style="bold cyan",
+                            collect_chunks=True,
+                            on_chunk_callback=on_chunk_received,
+                        )
+
+                    # Restore original stream setting
+                    self.llm.stream = original_stream
+
+                    # Return the complete response for further processing
+                    return complete_response
+                else:
+                    # Restore original stream setting
+                    self.llm.stream = original_stream
+                    return streaming_response
+            else:
+                # Non-streaming call
+                if img is not None:
+                    out = self.llm.run(
+                        task=task, img=img, *args, **kwargs
+                    )
+                else:
+                    out = self.llm.run(task=task, *args, **kwargs)
+
+                return out
+
         except AgentLLMError as e:
             logger.error(
                 f"Error calling LLM: {e}. Task: {task}, Args: {args}, Kwargs: {kwargs}"
@@ -2691,13 +2796,11 @@ class Agent:
         return self.role
 
     def pretty_print(self, response: str, loop_count: int):
-        if self.no_print is False:
+        if self.print_on is False:
             if self.streaming_on is True:
-                # self.stream_response(response)
-                formatter.print_panel_token_by_token(
-                    f"{self.agent_name}: {response}",
-                    title=f"Agent Name: {self.agent_name} [Max Loops: {loop_count}]",
-                )
+                # Skip printing here since real streaming is handled in call_llm
+                # This avoids double printing when streaming_on=True
+                pass
             elif self.no_print is True:
                 pass
             else:
@@ -2818,7 +2921,7 @@ class Agent:
             # execute_tool_call_simple returns a string directly, not an object with content attribute
             text_content = f"MCP Tool Response: \n\n {json.dumps(tool_response, indent=2)}"
 
-            if self.no_print is False:
+            if self.print_on is False:
                 formatter.print_panel(
                     text_content,
                     "MCP Tool Response: 🛠️",
@@ -2861,7 +2964,7 @@ class Agent:
             temperature=self.temperature,
             max_tokens=self.max_tokens,
             system_prompt=self.system_prompt,
-            stream=self.streaming_on,
+            stream=False,  # Always disable streaming for tool summaries
             tools_list_dictionary=None,
             parallel_tool_calls=False,
             base_url=self.llm_base_url,
@@ -2869,6 +2972,13 @@ class Agent:
         )
 
     def execute_tools(self, response: any, loop_count: int):
+        # Handle None response gracefully
+        if response is None:
+            logger.warning(
+                f"Cannot execute tools with None response in loop {loop_count}. "
+                "This may indicate the LLM did not return a valid response."
+            )
+            return
 
         output = (
             self.tool_struct.execute_function_calls_from_api_response(
