@@ -182,6 +182,7 @@ class SwarmRouter:
         list_all_agents: bool = False,
         conversation: Any = None,
         agents_config: Optional[Dict[Any, Any]] = None,
+        speaker_function: str = None,
         *args,
         **kwargs,
     ):
@@ -208,6 +209,7 @@ class SwarmRouter:
         self.list_all_agents = list_all_agents
         self.conversation = conversation
         self.agents_config = agents_config
+        self.speaker_function = speaker_function
 
         # Reliability check
         self.reliability_check()
@@ -358,6 +360,7 @@ class SwarmRouter:
                 agents=self.agents,
                 max_loops=self.max_loops,
                 output_type=self.output_type,
+                speaker_function=self.speaker_function,
             )
 
         elif self.swarm_type == "DeepResearchSwarm":
@@ -463,14 +466,10 @@ class SwarmRouter:
 
     def update_system_prompt_for_agent_in_swarm(self):
         # Use list comprehension for faster iteration
-        [
-            setattr(
-                agent,
-                "system_prompt",
-                agent.system_prompt + MULTI_AGENT_COLLAB_PROMPT_TWO,
-            )
-            for agent in self.agents
-        ]
+        for agent in self.agents:
+            if agent.system_prompt is None:
+                agent.system_prompt = ""
+            agent.system_prompt += MULTI_AGENT_COLLAB_PROMPT_TWO
 
     def agent_config(self):
         agent_config = {}
@@ -504,7 +503,12 @@ class SwarmRouter:
         """
         self.swarm = self._create_swarm(task, *args, **kwargs)
 
-        self.conversation = self.swarm.conversation
+        if self.swarm_type == "SequentialWorkflow":
+            self.conversation = (
+                self.swarm.agent_rearrange.conversation
+            )
+        else:
+            self.conversation = self.swarm.conversation
 
         if self.list_all_agents is True:
             list_all_agents(

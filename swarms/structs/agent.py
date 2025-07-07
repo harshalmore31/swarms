@@ -5,6 +5,7 @@ import os
 import random
 import threading
 import time
+import traceback
 import uuid
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
@@ -85,6 +86,7 @@ from swarms.utils.index import (
 )
 from swarms.schemas.conversation_schema import ConversationSchema
 from swarms.utils.output_types import OutputType
+from swarms.utils.retry_func import retry_function
 
 
 def stop_when_repeats(response: str) -> bool:
@@ -153,7 +155,12 @@ class AgentLLMInitializationError(AgentError):
     pass
 
 
-# [FEAT][AGENT]
+class AgentToolExecutionError(AgentError):
+    """Exception raised when the agent fails to execute a tool. Check the tool's configuration and availability."""
+
+    pass
+
+
 class Agent:
     """
     Agent is the backbone to connect LLMs with tools and long term memory. Agent also provides the ability to
@@ -408,7 +415,7 @@ class Agent:
         llm_args: dict = None,
         load_state_path: str = None,
         role: agent_roles = "worker",
-        print_on: bool = False,
+        print_on: bool = True,
         tools_list_dictionary: Optional[List[Dict[str, Any]]] = None,
         mcp_url: Optional[Union[str, MCPConnection]] = None,
         mcp_urls: List[str] = None,
@@ -425,6 +432,7 @@ class Agent:
         tool_call_summary: bool = True,
         output_raw_json_from_tool_call: bool = False,
         summarize_multiple_images: bool = False,
+        tool_retry_attempts: int = 3,
         *args,
         **kwargs,
     ):
@@ -564,6 +572,7 @@ class Agent:
             output_raw_json_from_tool_call
         )
         self.summarize_multiple_images = summarize_multiple_images
+        self.tool_retry_attempts = tool_retry_attempts
 
         # self.short_memory = self.short_memory_init()
 
@@ -791,10 +800,11 @@ class Agent:
                 or exists(self.mcp_urls)
                 or exists(self.mcp_config)
             ):
-                self.pretty_print(
-                    f"✨ [SYSTEM] Successfully integrated {len(tools)} MCP tools into agent: {self.agent_name} | Status: ONLINE | Time: {time.strftime('%H:%M:%S')} ✨",
-                    loop_count=0,
-                )
+                if self.print_on is True:
+                    self.pretty_print(
+                        f"✨ [SYSTEM] Successfully integrated {len(tools)} MCP tools into agent: {self.agent_name} | Status: ONLINE | Time: {time.strftime('%H:%M:%S')} ✨",
+                        loop_count=0,
+                    )
 
             return tools
         except AgentMCPConnectionError as e:
@@ -1015,8 +1025,8 @@ class Agent:
             # Print the request
             if print_task is True:
                 formatter.print_panel(
-                    f"\n User: {task}",
-                    f"Task Request for {self.agent_name}",
+                    content=f"\n User: {task}",
+                    title=f"Task Request for {self.agent_name}",
                 )
 
             while (
@@ -1077,6 +1087,8 @@ class Agent:
                                 **kwargs,
                             )
 
+                        # If streaming is enabled, then don't print the response
+
                         # Parse the response from the agent with the output type
                         if exists(self.tools_list_dictionary):
                             if isinstance(response, BaseModel):
@@ -1091,26 +1103,24 @@ class Agent:
                         )
 
                         # Print
-                        self.pretty_print(response, loop_count)
+                        if self.print_on is True:
+                            if isinstance(response, list):
+                                self.pretty_print(
+                                    f"Structured Output - Attempting Function Call Execution [{time.strftime('%H:%M:%S')}] \n\n {format_data_structure(response)} ",
+                                    loop_count,
+                                )
+                            elif self.streaming_on is True:
+                                pass
+                            else:
+                                self.pretty_print(
+                                    response, loop_count
+                                )
 
                         # Check and execute callable tools
                         if exists(self.tools):
-                            if (
-                                self.output_raw_json_from_tool_call
-                                is True
-                            ):
-                                response = response
-                            else:
-                                # Only execute tools if response is not None
-                                if response is not None:
-                                    self.execute_tools(
-                                        response=response,
-                                        loop_count=loop_count,
-                                    )
-                                else:
-                                    logger.warning(
-                                        f"LLM returned None response in loop {loop_count}, skipping tool execution"
-                                    )
+                            self.tool_execution_retry(
+                                response, loop_count
+                            )
 
                         # Handle MCP tools
                         if (
@@ -1141,8 +1151,7 @@ class Agent:
                             self.save()
 
                         logger.error(
-                            f"Attempt {attempt+1}: Error generating"
-                            f" response: {e}"
+                            f"Attempt {attempt+1}/{self.retry_attempts}: Error generating response in loop {loop_count} for agent '{self.agent_name}': {str(e)} | "
                         )
                         attempt += 1
 
@@ -1164,13 +1173,19 @@ class Agent:
                     self.stopping_condition is not None
                     and self._check_stopping_condition(response)
                 ):
-                    logger.info("Stopping condition met.")
+                    logger.info(
+                        f"Agent '{self.agent_name}' stopping condition met. "
+                        f"Loop: {loop_count}, Response length: {len(str(response)) if response else 0}"
+                    )
                     break
                 elif (
                     self.stopping_func is not None
                     and self.stopping_func(response)
                 ):
-                    logger.info("Stopping function met.")
+                    logger.info(
+                        f"Agent '{self.agent_name}' stopping function condition met. "
+                        f"Loop: {loop_count}, Response length: {len(str(response)) if response else 0}"
+                    )
                     break
 
                 if self.interactive:
@@ -1217,14 +1232,27 @@ class Agent:
             self._handle_run_error(error)
 
     def __handle_run_error(self, error: any):
+        import traceback
+
         log_agent_data(self.to_dict())
 
         if self.autosave is True:
             self.save()
 
-        logger.info(
-            f"Error detected running your agent {self.agent_name} \n Error {error} \n Optimize your input parameters and or add an issue on the swarms github and contact our team on discord for support ;) "
+        # Get detailed error information
+        error_type = type(error).__name__
+        error_message = str(error)
+        traceback_info = traceback.format_exc()
+
+        logger.error(
+            f"Error detected running your agent {self.agent_name}\n"
+            f"Error Type: {error_type}\n"
+            f"Error Message: {error_message}\n"
+            f"Traceback:\n{traceback_info}\n"
+            f"Agent State: {self.to_dict()}\n"
+            f"Optimize your input parameters and or add an issue on the swarms github and contact our team on discord for support ;)"
         )
+
         raise error
 
     def _handle_run_error(self, error: any):
@@ -1524,10 +1552,13 @@ class Agent:
                     f"The model '{self.model_name}' does not support function calling. Please use a model that supports function calling."
                 )
 
-        if self.max_tokens > get_max_tokens(self.model_name):
-            raise AgentInitializationError(
-                f"Max tokens is set to {self.max_tokens}, but the model '{self.model_name}' only supports {get_max_tokens(self.model_name)} tokens. Please set max tokens to {get_max_tokens(self.model_name)} or less."
-            )
+        try:
+            if self.max_tokens > get_max_tokens(self.model_name):
+                raise AgentInitializationError(
+                    f"Max tokens is set to {self.max_tokens}, but the model '{self.model_name}' only supports {get_max_tokens(self.model_name)} tokens. Please set max tokens to {get_max_tokens(self.model_name)} or less."
+                )
+        except Exception:
+            pass
 
         if self.model_name not in model_list:
             logger.warning(
@@ -2497,6 +2528,10 @@ class Agent:
             ValueError: If task is empty.
         """
 
+        # Filter out is_last from kwargs if present
+        if "is_last" in kwargs:
+            del kwargs["is_last"]
+
         try:
             # Set streaming parameter in LLM if streaming is enabled
             if self.streaming_on and hasattr(self.llm, "stream"):
@@ -2518,13 +2553,8 @@ class Agent:
                 ) and not isinstance(streaming_response, str):
                     # Check print_on parameter for different streaming behaviors
                     if self.print_on is False:
-                        # Show raw streaming text without formatting panels
+                        # Silent streaming - no printing, just collect chunks
                         chunks = []
-                        print(
-                            f"\n{self.agent_name}: ",
-                            end="",
-                            flush=True,
-                        )
                         for chunk in streaming_response:
                             if (
                                 hasattr(chunk, "choices")
@@ -2533,11 +2563,7 @@ class Agent:
                                 content = chunk.choices[
                                     0
                                 ].delta.content
-                                print(
-                                    content, end="", flush=True
-                                )  # Print raw streaming text
                                 chunks.append(content)
-                        print()  # New line after streaming completes
                         complete_response = "".join(chunks)
                     else:
                         # Collect chunks for conversation saving
@@ -2557,7 +2583,7 @@ class Agent:
                         complete_response = formatter.print_streaming_panel(
                             streaming_response,
                             title=f"🤖 Agent: {self.agent_name} Loops: {current_loop}",
-                            style="bold cyan",
+                            style=None,  # Use random color like non-streaming approach
                             collect_chunks=True,
                             on_chunk_callback=on_chunk_received,
                         )
@@ -2796,19 +2822,23 @@ class Agent:
         return self.role
 
     def pretty_print(self, response: str, loop_count: int):
-        if self.print_on is False:
-            if self.streaming_on is True:
-                # Skip printing here since real streaming is handled in call_llm
-                # This avoids double printing when streaming_on=True
-                pass
-            elif self.no_print is True:
-                pass
-            else:
-                # logger.info(f"Response: {response}")
-                formatter.print_panel(
-                    f"{self.agent_name}: {response}",
-                    f"Agent Name {self.agent_name} [Max Loops: {loop_count} ]",
-                )
+        # if self.print_on is False:
+        #     if self.streaming_on is True:
+        #         # Skip printing here since real streaming is handled in call_llm
+        #         # This avoids double printing when streaming_on=True
+        #         pass
+        #     elif self.print_on is False:
+        #         pass
+        #     else:
+        #         # logger.info(f"Response: {response}")
+        #         formatter.print_panel(
+        #             response,
+        #             f"Agent Name {self.agent_name} [Max Loops: {loop_count} ]",
+        #         )
+        formatter.print_panel(
+            response,
+            f"Agent Name {self.agent_name} [Max Loops: {loop_count} ]",
+        )
 
     def parse_llm_output(self, response: Any):
         """Parse and standardize the output from the LLM.
@@ -2921,10 +2951,10 @@ class Agent:
             # execute_tool_call_simple returns a string directly, not an object with content attribute
             text_content = f"MCP Tool Response: \n\n {json.dumps(tool_response, indent=2)}"
 
-            if self.print_on is False:
+            if self.print_on is True:
                 formatter.print_panel(
-                    text_content,
-                    "MCP Tool Response: 🛠️",
+                    content=text_content,
+                    title="MCP Tool Response: 🛠️",
                     style="green",
                 )
 
@@ -2948,7 +2978,8 @@ class Agent:
                 # Fallback: provide a default summary
                 summary = "I successfully executed the MCP tool and retrieved the information above."
 
-            self.pretty_print(summary, loop_count=current_loop)
+            if self.print_on is True:
+                self.pretty_print(summary, loop_count=current_loop)
 
             # Add to the memory
             self.short_memory.add(
@@ -2980,21 +3011,30 @@ class Agent:
             )
             return
 
-        output = (
-            self.tool_struct.execute_function_calls_from_api_response(
+        try:
+            output = self.tool_struct.execute_function_calls_from_api_response(
                 response
             )
-        )
+        except Exception as e:
+            # Retry the tool call
+            output = self.tool_struct.execute_function_calls_from_api_response(
+                response
+            )
+
+            if output is None:
+                logger.error(f"Error executing tools: {e}")
+                raise e
 
         self.short_memory.add(
             role="Tool Executor",
             content=format_data_structure(output),
         )
 
-        self.pretty_print(
-            f"{format_data_structure(output)}",
-            loop_count,
-        )
+        if self.print_on is True:
+            self.pretty_print(
+                f"Tool Executed Successfully [{time.strftime('%H:%M:%S')}]",
+                loop_count,
+            )
 
         # Now run the LLM again without tools - create a temporary LLM instance
         # instead of modifying the cached one
@@ -3018,10 +3058,11 @@ class Agent:
                 content=tool_response,
             )
 
-            self.pretty_print(
-                f"{tool_response}",
-                loop_count,
-            )
+            if self.print_on is True:
+                self.pretty_print(
+                    tool_response,
+                    loop_count,
+                )
 
     def list_output_types(self):
         return OutputType
@@ -3156,3 +3197,53 @@ class Agent:
         raise Exception(
             f"Failed to find correct answer '{correct_answer}' after {max_attempts} attempts"
         )
+
+    def tool_execution_retry(self, response: any, loop_count: int):
+        """
+        Execute tools with retry logic for handling failures.
+
+        This method attempts to execute tools based on the LLM response. If the response
+        is None, it logs a warning and skips execution. If an exception occurs during
+        tool execution, it logs the error with full traceback and retries the operation
+        using the configured retry attempts.
+
+        Args:
+            response (any): The response from the LLM that may contain tool calls to execute.
+                          Can be None if the LLM failed to provide a valid response.
+            loop_count (int): The current iteration loop number for logging and debugging purposes.
+
+        Returns:
+            None
+
+        Raises:
+            Exception: Re-raises any exception that occurs during tool execution after
+                      all retry attempts have been exhausted.
+
+        Note:
+            - Uses self.tool_retry_attempts for the maximum number of retry attempts
+            - Logs detailed error information including agent name and loop count
+            - Skips execution gracefully if response is None
+        """
+        try:
+            if response is not None:
+                self.execute_tools(
+                    response=response,
+                    loop_count=loop_count,
+                )
+            else:
+                logger.warning(
+                    f"Agent '{self.agent_name}' received None response from LLM in loop {loop_count}. "
+                    f"This may indicate an issue with the model or prompt. Skipping tool execution."
+                )
+        except Exception as e:
+            logger.error(
+                f"Agent '{self.agent_name}' encountered error during tool execution in loop {loop_count}: {str(e)}. "
+                f"Full traceback: {traceback.format_exc()}. "
+                f"Attempting to retry tool execution with 3 attempts"
+            )
+            retry_function(
+                self.execute_tools,
+                response=response,
+                loop_count=loop_count,
+                max_retries=self.tool_retry_attempts,
+            )
