@@ -255,6 +255,7 @@ class CouncilAsAJudge:
         max_loops: int = 1,
         aggregation_model_name: str = "gpt-4o-mini",
         judge_agent_model_name: Optional[str] = None,
+        img: Optional[str] = None
     ):
         """
         Initialize the CouncilAsAJudge.
@@ -281,6 +282,7 @@ class CouncilAsAJudge:
         self.max_loops = max_loops
         self.aggregation_model_name = aggregation_model_name
         self.judge_agent_model_name = judge_agent_model_name
+        self.img = img
         self.max_workers = max(1, int(os.cpu_count() * 0.75))
 
         self.reliability_check()
@@ -408,9 +410,15 @@ class CouncilAsAJudge:
         """
         try:
             prompt = build_judge_prompt(dim, task, task)
-            result = agent.run(
-                f"{prompt} \n\n Evaluate the following response for the {dim} dimension: {task}."
-            )
+            run_kwargs = {
+                "task": f"{prompt} \n\n Evaluate the following response for the {dim} dimension: {task}."
+            }
+            
+            # Add img parameter if available
+            if self.img is not None:
+                run_kwargs["img"] = self.img
+                
+            result = agent.run(**run_kwargs)
 
             self.conversation.add(
                 role=agent.agent_name,
@@ -481,9 +489,12 @@ class CouncilAsAJudge:
             aggregation_prompt = build_aggregation_prompt(
                 all_rationales
             )
-            final_report = self.aggregator_agent.run(
-                aggregation_prompt
-            )
+            
+            aggregator_kwargs = {"task": aggregation_prompt}
+            if self.img is not None:
+                aggregator_kwargs["img"] = self.img
+                
+            final_report = self.aggregator_agent.run(**aggregator_kwargs)
 
             self.conversation.add(
                 role=self.aggregator_agent.agent_name,
