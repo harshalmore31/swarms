@@ -431,18 +431,22 @@ class CouncilAsAJudge:
                 f"Failed to evaluate dimension {dim}: {str(e)}"
             )
 
-    def run(self, task: str) -> None:
+    def run(self, task: str, img: Optional[str] = None) -> None:
         """
         Run the evaluation process using ThreadPoolExecutor.
 
         Args:
             task (str): Task containing the response to evaluate
+            img (Optional[str]): Optional image URL to use for evaluation
 
         Raises:
             EvaluationError: If evaluation process fails
         """
 
         try:
+            # Use provided img parameter if available, otherwise use instance img
+            if img is not None:
+                self.img = img
 
             self.conversation.add(
                 role="User",
