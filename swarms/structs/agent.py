@@ -102,7 +102,7 @@ def parse_done_token(response: str) -> bool:
 # Agent ID generator
 def agent_id():
     """Generate an agent id"""
-    return uuid.uuid4().hex
+    return f"agent-{uuid.uuid4().hex}"
 
 
 # Agent output types
@@ -285,16 +285,14 @@ class Agent:
 
 
     Examples:
-    >>> from swarm_models import OpenAIChat
-    >>> from swarms.structs import Agent
-    >>> llm = OpenAIChat()
-    >>> agent = Agent(llm=llm, max_loops=1)
+    >>> from swarms import Agent
+    >>> agent = Agent(model_name="gpt-4o", max_loops=1)
     >>> response = agent.run("Generate a report on the financials.")
     >>> print(response)
     >>> # Generate a report on the financials.
 
     >>> # Real-time streaming example
-    >>> agent = Agent(llm=llm, max_loops=1, streaming_on=True)
+    >>> agent = Agent(model_name="gpt-4o", max_loops=1, streaming_on=True)
     >>> response = agent.run("Tell me a long story.")  # Will stream in real-time
     >>> print(response)  # Final complete response
 
@@ -305,7 +303,7 @@ class Agent:
         id: Optional[str] = agent_id(),
         llm: Optional[Any] = None,
         template: Optional[str] = None,
-        max_loops: Optional[int] = 1,
+        max_loops: Optional[Union[int, str]] = 1,
         stopping_condition: Optional[Callable[[str], bool]] = None,
         loop_interval: Optional[int] = 0,
         retry_attempts: Optional[int] = 3,
@@ -433,6 +431,7 @@ class Agent:
         summarize_multiple_images: bool = False,
         tool_retry_attempts: int = 3,
         speed_mode: str = None,
+        reasoning_prompt_on: bool = True,
         *args,
         **kwargs,
     ):
@@ -574,6 +573,7 @@ class Agent:
         self.summarize_multiple_images = summarize_multiple_images
         self.tool_retry_attempts = tool_retry_attempts
         self.speed_mode = speed_mode
+        self.reasoning_prompt_on = reasoning_prompt_on
 
         # Initialize the feedback
         self.feedback = []
@@ -592,7 +592,13 @@ class Agent:
         if exists(self.sop) or exists(self.sop_list):
             self.handle_sop_ops()
 
-        if self.max_loops >= 2:
+        if self.interactive is True:
+            self.reasoning_prompt_on = False
+
+        if self.reasoning_prompt_on is True and (
+            (isinstance(self.max_loops, int) and self.max_loops >= 2)
+            or self.max_loops == "auto"
+        ):
             self.system_prompt += generate_reasoning_prompt(
                 self.max_loops
             )
@@ -667,7 +673,7 @@ class Agent:
 
         # Initialize the short term memory
         memory = Conversation(
-            system_prompt=prompt,
+            name=f"{self.agent_name}_conversation",
             user=self.user_name,
             rules=self.rules,
             token_count=(
@@ -685,6 +691,12 @@ class Agent:
                 if self.conversation_schema
                 else False
             ),
+        )
+
+        # Add the system prompt to the conversation
+        memory.add(
+            role="System",
+            content=prompt,
         )
 
         return memory
@@ -709,7 +721,22 @@ class Agent:
             dynamic_temperature_enabled=self.dynamic_temperature_enabled,
         )
 
-    def llm_handling(self):
+    def llm_handling(self, *args, **kwargs):
+        """Initialize the LiteLLM instance with combined configuration from all sources.
+
+        This method combines llm_args, tools_list_dictionary, MCP tools, and any additional
+        arguments passed to this method into a single unified configuration.
+
+        Args:
+            *args: Positional arguments that can be used for additional configuration.
+                  If a single dictionary is passed, it will be merged into the configuration.
+                  Other types of args will be stored under 'additional_args' key.
+            **kwargs: Keyword arguments that will be merged into the LiteLLM configuration.
+                     These take precedence over existing configuration.
+
+        Returns:
+            LiteLLM: The initialized LiteLLM instance
+        """
         # Use cached instance if available
         if self.llm is not None:
             return self.llm
@@ -717,6 +744,7 @@ class Agent:
         if self.model_name is None:
             self.model_name = "gpt-4o-mini"
 
+        # Determine if parallel tool calls should be enabled
         if exists(self.tools) and len(self.tools) >= 2:
             parallel_tool_calls = True
         elif exists(self.mcp_url) or exists(self.mcp_urls):
@@ -727,44 +755,75 @@ class Agent:
             parallel_tool_calls = False
 
         try:
-            # Simplify initialization logic
+            # Base configuration that's always included
             common_args = {
                 "model_name": self.model_name,
                 "temperature": self.temperature,
                 "max_tokens": self.max_tokens,
                 "system_prompt": self.system_prompt,
+                "stream": self.streaming_on,
             }
 
+            # Initialize tools_list_dictionary, if applicable
+            tools_list = []
+
+            # Append tools from different sources
+            if self.tools_list_dictionary is not None:
+                tools_list.extend(self.tools_list_dictionary)
+
+            if exists(self.mcp_url) or exists(self.mcp_urls):
+                tools_list.extend(self.add_mcp_tools_to_memory())
+
+            # Additional arguments for LiteLLM initialization
+            additional_args = {}
+
             if self.llm_args is not None:
-                self.llm = LiteLLM(**{**common_args, **self.llm_args})
-            elif self.tools_list_dictionary is not None:
-                self.llm = LiteLLM(
-                    **common_args,
-                    tools_list_dictionary=self.tools_list_dictionary,
-                    tool_choice="auto",
-                    parallel_tool_calls=parallel_tool_calls,
+                additional_args.update(self.llm_args)
+
+            if tools_list:
+                additional_args.update(
+                    {
+                        "tools_list_dictionary": tools_list,
+                        "tool_choice": "auto",
+                        "parallel_tool_calls": parallel_tool_calls,
+                    }
                 )
 
-            elif exists(self.mcp_url) or exists(self.mcp_urls):
-                self.llm = LiteLLM(
-                    **common_args,
-                    tools_list_dictionary=self.add_mcp_tools_to_memory(),
-                    tool_choice="auto",
-                    parallel_tool_calls=parallel_tool_calls,
-                    mcp_call=True,
-                )
-            else:
-                # common_args.update(self.aditional_llm_config.model_dump())
+            if exists(self.mcp_url) or exists(self.mcp_urls):
+                additional_args.update({"mcp_call": True})
 
-                self.llm = LiteLLM(
-                    **common_args,
-                    stream=self.streaming_on,
-                )
+            # if args or kwargs are provided, then update the additional_args
+            if args or kwargs:
+                # Handle keyword arguments first
+                if kwargs:
+                    additional_args.update(kwargs)
+
+                # Handle positional arguments (args)
+                # These could be additional configuration parameters
+                # that should be merged into the additional_args
+                if args:
+                    # If args contains a dictionary, merge it directly
+                    if len(args) == 1 and isinstance(args[0], dict):
+                        additional_args.update(args[0])
+                    else:
+                        # For other types of args, log them for debugging
+                        # and potentially handle them based on their type
+                        logger.debug(
+                            f"Received positional args in llm_handling: {args}"
+                        )
+                        # You can add specific handling for different arg types here
+                        # For now, we'll add them as additional configuration
+                        additional_args.update(
+                            {"additional_args": args}
+                        )
+
+            # Final LiteLLM initialization with combined arguments
+            self.llm = LiteLLM(**{**common_args, **additional_args})
 
             return self.llm
         except AgentLLMInitializationError as e:
             logger.error(
-                f"Error in llm_handling: {e} Your current configuration is not supported. Please check the configuration and parameters."
+                f"AgentLLMInitializationError: Agent Name: {self.agent_name} Error in llm_handling: {e} Your current configuration is not supported. Please check the configuration and parameters."
             )
             return None
 
@@ -808,7 +867,9 @@ class Agent:
 
             return tools
         except AgentMCPConnectionError as e:
-            logger.error(f"Error in MCP connection: {e}")
+            logger.error(
+                f"Error in MCP connection: {e} Traceback: {traceback.format_exc()}"
+            )
             raise e
 
     def setup_config(self):
@@ -996,6 +1057,7 @@ class Agent:
         self,
         task: Optional[Union[str, Any]] = None,
         img: Optional[str] = None,
+        streaming_callback: Optional[Callable[[str], None]] = None,
         *args,
         **kwargs,
     ) -> Any:
@@ -1044,18 +1106,27 @@ class Agent:
             ):
                 loop_count += 1
 
-                if self.max_loops >= 2:
-                    self.short_memory.add(
-                        role=self.agent_name,
-                        content=f"Current Internal Reasoning Loop: {loop_count}/{self.max_loops}",
-                    )
+                if (
+                    isinstance(self.max_loops, int)
+                    and self.max_loops >= 2
+                ):
+                    if self.reasoning_prompt_on is True:
+                        self.short_memory.add(
+                            role=self.agent_name,
+                            content=f"Current Internal Reasoning Loop: {loop_count}/{self.max_loops}",
+                        )
 
                 # If it is the final loop, then add the final loop message
-                if loop_count >= 2 and loop_count == self.max_loops:
-                    self.short_memory.add(
-                        role=self.agent_name,
-                        content=f"🎉 Final Internal Reasoning Loop: {loop_count}/{self.max_loops} Prepare your comprehensive response.",
-                    )
+                if (
+                    loop_count >= 2
+                    and isinstance(self.max_loops, int)
+                    and loop_count == self.max_loops
+                ):
+                    if self.reasoning_prompt_on is True:
+                        self.short_memory.add(
+                            role=self.agent_name,
+                            content=f"🎉 Final Internal Reasoning Loop: {loop_count}/{self.max_loops} Prepare your comprehensive response.",
+                        )
 
                 # Dynamic temperature
                 if self.dynamic_temperature_enabled is True:
@@ -1077,6 +1148,7 @@ class Agent:
                                 task=task_prompt,
                                 img=img,
                                 current_loop=loop_count,
+                                streaming_callback=streaming_callback,
                                 *args,
                                 **kwargs,
                             )
@@ -1084,6 +1156,7 @@ class Agent:
                             response = self.call_llm(
                                 task=task_prompt,
                                 current_loop=loop_count,
+                                streaming_callback=streaming_callback,
                                 *args,
                                 **kwargs,
                             )
@@ -1107,7 +1180,8 @@ class Agent:
                         if self.print_on is True:
                             if isinstance(response, list):
                                 self.pretty_print(
-                                    f"Structured Output - Attempting Function Call Execution [{time.strftime('%H:%M:%S')}] \n\n Output: {format_data_structure(response)} ",
+                                    # f"Structured Output - Attempting Function Call Execution [{time.strftime('%H:%M:%S')}] \n\n Output: {format_data_structure(response)} ",
+                                    f"[Structured Output] [Time: {time.strftime('%H:%M:%S')}] \n\n {json.dumps(response, indent=4)}",
                                     loop_count,
                                 )
                             elif self.streaming_on:
@@ -1188,6 +1262,7 @@ class Agent:
                     break
 
                 if self.interactive:
+
                     # logger.info("Interactive mode enabled.")
                     user_input = input("You: ")
 
@@ -1940,7 +2015,7 @@ class Agent:
         """Upddate the system message"""
         self.system_prompt = system_prompt
 
-    def update_max_loops(self, max_loops: int):
+    def update_max_loops(self, max_loops: Union[int, str]):
         """Update the max loops"""
         self.max_loops = max_loops
 
@@ -2391,6 +2466,10 @@ class Agent:
         Returns:
             Dict[str, Any]: A dictionary representation of the class attributes.
         """
+
+        # Remove the llm object from the dictionary
+        self.__dict__.pop("llm", None)
+
         return {
             attr_name: self._serialize_attr(attr_name, attr_value)
             for attr_name, attr_value in self.__dict__.items()
@@ -2470,6 +2549,7 @@ class Agent:
         task: str,
         img: Optional[str] = None,
         current_loop: int = 0,
+        streaming_callback: Optional[Callable[[str], None]] = None,
         *args,
         **kwargs,
     ) -> str:
@@ -2480,6 +2560,7 @@ class Agent:
             task (str): The task to be performed by the `llm` object.
             img (str, optional): Path or URL to an image file.
             audio (str, optional): Path or URL to an audio file.
+            streaming_callback (Optional[Callable[[str], None]]): Callback function to receive streaming tokens in real-time.
             *args: Variable length argument list.
             **kwargs: Arbitrary keyword arguments.
 
@@ -2515,8 +2596,24 @@ class Agent:
                 if hasattr(
                     streaming_response, "__iter__"
                 ) and not isinstance(streaming_response, str):
+                    # Check if streaming_callback is provided (for ConcurrentWorkflow dashboard integration)
+                    if streaming_callback is not None:
+                        # Real-time callback streaming for dashboard integration
+                        chunks = []
+                        for chunk in streaming_response:
+                            if (
+                                hasattr(chunk, "choices")
+                                and chunk.choices[0].delta.content
+                            ):
+                                content = chunk.choices[
+                                    0
+                                ].delta.content
+                                chunks.append(content)
+                                # Call the streaming callback with the new chunk
+                                streaming_callback(content)
+                        complete_response = "".join(chunks)
                     # Check print_on parameter for different streaming behaviors
-                    if self.print_on is False:
+                    elif self.print_on is False:
                         # Silent streaming - no printing, just collect chunks
                         chunks = []
                         for chunk in streaming_response:
@@ -2599,6 +2696,7 @@ class Agent:
         img: Optional[str] = None,
         imgs: Optional[List[str]] = None,
         correct_answer: Optional[str] = None,
+        streaming_callback: Optional[Callable[[str], None]] = None,
         *args,
         **kwargs,
     ) -> Any:
@@ -2613,6 +2711,7 @@ class Agent:
             task (Optional[str], optional): The task to be executed. Defaults to None.
             img (Optional[str], optional): The image to be processed. Defaults to None.
             imgs (Optional[List[str]], optional): The list of images to be processed. Defaults to None.
+            streaming_callback (Optional[Callable[[str], None]], optional): Callback function to receive streaming tokens in real-time. Defaults to None.
             *args: Additional positional arguments to be passed to the execution method.
             **kwargs: Additional keyword arguments to be passed to the execution method.
 
@@ -2644,6 +2743,7 @@ class Agent:
                 output = self._run(
                     task=task,
                     img=img,
+                    streaming_callback=streaming_callback,
                     *args,
                     **kwargs,
                 )
