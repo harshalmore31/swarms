@@ -56,7 +56,6 @@ class Formatter:
         """
         self.console = Console()
         self._dashboard_live = None
-        self._dashboard_lock = threading.Lock()  # Add lock for dashboard updates
         self._spinner_frames = [
             "⠋",
             "⠙",
@@ -381,19 +380,7 @@ class Formatter:
         for agent in agents_data:
             name = Text(agent["name"], style="bold cyan")
             status = self._get_status_with_loading(agent["status"])
-            
-            # Handle output display with better formatting for streaming
-            output_text = str(agent["output"])
-            
-            # Add streaming indicator for running agents
-            if agent["status"] == "running" and output_text and output_text != "🔄 Initializing...":
-                # Add cursor indicator for streaming
-                output_text += " ▊"
-            
-            if len(output_text) > 200:  # Truncate very long outputs for better display
-                output_text = output_text[:200] + "..."
-            output = Text(output_text)
-            
+            output = Text(str(agent["output"]))
             table.add_row(name, status, output)
 
         # Create a panel to wrap the table
@@ -416,7 +403,6 @@ class Formatter:
         """
         Displays a beautiful dashboard showing agent information in a panel-like spreadsheet format.
         Updates in place instead of printing multiple times.
-        Thread-safe for concurrent updates.
 
         Args:
             agents_data (List[Dict[str, Any]]): List of dictionaries containing agent information.
@@ -424,61 +410,34 @@ class Formatter:
             title (str): The title of the dashboard.
             is_final (bool): Whether this is the final update of the dashboard.
         """
-        with self._dashboard_lock:  # Use instance lock for thread safety
-            # Ensure we're working within the global render lock for Rich
-            with live_render_lock:
-                try:
-                    if self._dashboard_live is None:
-                        # Create new Live display if none exists
-                        self._dashboard_live = Live(
-                            self._create_dashboard_table(agents_data, title),
-                            console=self.console,
-                            refresh_per_second=10,  # Increased refresh rate
-                            transient=False,  # Make display persistent
-                        )
-                        self._dashboard_live.start()
-                    else:
-                        # Update existing Live display
-                        try:
-                            self._dashboard_live.update(
-                                self._create_dashboard_table(agents_data, title)
-                            )
-                        except Exception as e:
-                            # If update fails, try to recreate the dashboard
-                            self.stop_dashboard()
-                            self._dashboard_live = Live(
-                                self._create_dashboard_table(agents_data, title),
-                                console=self.console,
-                                refresh_per_second=10,
-                                transient=False,
-                            )
-                            self._dashboard_live.start()
+        with live_render_lock:
+            if self._dashboard_live is None:
+                # Create new Live display if none exists
+                self._dashboard_live = Live(
+                    self._create_dashboard_table(agents_data, title),
+                    console=self.console,
+                    refresh_per_second=10,  # Increased refresh rate
+                    transient=False,  # Make display persistent
+                )
+                self._dashboard_live.start()
+            else:
+                # Update existing Live display
+                self._dashboard_live.update(
+                    self._create_dashboard_table(agents_data, title)
+                )
 
-                    # If this is the final update, add a newline to separate from future output
-                    if is_final:
-                        # Small delay to show final state before stopping
-                        time.sleep(0.5)
-                        
-                except Exception as e:
-                    # Fallback to simple print if Rich fails
-                    self.console.print(f"Dashboard Error: {e}")
-                    self.console.print(f"Agents Status: {agents_data}")
+            # If this is the final update, add a newline to separate from future output
+            if is_final:
+                self.console.print()  # Add blank line after final display
 
     def stop_dashboard(self):
         """
         Stops and cleans up the dashboard display.
-        Thread-safe method.
         """
-        with self._dashboard_lock:
-            if self._dashboard_live is not None:
-                try:
-                    self._dashboard_live.stop()
-                    self.console.print()  # Add blank line after stopping
-                except Exception as e:
-                    # Ignore errors when stopping
-                    pass
-                finally:
-                    self._dashboard_live = None
+        if self._dashboard_live is not None:
+            self._dashboard_live.stop()
+            self.console.print()  # Add blank line after stopping
+            self._dashboard_live = None
 
 
 formatter = Formatter()
